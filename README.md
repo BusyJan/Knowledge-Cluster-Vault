@@ -12,10 +12,11 @@ Treat this folder as **the** vault repo (clone it on every machine; one remote, 
 
 Remote: **[BusyJan/Knowledge-Cluster-Vault](https://github.com/BusyJan/Knowledge-Cluster-Vault)** (`main`).
 
-Clone elsewhere:
+Clone elsewhere — **folder name must be `MyKnowledgeVault`** (workspace root, next to `.cursor/`). Do **not** clone into `Vault/`, `ObsidianVault/`, or a second copy under another name for this system.
 
 ```bash
-git clone https://github.com/BusyJan/Knowledge-Cluster-Vault.git
+git clone https://github.com/BusyJan/Knowledge-Cluster-Vault.git MyKnowledgeVault
+# SSH: git clone git@github.com:BusyJan/Knowledge-Cluster-Vault.git MyKnowledgeVault
 ```
 
 `origin` is already configured on this machine after the initial push.
