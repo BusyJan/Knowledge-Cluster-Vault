@@ -1,4 +1,6 @@
-# MyKnowledgeVault — AI knowledge cluster (Obsidian + Cursor + Git)
+# MyKnowledgeVault — AI knowledge cluster (Obsidian + Git)
+
+**Obsidian users:** Open **this folder** as the vault (`File → Open folder… → MyKnowledgeVault`). Do **not** open the parent `ESP Projects` folder — otherwise the file tree and graph will not match this repo’s layout. See [[00 - Start here]].
 
 **For assistants:** This folder (`MyKnowledgeVault/` at the workspace root, next to `.cursor/`) is the **only** knowledge vault for this setup. Do **not** create a parallel `Vault/`, `ObsidianVault/`, or other root folder for the same purpose. Project memory lives in `Projects/<slug>/` inside **this** directory.
 
