@@ -3,12 +3,13 @@
 ## Active themes
 
 - **Vault architecture:** Single cluster, per-project slugs, append-only [[Notes]] with periodic roll-up into this file.
-- **SubZero technical vault:** `ESP Projects/subzero-vault/` — Obsidian folder with curated PCB notes + `_mirror/` repo README copies (see `subzero-vault/00 - SubZero Home.md`). Complements this cluster; not a second Git remote for agent memory.
 - **Token policy:** Agent loads [[README]] by default; [[Summary]] for depth; [[Notes]] only in slices.
+- **SubZero (ESP Projects):** Hardware in `project-apex/` (P3 current: power on TOP, flash/PSRAM/RTC/IMU on MAIN); tooling in `subzero-pcb-engine/`; P4 = pentest ICs; P5 = optional expansion + SDR; wired CAN (MCP2551) **out of plan**.
 
 ## Compressed history
 
 - **2026-04-11:** Established README/Summary/Notes layering; automation via Python `vaultctl.py`; Cursor rules enforce slug + append semantics.
+- **2026-04-11 (late):** Full knowledge dump into vault notes: [[SubZero-PCB-Prototypes]], [[SubZero-Engine-and-Dashboard]], [[Workspace-Repo-Map]], [[Tooling-and-Comparisons]] — mirrors `project-apex/prototypes/README.md` + engine/dashboard READMEs; remote **Knowledge-Cluster-Vault** only under `MyKnowledgeVault/`.
 
 <!-- VAULTCTL:COMPRESSED_START -->
 ## Recent (from Notes, last 14 days)

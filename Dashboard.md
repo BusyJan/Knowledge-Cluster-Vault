@@ -34,4 +34,4 @@ Paste the table below.
 
 | Title | Slug | Status | Updated | Repo |
 |-------|------|--------|---------|------|
-| *(run refresh-dashboard)* | | | | |
+| ESP Projects workspace | esp-projects | active | 2026-04-11 23:50:00 | https://github.com/BusyJan/Knowledge-Cluster-Vault.git |
