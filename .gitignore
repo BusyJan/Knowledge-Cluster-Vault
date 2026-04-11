@@ -3,5 +3,5 @@
 *.swp
 __pycache__/
 *.pyc
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+# Obsidian (ignore entire folder so local UI/plugin state is not auto-committed by hooks)
+.obsidian/
