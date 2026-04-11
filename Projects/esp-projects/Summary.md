@@ -3,6 +3,7 @@
 ## Active themes
 
 - **Vault architecture:** Single cluster, per-project slugs, append-only [[Notes]] with periodic roll-up into this file.
+- **SubZero technical vault:** `ESP Projects/subzero-vault/` — Obsidian folder with curated PCB notes + `_mirror/` repo README copies (see `subzero-vault/00 - SubZero Home.md`). Complements this cluster; not a second Git remote for agent memory.
 - **Token policy:** Agent loads [[README]] by default; [[Summary]] for depth; [[Notes]] only in slices.
 
 ## Compressed history
