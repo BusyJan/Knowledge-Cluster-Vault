@@ -93,6 +93,7 @@ python3 scripts/vaultctl.py refresh-dashboard
 
 - **Rules:** `ESP Projects/.cursor/rules/obsidian-knowledge-cluster.mdc`
 - **Skill:** `ESP Projects/.cursor/skills/obsidian-memory-sync/SKILL.md`
+- **Hooks (ESP Projects workspace):** `.cursor/hooks.json` runs **`sessionStart`** → `git pull` in this vault, and **`stop`** → commit + `git push` when the vault is dirty. Requires opening the **ESP Projects** folder as the Cursor project root. Confirm hooks are enabled in Cursor **Settings → Hooks**.
 
 ## Dependencies
 
