@@ -6,18 +6,17 @@ This directory is the **long-term memory layer** for work across repositories. I
 
 Treat this folder as **the** vault repo (clone it on every machine; one remote, e.g. GitHub).
 
-### GitHub repository name
+### GitHub repository
 
-Create the remote repository as **`Knowledge-Cluster-Vault`** (exact name; matches this knowledge-cluster setup).
+Remote: **[BusyJan/Knowledge-Cluster-Vault](https://github.com/BusyJan/Knowledge-Cluster-Vault)** (`main`).
 
-After you create it on GitHub under your account, connect and push (replace `<username>` with your GitHub username or org):
+Clone elsewhere:
 
 ```bash
-git remote add origin https://github.com/<username>/Knowledge-Cluster-Vault.git
-git push -u origin main
+git clone https://github.com/BusyJan/Knowledge-Cluster-Vault.git
 ```
 
-If `origin` already exists, use `git remote set-url origin https://github.com/<username>/Knowledge-Cluster-Vault.git` instead.
+`origin` is already configured on this machine after the initial push.
 
 **Agent workflow (when persisting memory):**
 
@@ -76,7 +75,7 @@ Legacy headings `## [YYYY-MM-DD]` are still parsed for compression.
 ```bash
 export KNOWLEDGE_VAULT="/path/to/MyKnowledgeVault"   # optional
 
-python3 scripts/vaultctl.py ensure-project --slug my-project --title "My Project" --repo "https://github.com/<username>/Knowledge-Cluster-Vault.git"
+python3 scripts/vaultctl.py ensure-project --slug my-project --title "My Project" --repo "https://github.com/BusyJan/Knowledge-Cluster-Vault.git"
 
 python3 scripts/vaultctl.py append-note --slug my-project \
   --insight "..." --context "..." --problem "..." --decision "..." --next-step "..."
