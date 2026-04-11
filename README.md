@@ -47,7 +47,7 @@ If Git is not initialized yet: `git init`, add remote, first push — then use t
 
 Per project: `README.md` (state + YAML), `Summary.md`, `Notes.md` (append-only), `Decisions.md`, `Tasks.md`.
 
-**`esp-projects`:** SubZero PCB + engine notes live as sibling pages under `Projects/esp-projects/` (e.g. `SubZero-PCB-Prototypes.md`, `Workspace-Repo-Map.md`) — see that folder’s [[Projects/esp-projects/README|README]].
+**`esp-projects`:** SubZero PCB + engine notes live as sibling pages under `Projects/esp-projects/` (e.g. `SubZero-PCB-Prototypes.md`, `Workspace-Repo-Map.md`) — see [[Projects/esp-projects/README]].
 
 ### README frontmatter (new projects)
 
