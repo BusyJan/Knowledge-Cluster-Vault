@@ -1,5 +1,7 @@
 # MyKnowledgeVault — AI knowledge cluster (Obsidian + Cursor + Git)
 
+**For assistants:** This folder (`MyKnowledgeVault/` at the workspace root, next to `.cursor/`) is the **only** knowledge vault for this setup. Do **not** create a parallel `Vault/`, `ObsidianVault/`, or other root folder for the same purpose. Project memory lives in `Projects/<slug>/` inside **this** directory.
+
 This directory is the **long-term memory layer** for work across repositories. It is **not** a generic notebook: it is structured, token-efficient, and **shared across devices via Git**.
 
 ## Git as source of truth
