@@ -41,3 +41,4 @@ Im **Dateibaum** links: `Projects` → `esp-projects` aufklappen.
 
 - [[Dashboard]] — Dataview-Tabelle (Plugin nötig)
 - [[README]] — Vault-Repo-Regeln & Git-Workflow
+- [[Obsidian Setup]] — empfohlene Plugins & Graph-Hinweise

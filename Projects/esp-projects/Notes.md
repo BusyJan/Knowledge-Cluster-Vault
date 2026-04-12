@@ -23,6 +23,13 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Added `SubZero-PCB-Prototypes.md`, `SubZero-Engine-and-Dashboard.md`, `Workspace-Repo-Map.md`, `Tooling-and-Comparisons.md` under `Projects/esp-projects/`; updated [[README]] + [[Summary]].
 - Next step: `git pull` → `commit` → `push` after review; keep `project-apex/prototypes/README.md` as source of truth and refresh vault notes when it changes.
 
+## 2026-04-12 12:00
+
+- Insight: Obsidian vault stays useful when **prototype README** and **SubZero-PCB-Prototypes** stay in sync; add **Obsidian Setup** for Dataview/Dashboard.
+- Context: User asked to update the vault for Obsidian.
+- Decision: Re-synced [[SubZero-PCB-Prototypes]] from `project-apex/prototypes/README.md` (TOP 117, P5 before P4 block order); added [[Obsidian Setup]]; linked from [[00 - Start here]].
+- Next step: After each `prototypes/README.md` edit, mirror or run a one-liner reminder in Tasks.
+
 ## 2026-04-11 12:00
 
 - Insight: The vault is shared Git state across devices; sync before every memory read/write.

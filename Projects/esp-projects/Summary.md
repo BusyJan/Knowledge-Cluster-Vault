@@ -4,7 +4,7 @@
 
 - **Vault architecture:** Single cluster, per-project slugs, append-only [[Notes]] with periodic roll-up into this file.
 - **Token policy:** Agent loads [[README]] by default; [[Summary]] for depth; [[Notes]] only in slices.
-- **SubZero (ESP Projects):** Hardware in `project-apex/` (P3 current: power on TOP, flash/PSRAM/RTC/IMU on MAIN); tooling in `subzero-pcb-engine/`; P4 = pentest ICs; P5 = optional expansion + SDR; wired CAN (MCP2551) **out of plan**.
+- **SubZero (ESP Projects):** Hardware in `project-apex/` (P3: MAIN 104 / TOP 117); tooling in `subzero-pcb-engine/`; P4 = pentest ICs; P5 = optional expansion + SDR; wired CAN **out of P4**; vault note [[SubZero-PCB-Prototypes]] mirrors `prototypes/README.md`.
 
 ## Compressed history
 

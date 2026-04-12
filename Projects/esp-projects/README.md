@@ -4,7 +4,7 @@ title: ESP Projects workspace
 slug: esp-projects
 status: active
 created: 2026-04-11 12:00:00
-updated: 2026-04-11 23:50:00
+updated: 2026-04-12 12:00:00
 repo: "https://github.com/BusyJan/Knowledge-Cluster-Vault.git"
 tags: [project]
 ---
@@ -43,3 +43,4 @@ tags: [project]
 - [[Summary]] — compressed knowledge
 - [[Decisions]] — durable decisions
 - [[Tasks]] — actionable items
+- [[Obsidian Setup]] — Plugins (Dataview), Graph (vault root)

@@ -2,7 +2,7 @@
 
 ## Inbox
 
-- [ ] When `project-apex/prototypes/README.md` changes, sync [[SubZero-PCB-Prototypes]] (or re-run a small mirror script).
+- [ ] When `project-apex/prototypes/README.md` changes, copy edits into [[SubZero-PCB-Prototypes]] (one-way mirror from repo).
 
 ## Doing
 
