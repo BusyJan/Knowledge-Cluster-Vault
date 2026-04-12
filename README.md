@@ -52,6 +52,8 @@ Per project: `README.md` (state + YAML), `Summary.md`, `Notes.md` (append-only),
 
 **`esp-projects`:** SubZero PCB + engine notes live as sibling pages under `Projects/esp-projects/` (e.g. `SubZero-PCB-Prototypes.md`, `Workspace-Repo-Map.md`) — see [[Projects/esp-projects/README]].
 
+**Multi-project graph:** [[Graph Hub]] links every `Projects/<slug>/README` so the **global graph** shows connected nodes (see [[Obsidian Setup#Global vs local graph]]).
+
 ### README frontmatter (new projects)
 
 `type: project`, `title`, `slug`, `status`, `created`, `updated`, `repo` (may be empty).
