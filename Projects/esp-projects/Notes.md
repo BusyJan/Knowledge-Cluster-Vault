@@ -64,3 +64,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: Conflicts must be resolved manually; no force-push or blind overwrites.
 - Decision: Mandatory workflow pull → read/write minimal files → add → commit → push.
 - Next step: Initialize/configure Git remote on `MyKnowledgeVault` and use `vault-sync.sh` before edits.
+## 2026-04-12 20:12
+
+- Insight: Review prompts work better when they explicitly ask for component-selection, architecture critique, and market comparison instead of only issue-spotting.
+- Context: User wants a constructive chat prompt, not another README-style doc, for external AI review of SubZero hardware.
+- Problem: Existing review package focuses on scoring and risk flags but not enough on why parts were chosen, whether the architecture is coherent, and how the device compares with known pentest tools.
+- Decision: Use a copy-paste chat prompt that asks for architecture review, component-choice review, trade-off analysis, concrete improvement suggestions, and a short comparison against common pentest devices like Flipper Zero, HackRF One, WiFi Pineapple, Proxmark3, and Ubertooth.
+- Next step: Provide the prompt in-chat and optionally offer a shorter variant for weaker models.
+
