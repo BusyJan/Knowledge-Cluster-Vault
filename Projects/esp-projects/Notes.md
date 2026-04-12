@@ -37,6 +37,13 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Added `Projects/project-apex`, `subzero-pcb-engine`, `nocturn` stubs + [[Graph Hub]]; documented global vs local in [[Obsidian Setup]].
 - Next step: Add more slugs under `Projects/` as new repos get important.
 
+## 2026-04-12 14:00
+
+- Insight: External reviewers need **one bundle**: counts + full ref list + roadmap + questions.
+- Context: User asked for stats, all components, and plan for other AIs to review.
+- Decision: Added [[External-AI-Review-Package]] + `project-apex/EXTERNAL_AI_REVIEW_BUNDLE.md` pointer; flagged U38/U42 overlap and SE050 ref drift in text.
+- Next step: Regenerate after major PCB edits; run DRC before sending to reviewers.
+
 ## 2026-04-11 12:00
 
 - Insight: The vault is shared Git state across devices; sync before every memory read/write.

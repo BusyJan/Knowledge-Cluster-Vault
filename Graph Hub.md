@@ -18,3 +18,4 @@ This note **only exists to wire the vault together** so the **Graph view** shows
 - [[00 - Start here]]
 - [[Dashboard]]
 - [[Obsidian Setup]]
+- [[Projects/esp-projects/External-AI-Review-Package]] — stats + all components + AI review plan
