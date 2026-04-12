@@ -53,7 +53,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 ## 2026-04-12 15:00
 
 - Insight: User wants **hardware evaluation**, not just a checklist — external AIs must **score** the whole stack.
-- Context: Reframed [[External-AI-Review-Package]] with sections A/B (mandatory deliverables + 10-dimension matrix) and C (evidence appendix).
+- Context: Reframed [[External-AI-Review-Package]] with sections A/B (mandatory deliverables + 12-row matrix, konstruktiver Prompt, Pentest-Tool-Vergleich) and C (evidence appendix).
 - Decision: Document title and `project-apex/EXTERNAL_AI_REVIEW_BUNDLE.md` updated to match.
 - Next step: Paste doc + optional `prototypes/README.md` into any LLM and ask for output per section A.
 

@@ -39,7 +39,7 @@ tags: [project]
 
 ## SubZero deep dives (read these)
 
-- [[External-AI-Review-Package]] — **gesamte Hardware von anderen KIs bewerten lassen** (Matrix 1–10, 221 Footprints, Fakten-Anhang)
+- [[External-AI-Review-Package]] — **gesamte Hardware von anderen KIs bewerten lassen** (Matrix 12×1–10, konstruktiver Review inkl. BOM/Architektur + Pentest-Tool-Vergleich, 221 Footprints, Fakten-Anhang)
 - [[SubZero-PCB-Prototypes]] — P1–P5, components, power chain, planned P4/P5
 - [[SubZero-Engine-and-Dashboard]] — parser modes, dashboard, KiCad CLI
 - [[Workspace-Repo-Map]] — paths, remotes, filenames
