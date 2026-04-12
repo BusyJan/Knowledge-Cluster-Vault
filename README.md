@@ -94,6 +94,8 @@ python3 scripts/vaultctl.py append-decision --slug my-project --title "..." --bo
 python3 scripts/vaultctl.py compress --slug my-project --keep-days 14
 
 python3 scripts/vaultctl.py refresh-dashboard
+
+python3 scripts/refresh_cluster_tree.py   # Mermaid tree in CLUSTER-TREE.md
 ```
 
 `compress` rolls older `Notes` sections into `Summary.md` between HTML comment markers (deterministic, not semantic).

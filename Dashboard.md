@@ -4,6 +4,8 @@ tags: [dashboard, cluster]
 
 # Knowledge cluster dashboard
 
+**Tree layout (root → projects → files):** open **[[CLUSTER-TREE]]** — a Mermaid diagram. The **Graph** view cannot draw the whole vault as a tree; use that note when you want hierarchy.
+
 ## Graph view (center + structure)
 
 Obsidian’s **core graph is not a folder tree** — it’s a **force-directed** layout (nodes pull/push like springs). It will never look exactly like your file tree.
