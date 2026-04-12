@@ -363,6 +363,56 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 
 Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anhang liefert nur die **Faktenbasis**.
 
+---
+
+## D) Ergebnisse externer Reviews (2026-04-12)
+
+Sechs Modelle haben den konstruktiven Review-Prompt bearbeitet (Architektur, Komponentenwahl, Risiken, Pentest-Vergleich).
+
+### Gesamtnoten
+
+| Modell | Note | Kernaussage (1 Satz) |
+|--------|-----:|----------------------|
+| ChatGPT (o3) | **7.0** | Architektonisch stark, aber Power-Pfad, RF-Koexistenz und Datenkonsistenz vor P4 klären |
+| Gemini | **7.0** | Professionelles Power-Gating und DFM, aber VL822 USB3 ist EMI-Risiko → USB2-Hub erwägen |
+| DeepSeek | **6.0** | Solides Fundament, TOP aber überladen; BQ25798 vs TP4056 bereinigen, 4 Layer evaluieren |
+| Claude | **5.5** | Architektur-Split überzeugend, Feature-Dichte aber zu hoch; P4-Scope halbieren |
+| VeniceAI | **6.0** | RF-Dichte auf 3–4 Module reduzieren, USB3→USB2 downgraden, thermische Planung fehlt |
+| Grok | **7.6** | Stärkste Bewertung; MAIN/TOP-Split „einer der saubersten Dual-Board-Ansätze", P4 aber Platz-/EMI-kritisch |
+| **Ø** | **6.5** | |
+
+### Einstimmige Stärken (alle 6 Modelle)
+
+1. **MAIN/TOP-Split** ist architektonisch sauber und produktreif
+2. **Power-Chain** BQ25798 + STUSB4500 + MAX17048 ist professionell
+3. **SE050C1** als echtes Secure Element differenziert von fast allen Mitbewerbern
+4. **ESD-Schutz** auf allen Ports ist vollständig
+5. **Power-Gating** via TPS22918 zeigt Systemverständnis
+
+### Einstimmige Risiken / Kritik (alle 6 Modelle)
+
+1. **TP4056 parallel zu BQ25798** — redundant/gefährlich; entfernen oder DNP
+2. **P4 passt nicht auf aktuelles TOP B.Cu** — separates Board oder Scope reduzieren
+3. **RF-Koexistenz** (6+ Module + USB3 auf 80×140 mm) ist das größte Langfrist-Risiko
+4. **USB3-Harmonische vs GPS/NFC** — Abschirmung, Ferrite oder USB2-Downgrade nötig
+5. **4-Layer-PCB für TOP** sollte vor P4 evaluiert werden
+
+### Strittige Punkte (Modelle uneinig)
+
+| Thema | Pro | Contra |
+|-------|-----|--------|
+| **VL822 USB3-Hub** | Grok, Claude: USP (Bandbreite für Capture/Replay) | Gemini, VeniceAI: EMI-Overkill → USB2 |
+| **nRF24 + CC1101** | Grok: nötig für Kompatibilität | DeepSeek: Altlasten, modernisieren |
+| **AW9523 ×2** | Grok: entlastet B2B clever | DeepSeek: Overkill, GPIOs reichen |
+| **AT86RF215 in P4** | Grok: passt thematisch | Claude, DeepSeek: auf P5 verschieben |
+
+### Konsens-Empfehlung (destilliert)
+
+> **P3 stabilisieren:** TP4056 raus, Thermik prüfen, DRC sauber, Doku synchron.  
+> **P4 reduzieren:** RP2040 + DS2482 + CC2400 + MAX3232 realistisch; DW3000 + AT86RF215 → P5 oder Mezzanine.  
+> **TOP auf 4 Layer** evaluieren, bevor P4 dazukommt.  
+> **USB3-Hub-Entscheidung** treffen: entweder Abschirmung + Ferrite **oder** Downgrade auf USB2-Hub.
+
 ## Related
 
 - [[SubZero-PCB-Prototypes]]
