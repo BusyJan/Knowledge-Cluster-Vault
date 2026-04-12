@@ -72,3 +72,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Use a copy-paste chat prompt that asks for architecture review, component-choice review, trade-off analysis, concrete improvement suggestions, and a short comparison against common pentest devices like Flipper Zero, HackRF One, WiFi Pineapple, Proxmark3, and Ubertooth.
 - Next step: Provide the prompt in-chat and optionally offer a shorter variant for weaker models.
 
+## 2026-04-12 22:30
+
+- Context: HackRF-Kalibrierungsexperiment abgeschlossen — 6 KI-Modelle (Grok, ChatGPT, Gemini, Claude, VeniceAI, DeepSeek) haben den HackRF One reviewed.
+- Insight: KI-Modelle tendieren zu Übertreibungen in beide Richtungen. Hauptprobleme: (1) Gemini/VeniceAI erfinden Probleme die nicht existieren (z.B. "fehlende Ground-Planes", falsche Stromwerte), (2) DeepSeek bewertet systematisch zu negativ (4.5/10 für ein Gerät das 6–7 verdient), (3) Grok und ChatGPT sind am zuverlässigsten aber leicht wohlwollend.
+- Decision: Kalibrierte Korrekturtabelle erstellt — bei SubZero-Reviews: Grok/ChatGPT -0.5, Gemini -1.0, VeniceAI/DeepSeek Fakten doppelt prüfen, Claude am analytischsten aber konservativ.
+- Decision: Neuer P4-Review-Prompt mit Anti-Halluzinations-Maßnahmen: [ANNAHME]-Pflicht, "erfinde keine Probleme"-Regel, mehr Fakten-Verankerung, Kontext "Prototyp nicht Serienprodukt", faire Vergleichsklasse ($200–500).
+- Next step: P4-Prompt an alle 6 Modelle senden, Ergebnisse mit Korrekturtabelle interpretieren.
+
