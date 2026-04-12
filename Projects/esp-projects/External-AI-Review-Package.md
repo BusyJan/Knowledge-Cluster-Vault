@@ -1,7 +1,7 @@
 ---
 title: SubZero — Hardware-Bewertung durch externe KI
 tags: [subzero, review, export, stats, hardware-evaluation]
-updated: 2026-04-12
+updated: 2026-04-09
 ---
 
 # SubZero — gesamte Hardware von anderen KIs bewerten lassen
@@ -44,7 +44,7 @@ updated: 2026-04-12
 | 7 | **Thermik & Mechanik** | 80×140 mm, Doppelboard, Montage — realistisch? Hot spots? |
 | 8 | **Fertigung & Testbarkeit** | DFM, Footprint-Mix, In-Circuit-Test / Debug erreichbar? |
 | 9 | **Roadmap P4/P5** | Passt geplanter Pentest-/SDR-Block zu freiem TOP-B.Cu und Gesamtkonzept? |
-|10 | **Datenkonsistenz** | Abgleich README vs Footprint-Export — siehe Parser-Flags unten |
+|10 | **Datenkonsistenz** | Abgleich README vs Footprint-Export — siehe Abschnitt „Datenabgleich“ unten |
 
 **Skala:** 1 = schwere Lücken oder Blocker · 5 = machbar mit klaren Nacharbeiten · 8–9 = stark · 10 = serienreif (selten ohne Messung).
 
@@ -64,13 +64,13 @@ updated: 2026-04-12
 ### Cross-board reference overlap (same designator string on both files)
 
 Both boards intentionally reuse **MH1–MH4** (mounting holes).  
-**U42** appears on **both** files with **different parts** (each `.kicad_pcb` is independent — OK for manufacturing; confusing for humans).
+**U42** is reused by designator on **two different parts**: **MAIN** `U42` = **DS3231** (RTC); **TOP** `U42` = **STUSB4500** (USB PD). Each `.kicad_pcb` is independent — fine for Gerber/BOM per board; when writing docs or BOMs, prefix with **MAIN** / **TOP** or use the value field to avoid confusion.
 
-### Parser flags — verify in KiCad
+### Datenabgleich README ↔ PCB (aktueller Stand)
 
-1. **U38 vs U42 (TOP):** **U38** = BQ25798 and **U42** = STUSB4500 both list **(14, 108)** — likely **overlap or stacked**; confirm 3D/courtyard.
-2. **U35 (TOP):** Parsed as **ATGM336H** (GPS) at (64, 25) — matches a **GPS module**, not STUSB4500 (README text says “STUSB4500” in the chain but **does not fix a ref**; PD IC is **U42** in this export).
-3. **SE050:** README sometimes says “SE050 on TOP”; parsed **SE050C1 = U13** (not U11). **U11** parses as **W25Q256** — reconcile BOM vs README.
+1. **U38 vs U42 (TOP):** Getrennt platziert — **U42** STUSB4500 **(14.00, 109.50)** mm, **U38** BQ25798 **(30.00, 108.31)** mm, beide **B.Cu** (`subzero-top-fixed.kicad_pcb`).
+2. **U35 (TOP):** **ATGM336H** (GPS) **(64.00, 25.00)** — nicht verwechseln mit PD: **USB PD = TOP U42** (STUSB4500).
+3. **SE050 / Flash (TOP):** **U13** = **SE050C1**; **U11** = **W25Q256** (SPI Flash auf TOP) — so in README/BOM führen.
 
 ---
 
@@ -347,9 +347,9 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 | U34 | SD_Card_ESD | B.Cu | (70.00, 122.00) |
 | U35 | ATGM336H | B.Cu | (64.00, 25.00) |
 | U36 | PAM8302 | B.Cu | (26.00, 60.00) |
-| U38 | BQ25798 | B.Cu | (14.00, 108.00) |
+| U38 | BQ25798 | B.Cu | (30.00, 108.31) |
 | U39 | MAX17048 | B.Cu | (8.00, 115.00) |
-| U42 | STUSB4500 | B.Cu | (14.00, 108.00) |
+| U42 | STUSB4500 | B.Cu | (14.00, 109.50) |
 | U8 | 74LVC125 | B.Cu | (16.00, 25.00) |
 | U9 | AW9523_1 | B.Cu | (64.00, 64.00) |
 | Y1 | 25MHz_USB_Crystal | B.Cu | (48.00, 120.00) |

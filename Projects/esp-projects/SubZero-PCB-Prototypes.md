@@ -1,7 +1,7 @@
 ---
 title: SubZero PCB Prototypes (P1–P5)
 tags: [subzero, pcb, prototypes, project-apex]
-updated: 2026-04-12
+updated: 2026-04-09
 synced_from: project-apex/prototypes/README.md
 ---
 
@@ -37,6 +37,7 @@ synced_from: project-apex/prototypes/README.md
 
 - **MAIN**: 104 components
 - **TOP**: 117 components
+- **Same designator, different board (do not merge BOMs blindly):** **MAIN U42** = DS3231 RTC; **TOP U42** = STUSB4500 (USB PD). **TOP U35** = ATGM336H (GPS). **TOP U13** = SE050C1; **TOP U11** = W25Q256 (SPI flash on TOP).
 - **New components (now properly on TOP, B.Cu — behind display)**:
   - U38 BQ25798 — USB-C PD 3.0 Fast Charger (5A, replaces TP4056)
   - U39 MAX17048 — Battery Fuel Gauge (coulomb counter, I²C)
@@ -46,14 +47,14 @@ synced_from: project-apex/prototypes/README.md
   - J10 — JST battery connector
   - L703, C1001-C1005, R1001-R1002 — BQ25798 passives
   - R701, C961, R961, R962 — fuel gauge + battery divider passives
-- **Power chain**: USB-C Port → STUSB4500 (TOP) → BQ25798 (TOP) → Battery (TOP)
+- **Power chain**: USB-C Port → **U42** STUSB4500 (PD, TOP) → **U38** BQ25798 (charger, TOP) → battery path (TOP)
 - **New on MAIN**:
   - U40 W25Q256JVEIQ — 32MB SPI Flash
   - U41 APS6404L-3SQR — 8MB PSRAM
   - U42 DS3231MZ+ — RTC (±5ppm accuracy)
   - U43 ICM-20948 — 9-axis IMU (accel + gyro + magnetometer)
   - C1006-C1011, R1003-R1004 — support passives
-- **Already on TOP (from P1)**: SE050C1 secure element (was ATECC)
+- **Already on TOP (from P1)**: **U13** SE050C1 secure element (was ATECC); not U11 — **U11** is W25Q256 on TOP (P3)
 
 ## Prototype 5 — Expansion Port + SDR Module (OPTIONAL, FUTURE)
 

@@ -44,6 +44,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Added [[External-AI-Review-Package]] + `project-apex/EXTERNAL_AI_REVIEW_BUNDLE.md` pointer; flagged U38/U42 overlap and SE050 ref drift in text.
 - Next step: Regenerate after major PCB edits; run DRC before sending to reviewers.
 
+## 2026-04-09
+
+- Context: PCB TOP — **U38** (BQ25798) and **U42** (STUSB4500) were separated in layout; docs had stale overlap flags and wrong **U35** vs **U42** for PD.
+- Decision: [[External-AI-Review-Package]] + [[SubZero-PCB-Prototypes]] + `subzero-vault` notes updated — **TOP U42** = STUSB4500, **U35** = ATGM336H GPS, **U13** = SE050C1, **U11** = W25Q256 on TOP; cross-board **MAIN U42** = DS3231.
+- Next step: Re-export component tables if `subzero-pcb-engine` regenerates from PCB.
+
 ## 2026-04-12 15:00
 
 - Insight: User wants **hardware evaluation**, not just a checklist — external AIs must **score** the whole stack.
