@@ -4,7 +4,7 @@ title: ESP Projects workspace
 slug: esp-projects
 status: active
 created: 2026-04-11 12:00:00
-updated: 2026-04-12 12:00:00
+updated: 2026-04-12 12:30:00
 repo: "https://github.com/BusyJan/Knowledge-Cluster-Vault.git"
 tags: [project]
 ---
@@ -29,6 +29,13 @@ tags: [project]
 - **Tooling:** `subzero-pcb-engine/` — `pcb_parser`, KiCad CLI integration, **LAN dashboard** (`subzero-dashboard`).
 - **Vault automation:** `MyKnowledgeVault/scripts/vaultctl.py`, `vault-sync.sh`.
 - **Cursor:** `.cursor/rules/obsidian-knowledge-cluster.mdc`, `.cursor/skills/obsidian-memory-sync/SKILL.md`, `.cursor/hooks.json`.
+
+## Other projects in this vault (for Graph + Dashboard)
+
+- [[Graph Hub]] — links every project README (use for **global graph** connectivity)
+- [[Projects/project-apex/README]] — KiCad files on disk
+- [[Projects/subzero-pcb-engine/README]] — parser + dashboard repo
+- [[Projects/nocturn/README]] — Nocturn firmware
 
 ## SubZero deep dives (read these)
 

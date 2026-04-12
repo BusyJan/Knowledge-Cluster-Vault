@@ -4,6 +4,8 @@ tags: [index, moc]
 
 # Start here
 
+→ **[[Graph Hub]]** — one page that links **all projects** (better graph connectivity).
+
 ## Vault root (wichtig)
 
 In Obsidian **„Open folder as vault“** und **genau diesen Ordner** wählen:

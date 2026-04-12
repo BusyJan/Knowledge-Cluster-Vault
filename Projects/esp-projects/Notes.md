@@ -30,6 +30,13 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Re-synced [[SubZero-PCB-Prototypes]] from `project-apex/prototypes/README.md` (TOP 117, P5 before P4 block order); added [[Obsidian Setup]]; linked from [[00 - Start here]].
 - Next step: After each `prototypes/README.md` edit, mirror or run a one-liner reminder in Tasks.
 
+## 2026-04-12 12:30
+
+- Insight: **Graph view** defaults to **local** scope — looks empty unless you use **global graph** or a **hub** note with links to every project.
+- Context: User wants all projects visible in graph.
+- Decision: Added `Projects/project-apex`, `subzero-pcb-engine`, `nocturn` stubs + [[Graph Hub]]; documented global vs local in [[Obsidian Setup]].
+- Next step: Add more slugs under `Projects/` as new repos get important.
+
 ## 2026-04-11 12:00
 
 - Insight: The vault is shared Git state across devices; sync before every memory read/write.
