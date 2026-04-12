@@ -41,7 +41,7 @@ synced_from: project-apex/prototypes/README.md
 - **New components (now properly on TOP, B.Cu — behind display)**:
   - U38 BQ25798 — USB-C PD 3.0 Fast Charger (5A, replaces TP4056)
   - U39 MAX17048 — Battery Fuel Gauge (coulomb counter, I²C)
-  - U16 TP4056 — kept for backup/reference (can be removed in P4)
+  - ~~U16 TP4056~~ — **DNP (Do Not Place)**: redundant neben BQ25798, konkurrierender Ladepfad. R701 (PROG) ebenfalls DNP.
   - U17 DW01A — Battery protection IC
   - U18 FS8205 — Battery protection dual-FET
   - J10 — JST battery connector

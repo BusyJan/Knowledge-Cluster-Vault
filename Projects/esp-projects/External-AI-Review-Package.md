@@ -333,7 +333,7 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 | U13 | SE050C1 | B.Cu | (10.00, 42.00) |
 | U14 | ST25R3916 | B.Cu | (64.00, 42.00) |
 | U15 | EM4095 | B.Cu | (64.00, 55.00) |
-| U16 | TP4056 | B.Cu | (20.00, 120.00) |
+| ~~U16~~ | ~~TP4056~~ **(DNP)** | B.Cu | (20.00, 120.00) |
 | U17 | DW01A | B.Cu | (20.00, 115.00) |
 | U18 | FS8205 | B.Cu | (14.00, 115.00) |
 | U26 | TPS22918_NFC | B.Cu | (64.00, 36.00) |
@@ -396,13 +396,13 @@ Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anh
 1. **U38/U42 Layout-Overlap** — kritischer Blocker (inzwischen behoben)
 2. **RF-Koexistenz** — zu viele Funkmodule ohne Abschirmung/Frequenzplan
 3. **USB3 EMI** — VL822 SuperSpeed-Harmonische vs. GPS/NFC (4 von 6 empfehlen USB2-Downgrade)
-4. **TP4056 parallel zu BQ25798** — redundant und potenziell schädlich
+4. ~~**TP4056 parallel zu BQ25798**~~ — **behoben: U16 + R701 als DNP markiert**
 5. **P4 auf TOP B.Cu nicht realisierbar** — zu wenig Platz, EMI, Thermik
 6. **Datenkonsistenz** — Designator-Drift zwischen PCB, README und BOM
 
 **Empfehlungen (Konsens):**
 - P3 zuerst stabilisieren (Layout-Blocker, Doku, DRC, Thermik)
-- TP4056 entfernen oder DNP
+- ~~TP4056 entfernen oder DNP~~ **(erledigt)**
 - P4-Scope reduzieren oder auf eigenes Board auslagern
 - 4-Layer-PCB für TOP evaluieren
 - Thermische Vias unter BQ25798 und VL822
