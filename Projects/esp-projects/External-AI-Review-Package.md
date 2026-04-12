@@ -533,6 +533,74 @@ Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anh
 | **P4-Scope** | Grok (ganzer Scope, aber Extension-Board) | Claude (nur RP2040+DS2482+CC2400+MAX3232), DeepSeek (3 Module) |
 | **4-Layer-PCB** | Claude, DeepSeek, VeniceAI (ja) | ChatGPT, Grok (nicht explizit gefordert) |
 
+---
+
+## E) P4-Reviews (2026-04-12) — kalibriert
+
+> Reviews basieren auf dem **P4-Datenstand** (USB2-Downgrade, 4-Layer MAIN, neue ICs verteilt). Prompt enthielt Anti-Halluzinations-Regeln ([ANNAHME]-Pflicht, "erfinde keine Probleme", Kontext "Prototyp, nicht Produkt"). Kalibrierung basiert auf HackRF-One-Experiment (6 Modelle reviewten HackRF, Ergebnisse gegen bekannte Fakten geprüft).
+
+### Noten-Übersicht (roh → kalibriert)
+
+| Modell | Roh | Korrektur | Bereinigt | Konzept sinnvoll? |
+|--------|----:|-----------|----------:|-------------------|
+| **Grok** | 8.2 | -0.5 (wohlwollend) | **7.7** | Ja |
+| **ChatGPT** | 7.4 | -0.5 (wohlwollend) | **6.9** | Ja |
+| **Gemini** | 7.0 | -1.0 (erfindet Probleme) | **6.0** | Eher ja |
+| **VeniceAI** | 7.0 | Fakten prüfen | **~6.5** | Eher ja |
+| **DeepSeek** | 6.5 | +0.5 (zu negativ) | **7.0** | Eher ja |
+| **Claude** | 6.5 | ±0 (analytischstes) | **6.5** | Eher ja |
+| **Bereinigter Schnitt** | 7.1 | | **~6.8** | |
+
+### Konsens (einstimmig oder 5/6)
+
+1. **MAIN/TOP-Split ist richtig** — 6/6
+2. **P4-IC-Verteilung korrekt** (RF auf MAIN, Rest auf TOP) — 6/6
+3. **USB2-Downgrade richtige Entscheidung** — 6/6
+4. **Power Chain professionell** — 6/6
+5. **4-Layer MAIN notwendig** — 6/6
+6. **RF-Koexistenz 2.4 GHz = größtes Risiko** — 5/6 (Grok unterschätzt)
+7. **DW3000 UWB-Layout anspruchsvoll** — 5/6
+8. **Thermik BQ25798 validieren** — 5/6 (Grok fehlt)
+
+### Faktenfehler gefunden
+
+| Modell | Fehler | Bewertung |
+|--------|--------|-----------|
+| **DeepSeek** | "AT86RF215 bis 2.4 GHz Abtastrate" — AT86RF215 ist Transceiver mit festen Kanalbandbreiten, kein frei konfigurierbarer ADC | Falsch |
+| **DeepSeek** | "RP2040 USB2-Konflikt mit Hub" — USB-Hubs managen Multiple Devices nativ | Erfunden |
+| **VeniceAI** | "Redundante CC1101-Module" — zwei CC1101 erlauben Dual-Band-Monitoring (433+868 gleichzeitig) | Falsch |
+| **VeniceAI** | "USB2-Bandbreite Engpass" — 480 Mbit/s reicht für HID + Logic Analyzer + SD locker | Übertrieben |
+| **Grok** | Nur 3 Risiken, alle mittel/niedrig — Thermik und RF-Koexistenz fehlen fast komplett | Unterschätzt |
+| **Grok** | "TP4056 DNP = Schwäche" — DNP ist die korrekte Lösung, keine Schwäche | Padding |
+| **Gemini** | "6 Lagen wären deutlich sicherer" — 4 Lagen reichen bei korrektem Stackup | Übertrieben (korrekt als ANNAHME markiert) |
+
+### Anti-Halluzinations-Wirkung (vs. P3-Reviews)
+
+- **Gemini:** Deutlich besser — kaum erfundene Probleme (vs. HackRF: "fehlende Ground-Planes")
+- **VeniceAI/DeepSeek:** 2–3 Fehler statt 4–5 beim HackRF
+- **[ANNAHME]-Labels:** Alle 6 Modelle haben sie benutzt — Prompt-Regel hat gewirkt
+- **Marketing-Sprache:** Fast eliminiert (kein "beeindruckend", "faszinierend")
+
+### Bereinigte To-Do-Liste (Konsens, ohne Halluzinationen)
+
+1. **RF-Koexistenz-Plan** — Software-Mutex für 2.4-GHz-Module, nie zwei gleichzeitig TX, TPS22918 nutzen
+2. **DW3000 UWB-Layout** — Referenzdesign, Keepout, 50-Ω CPW, Board-Ecke
+3. **AT86RF215 Matching zuerst platzieren** — Diff. RF-Leitungen, Balun, Keepout 10mm
+4. **Thermik BQ25798** — Thermal-Via-Array, IR-Kamera unter 5A, NTC an Akku
+5. **B2B-Netzliste durchzählen** — 30 Pins verifizieren, 4–6 Pins für VSYS/GND
+6. **Shielding Cans** — AT86RF215 + CC2400 Zone abschirmen
+7. **RP2040-SWD-Testpunkte** — auf TOP B.Cu nachtragen
+8. **4-Layer Stackup definieren** — Signal–GND–Power–Signal, L1–L2 Dielektrikum berechnen
+
+### Kontroverse Punkte P4
+
+| Thema | Position A | Position B |
+|-------|-----------|-----------|
+| **4 vs. 6 Layer MAIN** | Gemini: 6 sicherer | 5/6: 4 reicht |
+| **TOP 2-Layer reicht?** | Grok, DeepSeek: ja | ChatGPT, Claude: grenzwertig |
+| **CC1101 ×2 sinnvoll?** | 4/6: ja (Dual-Band) | VeniceAI: redundant (faktisch falsch) |
+| **Shielding Cans?** | Gemini, Claude: ja | Andere: nicht erwähnt |
+
 ## Related
 
 - [[SubZero-PCB-Prototypes]]

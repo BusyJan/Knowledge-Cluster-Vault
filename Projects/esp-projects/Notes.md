@@ -80,3 +80,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Neuer P4-Review-Prompt mit Anti-Halluzinations-Maßnahmen: [ANNAHME]-Pflicht, "erfinde keine Probleme"-Regel, mehr Fakten-Verankerung, Kontext "Prototyp nicht Serienprodukt", faire Vergleichsklasse ($200–500).
 - Next step: P4-Prompt an alle 6 Modelle senden, Ergebnisse mit Korrekturtabelle interpretieren.
 
+## 2026-04-12 23:45
+
+- Context: P4-Reviews von allen 6 KI-Modellen eingesammelt und mit HackRF-Kalibrierung ausgewertet.
+- Insight: Anti-Halluzinations-Prompt hat gewirkt — deutlich weniger erfundene Probleme als bei P3-Reviews. [ANNAHME]-Labels wurden von allen Modellen benutzt. Gemini war diesmal viel sauberer. DeepSeek und VeniceAI hatten trotzdem 2–3 Faktenfehler (AT86RF215 falsch beschrieben, CC1101-Dual als "redundant").
+- Insight: Bereinigter Durchschnitt nach Korrektur: **6.8/10** — P4 ist ein solider Prototyp mit professioneller Power-Chain und klarer Architektur. Kein Blocker, aber RF-Layout und Thermik müssen gemessen werden.
+- Decision: 8-Punkte-To-Do-Liste aus Konsens aller Reviews: RF-Koexistenz-Plan, DW3000-Layout, AT86RF215-Matching, BQ25798-Thermik, B2B-Netzliste, Shielding Cans, RP2040-SWD, 4-Layer-Stackup.
+- Next step: To-Do-Punkte in KiCad-Layout umsetzen, mit DW3000 und AT86RF215 Placement beginnen.
+
