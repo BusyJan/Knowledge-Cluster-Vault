@@ -1,7 +1,7 @@
 ---
 title: SubZero PCB Prototypes (P1–P5)
 tags: [subzero, pcb, prototypes, project-apex]
-updated: 2026-04-09
+updated: 2026-04-12
 synced_from: project-apex/prototypes/README.md
 ---
 
