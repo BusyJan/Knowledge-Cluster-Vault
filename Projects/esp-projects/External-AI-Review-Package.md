@@ -6,7 +6,7 @@ updated: 2026-04-12
 
 # SubZero — gesamte Hardware von anderen KIs bewerten lassen
 
-**Zweck dieses Dokuments:** Du kannst es **vollständig** (plus optional `project-apex/prototypes/README.md`) an **beliebige andere KI-Modelle** schicken. Sie sollen **nicht nur Listen lesen**, sondern die **gesamte SubZero-Hardware** (zwei Platinen, **221 Footprints**) **konstruktiv bewerten**: **Systemarchitektur**, **Komponentenauswahl** (BOM/IC-Wahl), Strompfad, RF, USB3, Sicherheit, Fertigung, Roadmap — plus **kurzer Marktvergleich** mit typischen Pentest-/HF-Geräten. Lieferung: **Noten**, **konkrete Verbesserungsvorschläge** und **klare Empfehlung**.
+**Zweck dieses Dokuments:** Du kannst es **vollständig** (plus optional `project-apex/prototypes/README.md`) an **beliebige andere KI-Modelle** schicken. Sie sollen **nicht nur Listen lesen**, sondern die **gesamte SubZero-Hardware** (zwei Platinen, **221 Footprints**) **bewerten**: Architektur, Risiken, Strompfad, RF, USB3, Sicherheit, Fertigung, Roadmap — mit **Noten** und **klarer Empfehlung**.
 
 **Faktenbasis:** geparste KiCad-PCBs (`subzero-main.kicad_pcb`, `subzero-top-fixed.kicad_pcb`) + Prototyp-Roadmap.
 
@@ -14,49 +14,18 @@ updated: 2026-04-12
 
 ## A) An die bewertende KI — verbindlicher Auftrag
 
-**Deine Aufgabe:** Führe eine **unabhängige, konstruktive Hardware-Bewertung** der SubZero-Plattform durch. Du hast **keinen vollständigen Schaltplan** — arbeite mit den Footprint-Listen, Werten, Layern und Positionen unten sowie der Roadmap. **Markiere Unsicherheiten** explizit als Annahme.
+**Deine Aufgabe:** Führe eine **unabhängige Hardware-Bewertung** der SubZero-Plattform durch. Du hast **keinen vollständigen Schaltplan** — arbeite mit den Footprint-Listen, Werten, Layern und Positionen unten sowie der Roadmap. **Markiere Unsicherheiten** explizit als Annahme.
 
-### A.1) Stil: „konstruktiv“, nicht nur kritisieren
-
-- **Ziel:** Hilfreiche Entscheidungsgrundlage für Layout, BOM und nächste Prototypen — nicht eine reine Mängelliste.
-- **Pro begründeter Schwäche:** Wenn möglich **einen konkreten Gegenentwurf** nennen (z. B. alternative Bauteilklasse, andere Partitionierung, zusätzlicher Schutz/Filter) — oder klar sagen, dass ohne Schaltplan/Netzliste keine sinnvolle Alternative erkennbar ist.
-- **Architektur:** Bewerte **Zweiteilung MAIN/TOP**, B2B, Verteilung von Rechenleistung, RF, UI und Power bewusst als **Gesamtkonzept** (Stärken/Schwächen gegenüber monolithischer Platine).
-- **Komponenten:** Bewerte **Auswahl und Rolle** der sichtbaren ICs/Module (Passform zur Aufgabe, typische Risiken wie Thermik, EMI, Beschaffung, Redundanz). Nutze die **vollständigen Ref/Value-Tabellen** in Abschnitt C — nicht nur die Statistik.
-- **Pentest-Roadmap (P4):** Nur im Kontext **autorisierte Sicherheitsforschung / Labor**; Vergleich mit kommerziellen Pentest-Tools **sachlich** (Fähigkeiten vs. Grenzen), keine Anleitung zu Missbrauch.
-
-### A.2) Kurz-Vergleich: SubZero vs. bekannte Pentest-/HF-Tools
-
-**Hintergrund:** SubZero (P3 + geplantes P4) zielt auf **hohe Integration** vieler Funktionen in einem Gerät. Bewerte am Ende **explizit** (Abschnitt in deiner Antwort), wie sich dies **qualitativ** zu gängigen Spezialgeräten verhält — ohne Preisgarantie, ohne „besser/schlechter“-Dogma, sondern **Abdeckung vs. Fokus**.
-
-| Referenz | Typ / Rolle (typisch) | Was Nutzer oft schätzen | Typische Grenzen (kurz) |
-|----------|------------------------|-------------------------|-------------------------|
-| **Flipper Zero** | tragbarer Multi-Tool (Sub-GHz, NFC, IR, GPIO, BadUSB-artig, …) | schneller Einstieg, viele Community-Apps, Formfaktor | begrenzte Breite bei HF/SDR, kein „vollwertiger“ Wideband-SDR |
-| **HackRF One** | halbduplex-SDR ~1 MHz–6 GHz | breites Spektrum, viele Tools (GNU Radio, …) | kein integrierter Pentest-Workflow, externes Host-Setup |
-| **Proxmark3** | RFID/NFC/LF+HF Lesen/Emulieren | Referenz für Karten/Protokolle | Fokus RFID/NFC, kein All-in-One-Handheld |
-| **Ubertooth One** | Bluetooth Classic / LE Sniffing | BT-Analyse, Wireshark-Pfad | veraltetes Formfaktor/Ökosystem vs. neuere Dongles |
-| **USB Rubber Ducky** / **Bash Bunny** | HID-Injection / Payload-Automation | Social-Engineering-Workflows | kein RF, kein vollständiges SDR |
-| **WiFi Pineapple** (Hak5) | WiFi-Test/Ökosystem | Kampagnen, UI für WLAN-Tests | Fokus WLAN, kein breiter HF-Rest |
-| **Chameleon Ultra / ähnl.** | RFID-Emulation tragbar | kompakt für Karten | schmaler Funktionsumfang vs. Labor-SDR |
-
-**Deine Aufgabe dazu:** 1 Absatz + optional kleine Tabelle **„SubZero vs. obige Kategorie“** entlang von **Integration**, **RF-Breite**, **Bedienkonzept (Display/UI)**, **Wartung/Komplexität** — immer mit dem Hinweis, dass P4 noch **geplant** ist und P3 der aktuelle Hardware-Stand ist.
-
----
-
-### A.3) Du musst liefern (Ausgabeformat)
+**Du musst liefern (Ausgabeformat):**
 
 | # | Lieferung |
 |---|-----------|
 | 1 | **Gesamtnote** 1–10 (10 = für Serie ohne offene Blocker) + **ein Satz** Begründung |
-| 2 | Für **jede Zeile** der Matrix in **Abschnitt B**: Teilnote **1–10** + **2–5 Sätze** Begründung, die **Architektur- und/oder Komponentenaspekte** einbeziehen, wo die Zeile das hergibt |
-| 3 | **Konstruktive Nachbesserungen:** mindestens **5** nummerierte Punkte im Format **Problem → Vorschlag → erwarteter Effekt** (jeweils 1–3 Sätze; bei Unsicherheit: „Prüfen in KiCad/Schaltplan: …“) |
-| 4 | **Komponenten-Fokus:** **mindestens 8** Einträge aus der BOM-Liste (Ref + Value), die du **positiv** (gute Wahl) oder **kritisch** (Risiko/Alternative erwägen) bewertest — jeweils **2–3 Sätze** |
-| 5 | **Top 5 Stärken** der aktuellen Hardware (Bullets) |
-| 6 | **Top 5 Risiken** mit Schweregrad (niedrig / mittel / hoch / kritisch) |
-| 7 | **Blocker:** Ja/Nein — wenn ja: konkrete Voraussetzungen vor Layout/Prototyp |
-| 8 | **Empfehlung:** z. B. „P3 erst stabilisieren“, „P4 machbar“, „Mechanik/Stack prüfen“, „EMI-Vormessung“ |
-| 9 | **Vergleich Pentest-Tools:** wie in **A.2** gefordert (Absatz + optional Mini-Tabelle) |
-
-**Zusatzregel:** Wo eine Matrix-Teilnote **unter 7** liegt: **mindestens ein** konkreter nächster Schritt nennen (Messung, Layout-Review, BOM-Alternative, Testaufbau).
+| 2 | Für **jede Zeile** der Matrix in **Abschnitt B**: Teilnote **1–10** + **2–4 Sätze** Begründung |
+| 3 | **Top 5 Stärken** der aktuellen Hardware (Bullets) |
+| 4 | **Top 5 Risiken** mit Schweregrad (niedrig / mittel / hoch / kritisch) |
+| 5 | **Blocker:** Ja/Nein — wenn ja: konkrete Voraussetzungen vor Layout/Prototyp |
+| 6 | **Empfehlung:** z. B. „P3 erst stabilisieren“, „P4 machbar“, „Mechanik/Stack prüfen“, „EMI-Vormessung“ |
 
 **Ethik:** Geplante P4-Funktionen nur im Kontext **autorisierte Sicherheitsforschung / Labor** diskutieren.
 
@@ -66,18 +35,16 @@ updated: 2026-04-12
 
 | # | Dimension | Was du bewertest (Leitfragen) |
 |---|-------------|------------------------------|
-| 1 | **System-Architektur** | Sinniger Split MAIN (RF/MCU/Rechen) vs TOP (Anzeige, USB, Ladekette)? B2B-Zuführung, Strom- und Signalpfade grob plausibel? Monolith vs. Zweiplatinen-Trade-off? |
-| 2 | **Komponentenauswahl & BOM** | Passen die sichtbaren ICs/Module zur Rolle (z. B. PD, Charger, MCU, RF-Module, Secure Element)? Redundanz/Overlap (z. B. Legacy neben neuem Pfad)? Beschaffung, Footprint-Risiko, sinnvolle Alternativen? |
-| 3 | **Stromversorgung & Akku** | Kette USB-C → PD → Charger → Schutz → Batterie → B2B → Verbraucher plausibel? SPoF? |
-| 4 | **RF & Koexistenz** | Viele Funk-Interfaces/Antennen — Interferenz, Keepouts, GPS vs USB3 vs NFC? |
-| 5 | **USB / Hochgeschwindigkeit** | Hub VL822, Kristall, ESD, mehrere Ports — Platz, EMI, Signalintegrität (qualitativ)? |
-| 6 | **Mixed-Signal & Peripherie** | Audio, Tasten, NFC/RFID-Teil — Übersprechen / Masseführung (qualitativ)? |
-| 7 | **Sicherheit (HW)** | Secure Element, Flash — Anbindung sinnvoll platziert? (ohne Netzliste nur grob) |
-| 8 | **Thermik & Mechanik** | 80×140 mm, Doppelboard, Montage — realistisch? Hot spots? |
-| 9 | **Fertigung & Testbarkeit** | DFM, Footprint-Mix, In-Circuit-Test / Debug erreichbar? |
-| 10 | **Roadmap P4/P5** | Passt geplanter Pentest-/SDR-Block zu freiem TOP-B.Cu und Gesamtkonzept? Spannung zu Komplexität/EMI? |
-| 11 | **Datenkonsistenz** | Abgleich README vs Footprint-Export — siehe Abschnitt „Datenabgleich“ unten |
-| 12 | **Produktpositionierung** | Passt die **Zielrichtung** (integriertes Field-Device vs. Laborspezialgerät) zu Architektur und Roadmap — im Licht von **A.2** (Vergleich mit Markt-Tools)? |
+| 1 | **System-Architektur** | Sinniger Split MAIN (RF/MCU/Rechen) vs TOP (Anzeige, USB, Ladekette)? B2B-Zuführung? |
+| 2 | **Stromversorgung & Akku** | Kette USB-C → PD → Charger → Schutz → Batterie → B2B → Verbraucher plausibel? SPoF? |
+| 3 | **RF & Koexistenz** | Viele Funk-Interfaces/Antennen — Interferenz, Keepouts, GPS vs USB3 vs NFC? |
+| 4 | **USB / Hochgeschwindigkeit** | Hub VL822, Kristall, ESD, mehrere Ports — Platz, EMI, Signalintegrität (qualitativ)? |
+| 5 | **Mixed-Signal & Peripherie** | Audio, Tasten, NFC/RFID-Teil — Übersprechen / Masseführung (qualitativ)? |
+| 6 | **Sicherheit (HW)** | Secure Element, Flash — Anbindung sinnvoll platziert? (ohne Netzliste nur grob) |
+| 7 | **Thermik & Mechanik** | 80×140 mm, Doppelboard, Montage — realistisch? Hot spots? |
+| 8 | **Fertigung & Testbarkeit** | DFM, Footprint-Mix, In-Circuit-Test / Debug erreichbar? |
+| 9 | **Roadmap P4/P5** | Passt geplanter Pentest-/SDR-Block zu freiem TOP-B.Cu und Gesamtkonzept? |
+|10 | **Datenkonsistenz** | Abgleich README vs Footprint-Export — siehe Abschnitt „Datenabgleich“ unten |
 
 **Skala:** 1 = schwere Lücken oder Blocker · 5 = machbar mit klaren Nacharbeiten · 8–9 = stark · 10 = serienreif (selten ohne Messung).
 
