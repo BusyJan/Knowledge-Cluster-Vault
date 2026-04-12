@@ -33,7 +33,7 @@ synced_from: project-apex/prototypes/README.md
 - **Battery zone**: 60mm wide centered, full board length
 - **Side strips**: 10mm on each side for B2B connectors
 
-## Prototype 3 — High-End Upgrades (Current)
+## Prototype 3 — High-End Upgrades
 
 - **MAIN**: 104 components
 - **TOP**: 117 components
@@ -66,7 +66,7 @@ synced_from: project-apex/prototypes/README.md
   - Communication: SPI + USB (via VL822 hub, already on board)
 - **Notes**: RF isolation required (separate board); 5.8GHz PCB design very complex
 
-## Prototype 4 — Pentesting Arsenal (PLANNED)
+## Prototype 4 — Pentesting Arsenal (Current)
 
 - **Target board**: TOP B.Cu (behind display, ~5700mm² free)
 - **New pentesting ICs**:

@@ -80,8 +80,8 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 |-------|---------|
 | **P1** | 80×145 mm; USB/SD on MAIN |
 | **P2** | 80×140 mm; USB/SD → TOP B.Cu; B2B side strips |
-| **P3 (current)** | MAIN 104 / TOP 117; power chain on TOP; flash/PSRAM/RTC/IMU on MAIN |
-| **P4 (planned)** | Pentest ICs on TOP B.Cu (CC2400, RP2040, DS2482, DW3000, MAX3232, AT86RF215) + optional sensors |
+| **P3** | MAIN 104 / TOP 117; power chain on TOP; flash/PSRAM/RTC/IMU on MAIN |
+| **P4 (current)** | Pentest ICs on TOP B.Cu (CC2400, RP2040, DS2482, DW3000, MAX3232, AT86RF215) + optional sensors |
 | **P5 (optional)** | Expansion header + AD9361-class SDR module |
 
 ---
