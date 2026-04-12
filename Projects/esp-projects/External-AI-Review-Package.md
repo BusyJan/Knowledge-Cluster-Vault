@@ -1,14 +1,58 @@
 ---
-title: SubZero — stats, components, external AI review plan
-tags: [subzero, review, export, stats]
+title: SubZero — Hardware-Bewertung durch externe KI
+tags: [subzero, review, export, stats, hardware-evaluation]
 updated: 2026-04-12
 ---
 
-# SubZero — stats, full component lists & external AI review plan
+# SubZero — gesamte Hardware von anderen KIs bewerten lassen
 
-Use this note as a **single paste or file attachment** for other LLMs / reviewers. Source of truth for layout: `project-apex/*.kicad_pcb`; narrative: `project-apex/prototypes/README.md`.
+**Zweck dieses Dokuments:** Du kannst es **vollständig** (plus optional `project-apex/prototypes/README.md`) an **beliebige andere KI-Modelle** schicken. Sie sollen **nicht nur Listen lesen**, sondern die **gesamte SubZero-Hardware** (zwei Platinen, **221 Footprints**) **bewerten**: Architektur, Risiken, Strompfad, RF, USB3, Sicherheit, Fertigung, Roadmap — mit **Noten** und **klarer Empfehlung**.
 
-## 1) High-level stats (parsed PCB, current files)
+**Faktenbasis:** geparste KiCad-PCBs (`subzero-main.kicad_pcb`, `subzero-top-fixed.kicad_pcb`) + Prototyp-Roadmap.
+
+---
+
+## A) An die bewertende KI — verbindlicher Auftrag
+
+**Deine Aufgabe:** Führe eine **unabhängige Hardware-Bewertung** der SubZero-Plattform durch. Du hast **keinen vollständigen Schaltplan** — arbeite mit den Footprint-Listen, Werten, Layern und Positionen unten sowie der Roadmap. **Markiere Unsicherheiten** explizit als Annahme.
+
+**Du musst liefern (Ausgabeformat):**
+
+| # | Lieferung |
+|---|-----------|
+| 1 | **Gesamtnote** 1–10 (10 = für Serie ohne offene Blocker) + **ein Satz** Begründung |
+| 2 | Für **jede Zeile** der Matrix in **Abschnitt B**: Teilnote **1–10** + **2–4 Sätze** Begründung |
+| 3 | **Top 5 Stärken** der aktuellen Hardware (Bullets) |
+| 4 | **Top 5 Risiken** mit Schweregrad (niedrig / mittel / hoch / kritisch) |
+| 5 | **Blocker:** Ja/Nein — wenn ja: konkrete Voraussetzungen vor Layout/Prototyp |
+| 6 | **Empfehlung:** z. B. „P3 erst stabilisieren“, „P4 machbar“, „Mechanik/Stack prüfen“, „EMI-Vormessung“ |
+
+**Ethik:** Geplante P4-Funktionen nur im Kontext **autorisierte Sicherheitsforschung / Labor** diskutieren.
+
+---
+
+## B) Bewertungsmatrix — jede Zeile mit 1–10 bewerten
+
+| # | Dimension | Was du bewertest (Leitfragen) |
+|---|-------------|------------------------------|
+| 1 | **System-Architektur** | Sinniger Split MAIN (RF/MCU/Rechen) vs TOP (Anzeige, USB, Ladekette)? B2B-Zuführung? |
+| 2 | **Stromversorgung & Akku** | Kette USB-C → PD → Charger → Schutz → Batterie → B2B → Verbraucher plausibel? SPoF? |
+| 3 | **RF & Koexistenz** | Viele Funk-Interfaces/Antennen — Interferenz, Keepouts, GPS vs USB3 vs NFC? |
+| 4 | **USB / Hochgeschwindigkeit** | Hub VL822, Kristall, ESD, mehrere Ports — Platz, EMI, Signalintegrität (qualitativ)? |
+| 5 | **Mixed-Signal & Peripherie** | Audio, Tasten, NFC/RFID-Teil — Übersprechen / Masseführung (qualitativ)? |
+| 6 | **Sicherheit (HW)** | Secure Element, Flash — Anbindung sinnvoll platziert? (ohne Netzliste nur grob) |
+| 7 | **Thermik & Mechanik** | 80×140 mm, Doppelboard, Montage — realistisch? Hot spots? |
+| 8 | **Fertigung & Testbarkeit** | DFM, Footprint-Mix, In-Circuit-Test / Debug erreichbar? |
+| 9 | **Roadmap P4/P5** | Passt geplanter Pentest-/SDR-Block zu freiem TOP-B.Cu und Gesamtkonzept? |
+|10 | **Datenkonsistenz** | Abgleich README vs Footprint-Export — siehe Parser-Flags unten |
+
+**Skala:** 1 = schwere Lücken oder Blocker · 5 = machbar mit klaren Nacharbeiten · 8–9 = stark · 10 = serienreif (selten ohne Messung).
+
+---
+
+## C) Fakten-Anhang — Zahlen & Listen (für deine Bewertung)
+
+### 1) High-level stats (parsed PCB, current files)
 
 | Metric | MAIN (`subzero-main.kicad_pcb`) | TOP (`subzero-top-fixed.kicad_pcb`) |
 |--------|--------------------------------|-------------------------------------|
@@ -30,7 +74,7 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 
 ---
 
-## 2) Prototype roadmap (from README)
+### 2) Prototype roadmap (from README)
 
 | Proto | Summary |
 |-------|---------|
@@ -42,9 +86,9 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 
 ---
 
-## 3) Counts by designator prefix (approximate)
+### 3) Counts by designator prefix (approximate)
 
-### MAIN
+#### MAIN
 
 | Prefix | Count |
 |--------|------:|
@@ -59,7 +103,7 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 | L | 2 |
 | (+ J_IB_M, etc.) | |
 
-### TOP
+#### TOP
 
 | Prefix | Count |
 |--------|------:|
@@ -77,7 +121,7 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 
 ---
 
-## 4) Full component tables (ref, value, layer, position mm)
+### 4) Full component tables (ref, value, layer, position mm)
 
 ### MAIN — 104 components
 
@@ -312,25 +356,12 @@ Both boards intentionally reuse **MH1–MH4** (mounting holes).
 
 ---
 
-## 5) Plan — how other AIs should review this
+### 5) Optional: automatische Checks (für Menschen / CI)
 
-1. **Inputs to attach / paste**
-   - This file (stats + tables).
-   - `project-apex/prototypes/README.md` (roadmap P1–P5).
-   - Optional: DRC export text or screenshot from KiCad 10.
+- `subzero-pcb-engine`: `pcb_parser` im Modus `full` mit `kicad-cli` (DRC + Courtyard).
+- KiCad 10: SVG/GLB-Export für Mechanik/Review.
 
-2. **Questions to ask the external model**
-   - Power path: USB-C → PD → charger → battery → B2B → MAIN rails — **single points of failure / sequencing**?
-   - RF: antenna keepouts, **USB3** noise vs GPS / NFC — **coupling risks**?
-   - **P4 placement**: room on TOP B.Cu vs thermal / shielding?
-   - **Designators**: confirm **U35 vs U42** for GPS vs STUSB4500 vs BQ25798 overlap at (14,108).
-
-3. **Tooling (automated)**
-   - Run `subzero-pcb-engine` `pcb_parser` in `full` mode with `kicad-cli` for **DRC + courtyard** alignment.
-   - Re-export **SVG/GLB** after major edits for mechanical check.
-
-4. **Ethics**
-   - Pentest features (P4) are **lab / authorized testing** context; reviewers should assume **legal use only**.
+Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anhang liefert nur die **Faktenbasis**.
 
 ## Related
 

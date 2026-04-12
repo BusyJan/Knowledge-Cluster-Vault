@@ -44,6 +44,13 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Added [[External-AI-Review-Package]] + `project-apex/EXTERNAL_AI_REVIEW_BUNDLE.md` pointer; flagged U38/U42 overlap and SE050 ref drift in text.
 - Next step: Regenerate after major PCB edits; run DRC before sending to reviewers.
 
+## 2026-04-12 15:00
+
+- Insight: User wants **hardware evaluation**, not just a checklist — external AIs must **score** the whole stack.
+- Context: Reframed [[External-AI-Review-Package]] with sections A/B (mandatory deliverables + 10-dimension matrix) and C (evidence appendix).
+- Decision: Document title and `project-apex/EXTERNAL_AI_REVIEW_BUNDLE.md` updated to match.
+- Next step: Paste doc + optional `prototypes/README.md` into any LLM and ask for output per section A.
+
 ## 2026-04-11 12:00
 
 - Insight: The vault is shared Git state across devices; sync before every memory read/write.

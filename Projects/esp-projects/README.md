@@ -4,7 +4,7 @@ title: ESP Projects workspace
 slug: esp-projects
 status: active
 created: 2026-04-11 12:00:00
-updated: 2026-04-12 14:00:00
+updated: 2026-04-12 15:00:00
 repo: "https://github.com/BusyJan/Knowledge-Cluster-Vault.git"
 tags: [project]
 ---
@@ -39,7 +39,7 @@ tags: [project]
 
 ## SubZero deep dives (read these)
 
-- [[External-AI-Review-Package]] — **stats, full component tables (221), review plan for other AIs**
+- [[External-AI-Review-Package]] — **gesamte Hardware von anderen KIs bewerten lassen** (Matrix 1–10, 221 Footprints, Fakten-Anhang)
 - [[SubZero-PCB-Prototypes]] — P1–P5, components, power chain, planned P4/P5
 - [[SubZero-Engine-and-Dashboard]] — parser modes, dashboard, KiCad CLI
 - [[Workspace-Repo-Map]] — paths, remotes, filenames
