@@ -60,7 +60,7 @@ Paste the table below.
 
 | Title | Slug | Status | Updated | Repo |
 |-------|------|--------|---------|------|
-| ESP Projects workspace | esp-projects | active | 2026-04-12 14:00:00 | https://github.com/BusyJan/Knowledge-Cluster-Vault.git |
+| ESP Projects workspace | esp-projects | active | 2026-04-12 15:00:00 | https://github.com/BusyJan/Knowledge-Cluster-Vault.git |
 | nocturn | nocturn | active | 2026-04-12 12:00:00 |  |
 | project-apex (SubZero KiCad) | project-apex | active | 2026-04-12 12:00:00 |  |
 | subzero-pcb-engine | subzero-pcb-engine | active | 2026-04-12 12:00:00 |  |
