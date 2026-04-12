@@ -365,53 +365,173 @@ Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anh
 
 ---
 
-## D) Ergebnisse externer Reviews (2026-04-12)
+## D) Externe KI-Bewertungen (2026-04-12)
 
-Sechs Modelle haben den konstruktiven Review-Prompt bearbeitet (Architektur, Komponentenwahl, Risiken, Pentest-Vergleich).
+> Reviews basieren auf dem **P3-Datenstand** (221 Footprints, vor U38/U42-Layout-Fix und Doku-Bereinigung). Das Prompt forderte: Architektur-, Komponenten-, Risiko-Review + Vergleich mit bekannten Pentest-Tools.
 
-### Gesamtnoten
+### Übersicht Gesamtnoten
 
-| Modell | Note | Kernaussage (1 Satz) |
-|--------|-----:|----------------------|
-| ChatGPT (o3) | **7.0** | Architektonisch stark, aber Power-Pfad, RF-Koexistenz und Datenkonsistenz vor P4 klären |
-| Gemini | **7.0** | Professionelles Power-Gating und DFM, aber VL822 USB3 ist EMI-Risiko → USB2-Hub erwägen |
-| DeepSeek | **6.0** | Solides Fundament, TOP aber überladen; BQ25798 vs TP4056 bereinigen, 4 Layer evaluieren |
-| Claude | **5.5** | Architektur-Split überzeugend, Feature-Dichte aber zu hoch; P4-Scope halbieren |
-| VeniceAI | **6.0** | RF-Dichte auf 3–4 Module reduzieren, USB3→USB2 downgraden, thermische Planung fehlt |
-| Grok | **7.6** | Stärkste Bewertung; MAIN/TOP-Split „einer der saubersten Dual-Board-Ansätze", P4 aber Platz-/EMI-kritisch |
-| **Ø** | **6.5** | |
+| Modell | Note | Kernaussage |
+|--------|-----:|-------------|
+| **ChatGPT** | 7.0 | Architektonisch stark, offene Punkte bei Power-Pfad, RF-Koexistenz, USB3, Datenkonsistenz |
+| **Gemini** | 7.0 | P3-Basis extrem stark, P4 droht in Feature-Creep; VL822 USB3 hinterfragen |
+| **DeepSeek** | 6.0 | Solides Fundament, TOP überladen; TP4056 raus, 4-Layer evaluieren |
+| **Claude** | 5.5 | Forschungsplattform mit Produktaspirationen; P4 auf RP2040+DS2482+CC2400+MAX3232 reduzieren |
+| **VeniceAI** | 6.0 | Konzept sinnvoll, aber zu dicht; RF-Module auf 3–4 reduzieren, USB3→USB2 |
+| **Grok** | 7.6 | Einer der saubersten Dual-Board-Ansätze; P4 auf Extension-Board auslagern |
+| **Schnitt** | **6.5** | |
 
-### Einstimmige Stärken (alle 6 Modelle)
+---
 
-1. **MAIN/TOP-Split** ist architektonisch sauber und produktreif
-2. **Power-Chain** BQ25798 + STUSB4500 + MAX17048 ist professionell
-3. **SE050C1** als echtes Secure Element differenziert von fast allen Mitbewerbern
-4. **ESD-Schutz** auf allen Ports ist vollständig
-5. **Power-Gating** via TPS22918 zeigt Systemverständnis
+### Konsens über alle Reviews
 
-### Einstimmige Risiken / Kritik (alle 6 Modelle)
+**Stärken (einstimmig oder fast einstimmig):**
+1. MAIN/TOP-Split ist architektonisch stark und funktional begründet
+2. Power-Chain (BQ25798 + STUSB4500 + MAX17048) auf professionellem Niveau
+3. SE050C1 Secure Element als First-Class-Citizen
+4. ESD-Schutz auf jedem externen Port — Produktniveau
+5. TPS22918-Lastschalter für RF-Power-Gating — ermöglicht Koexistenz-Management
 
-1. **TP4056 parallel zu BQ25798** — redundant/gefährlich; entfernen oder DNP
-2. **P4 passt nicht auf aktuelles TOP B.Cu** — separates Board oder Scope reduzieren
-3. **RF-Koexistenz** (6+ Module + USB3 auf 80×140 mm) ist das größte Langfrist-Risiko
-4. **USB3-Harmonische vs GPS/NFC** — Abschirmung, Ferrite oder USB2-Downgrade nötig
-5. **4-Layer-PCB für TOP** sollte vor P4 evaluiert werden
+**Risiken (einstimmig oder fast einstimmig):**
+1. **U38/U42 Layout-Overlap** — kritischer Blocker (inzwischen behoben)
+2. **RF-Koexistenz** — zu viele Funkmodule ohne Abschirmung/Frequenzplan
+3. **USB3 EMI** — VL822 SuperSpeed-Harmonische vs. GPS/NFC (4 von 6 empfehlen USB2-Downgrade)
+4. **TP4056 parallel zu BQ25798** — redundant und potenziell schädlich
+5. **P4 auf TOP B.Cu nicht realisierbar** — zu wenig Platz, EMI, Thermik
+6. **Datenkonsistenz** — Designator-Drift zwischen PCB, README und BOM
 
-### Strittige Punkte (Modelle uneinig)
+**Empfehlungen (Konsens):**
+- P3 zuerst stabilisieren (Layout-Blocker, Doku, DRC, Thermik)
+- TP4056 entfernen oder DNP
+- P4-Scope reduzieren oder auf eigenes Board auslagern
+- 4-Layer-PCB für TOP evaluieren
+- Thermische Vias unter BQ25798 und VL822
 
-| Thema | Pro | Contra |
-|-------|-----|--------|
-| **VL822 USB3-Hub** | Grok, Claude: USP (Bandbreite für Capture/Replay) | Gemini, VeniceAI: EMI-Overkill → USB2 |
-| **nRF24 + CC1101** | Grok: nötig für Kompatibilität | DeepSeek: Altlasten, modernisieren |
-| **AW9523 ×2** | Grok: entlastet B2B clever | DeepSeek: Overkill, GPIOs reichen |
-| **AT86RF215 in P4** | Grok: passt thematisch | Claude, DeepSeek: auf P5 verschieben |
+---
 
-### Konsens-Empfehlung (destilliert)
+### ChatGPT — 7.0/10
 
-> **P3 stabilisieren:** TP4056 raus, Thermik prüfen, DRC sauber, Doku synchron.  
-> **P4 reduzieren:** RP2040 + DS2482 + CC2400 + MAX3232 realistisch; DW3000 + AT86RF215 → P5 oder Mezzanine.  
-> **TOP auf 4 Layer** evaluieren, bevor P4 dazukommt.  
-> **USB3-Hub-Entscheidung** treffen: entweder Abschirmung + Ferrite **oder** Downgrade auf USB2-Hub.
+**Bewertungsmatrix:**
+
+| # | Dimension | Note |
+|---|-----------|-----:|
+| 1 | System-Architektur | 8 |
+| 2 | Strom & Akku | 5 |
+| 3 | RF & Koexistenz | 5 |
+| 4 | USB / Hochgeschwindigkeit | 6 |
+| 5 | Mixed-Signal | 7 |
+| 6 | Sicherheit HW | 7 |
+| 7 | Thermik & Mechanik | 6 |
+| 8 | Fertigung & Test | 6 |
+| 9 | Roadmap P4/P5 | 5 |
+| 10 | Datenkonsistenz | 4 |
+
+**Top-Stärken:** Funktionaler Split MAIN/TOP · Hohe Funktionsdichte bei Blockstruktur · Modulare Weiterentwicklung · Debug-Schnittstellen · Gesamtsystem-Denken.
+
+**Top-Risiken:** U38/U42 Overlap (kritisch) · RF-Koexistenz (hoch) · Doku-Inkonsistenz (hoch) · USB3-SI/EMI (mittel–hoch) · P4/P5-Skalierung (mittel).
+
+**Empfehlung:** P3 zuerst stabilisieren — Datenkonsistenz, Power-Pfad, Mechanik-Check, EMI-Vorprüfung. P4 erst nach Validierung der Reserven. P5 als separates Board.
+
+---
+
+### Gemini — 7.0/10
+
+**Architektur:** MAIN/TOP-Split hervorragend. DFM-Meisterstück (MAIN rein F.Cu, TOP rein B.Cu). IO-Offloading über AW9523 entlastet B2B elegant.
+
+**Schlüsselkritik:** VL822 USB3-Hub ist der größte Einzelfehler — EMI in 2.4 GHz Band, Platz, Strom. Empfiehlt Downgrade auf USB2.0 Hub (z. B. USB2514B oder CH314). P4 als austauschbare „Backpack"-Platine statt auf TOP B.Cu.
+
+**Komponenten-Highlights:**
+- Power-Gating (TPS22918) → „Markenzeichen erfahrener Systemarchitekten"
+- SE050 + ESD-Schutz → Produktniveau
+- RP2040 für BadUSB/Logic Analyzer → starke Wahl
+
+**Risiken (Reihenfolge):** Power-Routing/Überlagerung (kritisch) · RF/EMI durch USB3 (kritisch/hoch) · Mechanik B2B + D-Pad-Biegung (mittel) · SI am B2B (mittel).
+
+**Empfehlung:** Architektur vereinfachen, P3 stabilisieren, USB3 hinterfragen. VL822 → USB2-Hub. P4/P5 als Backpack.
+
+---
+
+### DeepSeek — 6.0/10
+
+**Urteil:** Solides Fundament, TOP überladen. Nach TOP-Respin mit 4 Layern und thermischen Vias ist P3 prototypenreif.
+
+**Schlüsselkritik:**
+- TP4056 + BQ25798 parallel = Designfehler → TP4056 weg
+- AW9523 doppelt = Feature-Creep → auf eines reduzieren
+- P4 auf TOP B.Cu = illusorisch → Mezzanine-Board (80×70 mm)
+- Keine thermische Strategie sichtbar
+
+**Empfehlung (Prioritäten):**
+1. TOP-Respin (TP4056 raus, thermische Vias) — 2–3 Tage
+2. U38/U42 beheben — 1 Stunde
+3. Power-Tree-Diagramm — 1 Stunde
+4. P4-Mechanik-Konzept — 1 Tag
+5. 2-Layer vs. 4-Layer Entscheidung — 1 Tag Analyse
+
+**Markt-Einschätzung:** UWB (DW3000) als Killer-Feature. „Gehe den RF-Forschungsplattform-Weg. Der Pentest-Markt ist überlaufen."
+
+---
+
+### Claude — 5.5/10
+
+**Urteil:** Forschungsplattform mit Produktaspirationen. Kein Bastelprojekt, aber noch kein Produkt.
+
+**Architektur:** MAIN/TOP-Split nach Änderungsfrequenz getrennt — produktreifes Denken. B2B 30-Pin ist der architektonische Schwachpunkt (einzige Verbindung, alles geht hindurch).
+
+**Schlüsselkritik:**
+- USB3 SuperSpeed auf 2-Layer = echte Herausforderung → 4-Layer evaluieren
+- AT86RF215 entweder richtig machen (dedizierte RF-Zone, Abschirmblech, Matching) oder auf P5 verschieben
+- P4-Scope reduzieren: RP2040 + DS2482 + CC2400 + MAX3232 (klarer Nutzen), DW3000 + AT86RF215 → P5
+- Positionierungsschwäche: versucht SDR + BadUSB + NFC + BLE + USB-Forensik + Security-Showcase gleichzeitig
+
+**Empfehlung:** Stufe 1: U38/U42 fix + TP4056 DNP + B2B-Pin-Count prüfen. Stufe 2: Power-Chain validieren → USB3-SI messen → Thermik messen. Stufe 3: P4 nur mit reduziertem Scope. „Der nächste Engpass ist nicht Layout, sondern Firmware-Architektur."
+
+---
+
+### VeniceAI — 6.0/10
+
+**Urteil:** Ambitioniert aber potenziell überladen. Mit gezielter Vereinfachung starkes Produkt möglich.
+
+**Schlüsselkritik:**
+- RF-Module auf 3–4 Kernkomponenten reduzieren
+- USB3.2 → USB2.0 (thermisch + kostentechnisch sinnvoller)
+- Touch-Implementierung ohne erkennbare Entprellung → UX-Risiko
+- Statt verteilter Speicher einen zentralen Secure Storage
+
+**Empfehlung:** „Architektur zuerst vereinfachen" — RF reduzieren, USB downgraden, Thermik überarbeiten. Dann P3 stabilisieren. P4 nur als fokussierte Erweiterung.
+
+---
+
+### Grok — 7.6/10
+
+**Urteil:** Einer der saubersten Dual-Board-Ansätze in dieser Klasse. Echtes Produktpotenzial.
+
+**Architektur:** „Bewusste Trennung von ‚lauter' und ‚leiser' Elektronik in einem tragbaren Formfaktor. Das wirkt nicht überambitioniert, sondern zielgerichtet."
+
+**Schlüsselkritik:**
+- P4 auf TOP B.Cu zu ambitioniert — ~5700 mm² reichen nur mit sehr engen Kompromissen
+- USB3/Power-Domäne ohne Abschirmung gegenüber GPS/NFC riskant
+- Optional-QoL-Sensoren (BME680 etc.) streichen oder auf Expansion-Board
+
+**Stärken (am positivsten):**
+- Power + USB auf professionellem Niveau
+- Breite RF-Abdeckung die echte Research ermöglicht
+- SE050 + ESD → Security ernst genommen
+- Plattform-Ansatz statt Einmal-Produkt
+
+**Empfehlung:** P3 konsequent stabilisieren. P4 nur mit zusätzlichem Platz (Shielding/Re-Layout) oder dediziertem Extension-Board. „Die Architektur ist stark genug — sie braucht nur etwas Luft."
+
+---
+
+### Kontroverse Punkte (kein Konsens)
+
+| Thema | Dafür | Dagegen |
+|-------|-------|---------|
+| **VL822 USB3 behalten** | ChatGPT, Claude, Grok (neutral) | Gemini, DeepSeek, VeniceAI (→ USB2) |
+| **AW9523 ×2 beibehalten** | ChatGPT, Claude, Grok (kein Problem) | DeepSeek (Feature-Creep, eines reicht) |
+| **nRF24 + CC1101 behalten** | Claude, Grok (Kompatibilität) | DeepSeek (Altlasten), VeniceAI (reduzieren) |
+| **P4-Scope** | Grok (ganzer Scope, aber Extension-Board) | Claude (nur RP2040+DS2482+CC2400+MAX3232), DeepSeek (3 Module) |
+| **4-Layer-PCB** | Claude, DeepSeek, VeniceAI (ja) | ChatGPT, Grok (nicht explizit gefordert) |
 
 ## Related
 
