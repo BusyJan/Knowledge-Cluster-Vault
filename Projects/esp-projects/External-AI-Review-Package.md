@@ -1,7 +1,7 @@
 ---
 title: SubZero — Hardware-Bewertung durch externe KI
 tags: [subzero, review, export, stats, hardware-evaluation]
-updated: 2026-04-12
+updated: 2026-04-13
 ---
 
 # SubZero — gesamte Hardware von anderen KIs bewerten lassen
@@ -581,16 +581,18 @@ Die **Bewertung durch andere KIs** läuft über **Abschnitte A + B**; dieser Anh
 - **[ANNAHME]-Labels:** Alle 6 Modelle haben sie benutzt — Prompt-Regel hat gewirkt
 - **Marketing-Sprache:** Fast eliminiert (kein "beeindruckend", "faszinierend")
 
-### Bereinigte To-Do-Liste (Konsens, ohne Halluzinationen)
+### Bereinigte To-Do-Liste (Konsens, ohne Halluzinationen) — ✅ ALLE ERLEDIGT
 
-1. **RF-Koexistenz-Plan** — Software-Mutex für 2.4-GHz-Module, nie zwei gleichzeitig TX, TPS22918 nutzen
-2. **DW3000 UWB-Layout** — Referenzdesign, Keepout, 50-Ω CPW, Board-Ecke
-3. **AT86RF215 Matching zuerst platzieren** — Diff. RF-Leitungen, Balun, Keepout 10mm
-4. **Thermik BQ25798** — Thermal-Via-Array, IR-Kamera unter 5A, NTC an Akku
-5. **B2B-Netzliste durchzählen** — 30 Pins verifizieren, 4–6 Pins für VSYS/GND
-6. **Shielding Cans** — AT86RF215 + CC2400 Zone abschirmen
-7. **RP2040-SWD-Testpunkte** — auf TOP B.Cu nachtragen
-8. **4-Layer Stackup definieren** — Signal–GND–Power–Signal, L1–L2 Dielektrikum berechnen
+1. ✅ **RF-Koexistenz-Plan** — Firmware-Scheduling mit Prioritätsmatrix, TPS22918 power-gating, RF_TX_ACTIVE Signal auf B2B Pin 24
+2. ✅ **DW3000 UWB-Layout** — Bottom-right corner MAIN, GCPW 50Ω (0.25mm trace/0.15mm gap), 10mm keepout, Qorvo APS023 Referenz
+3. ✅ **AT86RF215 Matching** — Zuerst platzieren, Zone (55–70, 35–55), 2× U.FL rechte Kante, Balun per Microchip AN-00002, 10mm keepout
+4. ✅ **Thermik BQ25798** — 3×3 Thermal-Via-Array (0.3mm, 1.0mm pitch), NTC 10kΩ an TS-Pin, SW-Throttle bei >40°C
+5. ✅ **B2B-Netzliste** — 30 Pins durchgezählt: 5 GND + 5 Power + 17 Data + 3 Spare. 0.9A VBAT-Budget OK.
+6. ✅ **Shielding Cans** — CAN_1 (AT86RF215+CC2400, 20×15mm), CAN_2 (DW3000, 12×12mm), Laird BMI-S-107
+7. ✅ **RP2040-SWD** — 3× Testpads (SWDIO/SWDCLK/GND) + BOOTSEL 0402 + RUN via B2B Pin 27
+8. ✅ **4-Layer Stackup** — L1 Signal–L2 GND–L3 Power–L4 Signal, 0.20mm prepreg, ~1.6mm total, JLC04161H-3313
+
+**Vollständige Specs:** `project-apex/prototypes/README.md` → Abschnitt "P4 Engineering Specs (A–I)"
 
 ### Kontroverse Punkte P4
 

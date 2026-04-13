@@ -88,3 +88,16 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: 8-Punkte-To-Do-Liste aus Konsens aller Reviews: RF-Koexistenz-Plan, DW3000-Layout, AT86RF215-Matching, BQ25798-Thermik, B2B-Netzliste, Shielding Cans, RP2040-SWD, 4-Layer-Stackup.
 - Next step: To-Do-Punkte in KiCad-Layout umsetzen, mit DW3000 und AT86RF215 Placement beginnen.
 
+## 2026-04-13 00:30
+
+- Context: Alle 8 Review-Punkte als Engineering Specs in `prototypes/README.md` Abschnitt A–I dokumentiert.
+- Decision: 4-Layer Stackup definiert (L1 Signal, L2 GND, L3 Power, L4 Signal, 0.20mm Prepreg, ~1.6mm total, JLCPCB JLC04161H-3313). Impedanz: 50Ω Microstrip 0.35mm, 50Ω GCPW für DW3000 0.25mm/0.15mm gap.
+- Decision: B2B 30-Pin komplett durchgezählt — 5 GND + 3 VBAT + VBUS + V5V + USB D+/D- + I2C + FSPI (5 pins) + Display (CS/DC) + SD_CS + W25Q_TOP_CS + LED + AW9523_INT + RF_TX_ACTIVE + MAX3232 TX/RX + RP2040_RUN + 3 Spare. Budget passt, 3 Spare für P5.
+- Decision: RF-Koexistenz als Firmware-Scheduling mit 6-stufiger Prioritätsmatrix + Hardware-Power-Gating + RF_TX_ACTIVE Coexistence-Signal auf B2B.
+- Decision: DW3000 → Bottom-right corner MAIN (max. Distanz zu 2.4 GHz Antennen oben). AT86RF215 → Zone (55–70, 35–55), zuerst platzieren, 2× U.FL rechte Kante.
+- Decision: 2 Shielding Cans — CAN_1 (AT86RF215+CC2400, 20×15mm), CAN_2 (DW3000, 12×12mm).
+- Decision: BQ25798 Thermal Vias (3×3, 0.3mm, 1.0mm pitch) + NTC 10kΩ an TS-Pin + SW-Throttle >40°C.
+- Decision: RP2040 Debug: 3× SWD Testpads + BOOTSEL 0402 + RUN via B2B Pin 27.
+- Decision: Zweiter 74LVC125 (U44) nötig für P4 HSPI: AT86RF215 + CC2400 + DW3000 (3 neue Gates). DW3000 CS → GPIO45 (spare strapping, LOW at boot = safe).
+- Next step: KiCad Layout — AT86RF215 platzieren, DW3000 in Ecke, Shielding-Can-Footprints anlegen, Stackup in Board Setup eintragen.
+
