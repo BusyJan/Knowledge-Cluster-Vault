@@ -118,3 +118,16 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: 8 Aktionspunkte priorisiert — HOCH: CC2400 Fallback, Firmware-Architektur, Bring-up-Plan. MITTEL: BOM, Power-Sequencing, Debug-Testpunkte. NIEDRIG: TOP 4-Layer evaluieren, RF-Koexistenz-Matrix.
 - Next step: Firmware-Architektur skizzieren, CC2400-Alternative recherchieren, BOM mit MPNs erstellen.
 
+## 2026-04-12 15:00
+
+- Context: Alle 8 Review-Aktionspunkte in `prototypes/README.md` als Sections J–Q umgesetzt.
+- Decision: CC2400 bleibt auf P4 Board mit DNP-Option. Fallback = BrakTooth auf ESP32-S3. 20× CC2400 auf Vorrat kaufen. Für P5 ESP32-S31 evaluieren.
+- Decision: Firmware-Architektur definiert: S3 als Master, UART1→C6, UART2→nRF52, USB→RP2040. Binary packet protocol. RF Arbitration State Machine (IDLE→SCANNING→TX_ACTIVE→COOLDOWN).
+- Decision: 10-Phasen Bring-up-Plan (Power→Charger→S3→Display→I2C→SPI→C6→nRF→RF einzeln→Koexistenz), ~12h über 2 Tage.
+- Decision: Power-Sequencing: TPS63020 auto-start, S3 boots first, AW9523 default LOW = alle RF OFF, 10ms Sequenz zwischen Load Switches.
+- Decision: 5 neue Testpads (TP4-TP8) für C6 UART + nRF52840 SWD auf MAIN rechter Rand. ZERO Kollisionen nach Regeneration.
+- Decision: RF-Koexistenz-Matrix als 10×10-Tabelle formalisiert. Regel: max 1× 2.4GHz TX gleichzeitig, multiple RX OK mit ≤3dB Desense.
+- Decision: TOP bleibt 2-Layer für P4. Upgrade-Trigger: BQ25798 Tj>100°C bei 3A oder EMI >-40dBm.
+- Decision: BOM mit MPNs für 25 Schlüsselkomponenten erstellt, inkl. Alternativliste und Risiko-Rating (LOW/MED/HIGH).
+- Next step: Neuen Review-Prompt mit Sections A–Q generieren und an 8 AI-Modelle senden.
+
