@@ -171,3 +171,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: 895 nicht-versteckte Pins = 488 NET_MAP + 407 `no_connect`; 56 hidden Pins übersprungen.
 - Next step: KiCad ERC, NET_MAP verfeinern wo `no_connect` falsch ist, dann Routing.
 
+## 2026-04-14 13:00
+
+- Insight: **100% coverage** jetzt wörtlich: **951/951** Pin-Endpunkte (inkl. library `hide`-Pins). Vorher wurden 56 Pins übersprungen → nur 895 gezählt.
+- Decision: `infer_power_net()` nur für eindeutige Namen (`GND`/`VSS`/… und `+3V3`/`3V3`); Rest `no_connect`. `--strict` bricht ab, wenn noch `no_connect` nötig wäre (Ziel: volles NET_MAP ohne NC).
+- Next step: Bei Bedarf NET_MAP erweitern + `--strict` bis Exit 0.
+
