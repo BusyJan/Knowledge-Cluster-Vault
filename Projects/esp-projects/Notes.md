@@ -131,3 +131,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: BOM mit MPNs für 25 Schlüsselkomponenten erstellt, inkl. Alternativliste und Risiko-Rating (LOW/MED/HIGH).
 - Next step: Neuen Review-Prompt mit Sections A–Q generieren und an 8 AI-Modelle senden.
 
+## 2026-04-12 16:30
+
+- Context: Dritter P4 AI-Review-Zyklus mit 8 Modellen nach allen 8 Fixes (Sections J–Q). Vollständiger Prompt mit Firmware-Arch, Bring-up, BOM, Power-Seq, Debug-TPs, RF-Matrix, CC2400-Mitigation, TOP-4L-Evaluation.
+- Insight: Kalibrierter Durchschnitt **8.0/10** (+0.7 vs. Zyklus 2, +1.2 vs. Zyklus 1). Größte Verbesserung: Dokumentation +1.1 (Gemini gibt 10/10!), RF-Koexistenz +1.0, Risiken +0.9.
+- Insight: F (Pentest) bleibt einstimmig 9+/10. E (Layout, 7.7) und H (Risiken, 6.9) sind die Kategorien die nur durch Routing + Bring-up + Firmware steigen können — nicht durch weitere Dokumentation.
+- Insight: Chip-Upgrade-Konsens aus 8 Modellen: RP2350A (6/8), ST25R3916B (5/8), SE052 (5/8) sind P4 Drop-in-Upgrades. ESP32-S31 ist der P5 Game-Changer (4/8). AT86RF215 und BQ25798 haben keine Nachfolger.
+- Decision: 9.5/10 ist durch Dokumentation allein nicht erreichbar. Nächster Score-Sprung kommt nur durch: fertiges Routing, erfolgreicher Bring-up, Firmware-MVP.
+- Next step: KiCad Routing beginnen (RF-first: UWB GCPW → 2.4GHz → Sub-GHz → Digital), dann Gerber + Bestellung.
+
