@@ -149,3 +149,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: Generator regeneriert — ZERO Kollisionen, TOP 80 FP, MAIN 160 FP.
 - Next step: Neuer Review-Prompt mit Sections A–Z + gezielte Chip-Upgrade-Frage pro Komponente.
 
+## 2026-04-12 19:00
+
+- Context: P4v3 Review Zyklus 4 — 5 valide Reviews (Gemini 8.5, DeepSeek 8.4, Grok 8.9, Venice 8.0, Qwen 8.0). Kimi hat den Prompt nicht befolgt (kein Review).
+- Insight: Kalibrierter Durchschnitt **8.06/10** (+0.06 vs Zyklus 3). Gesamtverbesserung seit Zyklus 1: **+1.26**. D (Komponentenauswahl) stieg am meisten (+0.4) dank RP2350A/SE052/ST25R3916B Upgrades.
+- Insight: Dokumentation ist am Limit — Zyklus 3→4 brachte nur +0.06. F (Pentest) einstimmig 9.0, G (Doku) 8.8 (Gemini 10/10). E (Layout 7.6) und H (Risiken 7.2) steigen nur noch durch reale Hardware-Arbeit.
+- Insight: Venice AI arbeitet mit veraltetem Kontext (gleiche Scores wie Zyklus 3). Kimi-Prompt muss expliziter sein. DeepSeek trackt Verbesserungen am besten.
+- Decision: Dokumentation ist maxed out. Nächster Schritt ist KiCad Routing, dann Gerber + Bestellung.
+- Next step: KiCad Routing beginnen (RF-first: UWB GCPW → 2.4GHz → Sub-GHz → Digital).
+
