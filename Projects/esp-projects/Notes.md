@@ -164,3 +164,10 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: Script parst KiCad-Libs (inkl. `extends` → Parent-Symbol), Fallback-Pins für fehlende Std-Symbole, platziert `global_label` an Pin-Endpunkten; NET_MAP deckt aktuell ~54% der Pins ab (wächst iterativ). AW9523B-Pinout aus offizieller Lib korrigiert (vorher falsch angenommen).
 - Next step: Live-Lauf mit Backup (`.kicad_sch.bak`), ERC in KiCad, dann Coverage für verbleibende Passives/Interna erhöhen.
 
+## 2026-04-14 12:30
+
+- Context: User wollte P4-Backup, README P5/P6-Umnummerierung, 100% schematic pin coverage.
+- Decision: **P5** = milestone „voll verdrahtete Netliste“ (`wire_schematics.py`: `global_label` + `no_connect` pro sichtbarem Pin, Marker `WIRE_SCHEMATICS_PY_V1`, idempotent). **P6** = früheres optionales Expansion/SDR-P5. Backup: `project-apex-backup-p4-unwired-20260414-1106.tar.gz` + 14× `sheets/*.kicad_sch.bak`.
+- Insight: 895 nicht-versteckte Pins = 488 NET_MAP + 407 `no_connect`; 56 hidden Pins übersprungen.
+- Next step: KiCad ERC, NET_MAP verfeinern wo `no_connect` falsch ist, dann Routing.
+

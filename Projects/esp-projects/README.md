@@ -4,7 +4,7 @@ title: ESP Projects workspace
 slug: esp-projects
 status: active
 created: 2026-04-11 12:00:00
-updated: 2026-04-13 00:45:00
+updated: 2026-04-14 12:35:00
 repo: "https://github.com/BusyJan/Knowledge-Cluster-Vault.git"
 tags: [project]
 ---
@@ -13,7 +13,7 @@ tags: [project]
 
 ## AI Briefing — lies das zuerst
 
-> **Stand: 2026-04-13.** Du bist ein neuer Agent auf einem anderen Laptop. Hier ist der aktuelle Zustand.
+> **Stand: 2026-04-14.** Du bist ein neuer Agent auf einem anderen Laptop. Hier ist der aktuelle Zustand.
 
 ### Was ist SubZero?
 
@@ -21,7 +21,7 @@ SubZero ist eine **tragbare Pentest-/RF-Forschungsplattform** (80 × 140 mm) mit
 
 ### Wo stehen wir?
 
-**Prototype 4 (P4)** ist der aktuelle Entwicklungsstand. P1–P3 sind abgeschlossen (Snapshots unter `project-apex/prototypes/prototype-*/`). P5 (Expansion + SDR) ist optional/Zukunft.
+**Prototype 4 (P4)** ist das Design-Baseline; **P5** ist der Milestone „Schematic vollständig verdrahtet“ (`wire_schematics.py`, 100% Pin-Abdeckung via Labels + `no_connect`). P1–P3 sind abgeschlossen (Snapshots unter `project-apex/prototypes/prototype-*/`). **P6** (Expansion + SDR) ist optional/Zukunft.
 
 ### Was wurde in der letzten Session gemacht (2026-04-12/13)?
 
