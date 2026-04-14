@@ -140,3 +140,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: 9.5/10 ist durch Dokumentation allein nicht erreichbar. Nächster Score-Sprung kommt nur durch: fertiges Routing, erfolgreicher Bring-up, Firmware-MVP.
 - Next step: KiCad Routing beginnen (RF-first: UWB GCPW → 2.4GHz → Sub-GHz → Digital), dann Gerber + Bestellung.
 
+## 2026-04-12 17:45
+
+- Context: P4 v3 Revision — 3 Drop-in-Chip-Upgrades + umfassende AI-Fehlerpunkt-Behebung.
+- Decision: RP2040 → RP2350A (QFN-60, Pico SDK 2.x, HSTX, TrustZone). ST25R3916 → ST25R3916B (bessere ALM, gleicher Footprint). SE050C1 → SE052 (FIPS 140-3 L3, PQC-ready).
+- Insight: README erweitert von 554 → 709 Zeilen. 9 neue Sections (R–Z): Mechanical Design (M2 Standoffs), UART Flow Control, SAW Filter Strategy (FL1 GPS DNP), ME6211 Current Budget (150mA/500mA = safe), DW01A/BQ25798 Threshold Coordination, B2B Current Validation (323mA cont / 905mA peak vs 900mA rated → OK), USB-C Host Expansion, TOP Copper Fill Rule, Validation Matrix.
+- Insight: Guard-Time 1ms → 2ms (PLL settling), Phase 0 Dry-Test hinzugefügt, GPS SAW filter DNP pad im Generator, alle RP2040-Referenzen → RP2350A aktualisiert.
+- Insight: Generator regeneriert — ZERO Kollisionen, TOP 80 FP, MAIN 160 FP.
+- Next step: Neuer Review-Prompt mit Sections A–Z + gezielte Chip-Upgrade-Frage pro Komponente.
+
