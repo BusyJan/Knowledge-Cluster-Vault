@@ -110,3 +110,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Neue Netze: MAIN +6 (SDR/BTC/UWB CS + V3V3), TOP +4 (RP2040 USB, MAX232 TX/RX). 4-Layer Stackup (MAIN) und 2-Layer (TOP) Header korrekt.
 - Next step: Trace-Routing in KiCad (manuell), DRC, RF-Matching-Netzwerke für AT86RF215/DW3000.
 
+## 2026-04-12 14:00
+
+- Context: Zweiter P4 AI-Review-Zyklus mit 8 Modellen (Claude, DeepSeek, Venice AI, Qwen, Kimi, ChatGPT, Gemini, Grok). Kalibrierung angewendet.
+- Insight: Kalibrierter Durchschnitt **7.3/10** (+0.5 vs. letzter Zyklus). Engineering Specs haben messbar geholfen. Pentest-Abdeckung einstimmig 9/10 (8/8 Modelle). Power Management 8.4/10. Risiken 6.0/10 (niedrigste Kategorie).
+- Insight: 3 Faktenfehler identifiziert — DeepSeek (MAX17048 braucht keinen Shunt, 9 U.FL passen auf 80×159mm), Kimi (TPS63020 ist nicht Overkill bei Li-Po 3.0V). Anti-Halluzinations-Prompt weiter wirksam.
+- Decision: 8 Aktionspunkte priorisiert — HOCH: CC2400 Fallback, Firmware-Architektur, Bring-up-Plan. MITTEL: BOM, Power-Sequencing, Debug-Testpunkte. NIEDRIG: TOP 4-Layer evaluieren, RF-Koexistenz-Matrix.
+- Next step: Firmware-Architektur skizzieren, CC2400-Alternative recherchieren, BOM mit MPNs erstellen.
+
