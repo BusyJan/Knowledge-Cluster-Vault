@@ -101,3 +101,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Zweiter 74LVC125 (U44) nötig für P4 HSPI: AT86RF215 + CC2400 + DW3000 (3 neue Gates). DW3000 CS → GPIO45 (spare strapping, LOW at boot = safe).
 - Next step: KiCad Layout — AT86RF215 platzieren, DW3000 in Ecke, Shielding-Can-Footprints anlegen, Stackup in Board Setup eintragen.
 
+## 2026-04-12 13:00
+
+- Context: P4 KiCad Layout in `generate_2board.py` implementiert und beide Boards erfolgreich generiert — ZERO Kollisionen.
+- Insight: Board wächst auf 80×159mm wegen 3 neuer Interior-Blöcke (AT86RF215, CC2400, HSPI-Buffer). DW3000 als Fixed-Edge-Placement bottom-right (bw-12, bh-28) um max. Abstand zu 2.4 GHz Antennen zu gewährleisten.
+- Decision: MAIN Board (155 Footprints): U44 74LVC125 #2, U45 AT86RF215 + U46 TPS22918, U47 CC2400 + U48 TPS22918, U49 DW3000 + U50 TPS22918, 3× U.FL (J18 Sub-GHz, J19 2.4GHz, J20 UWB) + 3× ESD, SH1 Shield_SDR_BTC (20×15mm), SH2 Shield_UWB (12×12mm).
+- Decision: TOP Board (79 Footprints): U51 RP2040 + 4× Decoupling + R1008 10k RUN + R1009 BOOTSEL, U52 DS2482-100 + Decoupling, U53 MAX3232 + 4× Caps, TP1/TP2/TP3 SWD Testpads, 3×3 Thermal-Via-Grid unter BQ25798 (30.0, 108.31).
+- Decision: Neue Netze: MAIN +6 (SDR/BTC/UWB CS + V3V3), TOP +4 (RP2040 USB, MAX232 TX/RX). 4-Layer Stackup (MAIN) und 2-Layer (TOP) Header korrekt.
+- Next step: Trace-Routing in KiCad (manuell), DRC, RF-Matching-Netzwerke für AT86RF215/DW3000.
+
