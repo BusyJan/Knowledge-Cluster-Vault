@@ -16,3 +16,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: `project-apex/subzero-main.kicad_pro` and `subzero-top-fixed.kicad_pro` referenced missing `.kicad_sch` files.
 - Decision: Added minimal stub `subzero-main.kicad_sch` and `subzero-top-fixed.kicad_sch` next to those projects so KiCad opens; replace with real schematics later.
 - Next step: Choose whether new system design lives in `subzero-next` only, or flesh out the board-specific stub sheets and sync PCBs.
+
+## 2026-04-14 22:00
+
+- Problem: Symbol/footprint chooser empty — project only listed `project-apex`; standard libs came from **Global** table which was disabled.
+- Decision: Replaced `subzero-next/sym-lib-table` and `fp-lib-table` with **merged upstream KiCad master tables** (same `${KICAD10_*_DIR}` layout as KiCad 10) plus `project-apex` at the end.
+- Next step: Restart KiCad or reopen project; Place symbol should list Device, power, Connector, etc.
