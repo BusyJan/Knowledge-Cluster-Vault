@@ -13,7 +13,7 @@ tags: [project]
 
 ## Current goal
 
-- Define the primary outcome for this project in one or two sentences.
+- Clean KiCad 10 schematic/project (`ESP Projects/subzero-next/`) as an alternative to maintaining `project-apex` hierarchy.
 
 ## Key insights
 
