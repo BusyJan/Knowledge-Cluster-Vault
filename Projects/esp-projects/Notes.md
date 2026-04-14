@@ -158,3 +158,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Dokumentation ist maxed out. Nächster Schritt ist KiCad Routing, dann Gerber + Bestellung.
 - Next step: KiCad Routing beginnen (RF-first: UWB GCPW → 2.4GHz → Sub-GHz → Digital).
 
+## 2026-04-14 12:00
+
+- Context: Saubere programmatische Schematic-Verdrahtung statt nur PCB-Pad-Nets — `project-apex/wire_schematics.py`.
+- Insight: Script parst KiCad-Libs (inkl. `extends` → Parent-Symbol), Fallback-Pins für fehlende Std-Symbole, platziert `global_label` an Pin-Endpunkten; NET_MAP deckt aktuell ~54% der Pins ab (wächst iterativ). AW9523B-Pinout aus offizieller Lib korrigiert (vorher falsch angenommen).
+- Next step: Live-Lauf mit Backup (`.kicad_sch.bak`), ERC in KiCad, dann Coverage für verbleibende Passives/Interna erhöhen.
+
