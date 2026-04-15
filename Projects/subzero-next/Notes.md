@@ -22,3 +22,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: Symbol/footprint chooser empty — project only listed `project-apex`; standard libs came from **Global** table which was disabled.
 - Decision: Replaced `subzero-next/sym-lib-table` and `fp-lib-table` with **merged upstream KiCad master tables** (same `${KICAD10_*_DIR}` layout as KiCad 10) plus `project-apex` at the end.
 - Next step: Restart KiCad or reopen project; Place symbol should list Device, power, Connector, etc.
+
+## 2026-04-14 14:30
+- Insight: Three bugs in wire_schematics.py caused "wires not connected" ERC errors despite wires appearing on screen.
+- Problem 1: Hidden pins were being wired. KiCad treats hidden pin positions as non-electrical endpoints; wires placed there create dangling wire endpoints (ERC errors). Fix: skip all pins where `pin["hide"] == True`.
+- Problem 2: Multi-unit symbols stacked at the same position (74LVC125 U32 in rf-subghz) generated duplicate overlapping wires — 4 wires at identical coordinates, risking net shorts. Fix: deduplicate by tracking `seen_positions: set[tuple[float, float]]` and skipping already-processed world coords.
+- Problem 3: `_label_rotation()` used x-position heuristic (left/right only), generating rot=0 for top/bottom pins. Fix: use `int((pin["rot"] + 180) % 360)` so GND→rot=270, VCC→rot=90, left→rot=180, right→rot=0.
+- Decision: 74LVC125 overlapping units is a design issue (units should be placed separately as U32A–D); script now skips duplicates to avoid shorts, but physical separation still needed for correct ERC.
+- Next step: Open subzero-next in KiCad, annotate, run ERC — expect significantly fewer errors.
