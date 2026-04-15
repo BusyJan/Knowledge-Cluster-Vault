@@ -163,4 +163,11 @@
 - Problem: Strong emotional/product identity around a name can conflict with later brand architecture or legal availability if not acknowledged early.
 - Decision: Preserve SubZero as the preferred product-name direction for now, while still separating product naming from company/studio naming and flagging trademark/domain checks as necessary before final lock-in.
 - Next step: Keep exploring company/brand names separately from the product name, and later verify whether 'SubZero' or a stylized variant is legally/practically safe to use in the intended markets.
+## 2026-04-15 22:24
+
+- Insight: Company naming question narrowed: strongest direction is to keep 'SubZero' as product line and choose a separate company/studio name built around KR1O/Cryo. Current recommendation favors a clean, privacy-friendly, extensible parent brand such as 'KR1O Labs'.
+- Context: User asked directly what to call the company after affirming they want to preserve SubZero as the product name. Advice should keep product and company naming separate for flexibility, privacy, and future ecosystem growth.
+- Problem: Using the product name as the company name risks legal/name conflicts and limits future expansion beyond a single device family.
+- Decision: Recommend a short parent brand with cryo/KR1O DNA, with 'KR1O Labs' as the leading option and a few backup candidates in the same style.
+- Next step: Shortlist 3-5 final company names, then check domain, GitHub org, and basic trademark availability before locking the website branding.
 
