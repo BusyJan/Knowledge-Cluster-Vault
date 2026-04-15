@@ -7,3 +7,7 @@
 - **Context:** User wanted an empty storefront shell: remove dither background, hamburger menu, marquee banner, and see a blank site.
 - **Decision:** Removed `DitherBackground` from `app/layout.tsx` and deleted `components/atoms/dither/*`. Removed `SmartHeader` (and `HamburgerMenu`) from `providers.tsx`; deleted `smart-header.tsx`, `hamburger-menu.tsx`, `marquee-banner.tsx`. Dropped `hooks/use-device-performance.ts` and `detect-gpu` dependency (only used by dither). Home `app/page.tsx` now returns `null`; removed `Footer` from root layout; deleted `home-cinematic-section.tsx` and `collection-showcase.tsx` (only used by home). Body background is solid black in `globals.css`. Cart drawer remains mounted but no header trigger until a new one is added.
 - **Next step:** `npm install` (lockfile may need refresh after removing `detect-gpu`); `npm run dev` locally.
+
+## 2026-04-15 16:00
+- **Problem:** Runtime crash when `SHOPIFY_*` env vars missing — `lib/shopify/config.ts` threw at import time, which ran in the browser via `CartProvider` → cart → client → config.
+- **Decision:** Export `isShopifyConfigured`; no throw at module load. `shopifyRequest` throws only when a GraphQL call runs without config. `CartProvider` skips cart bootstrap when not configured. `/api/health` reports Shopify unhealthy if not configured.
