@@ -15,3 +15,8 @@
 ## 2026-04-15 18:00
 - **Context:** Remove all references to the former brand name across the repo.
 - **Decision:** Added `lib/site.ts` (`SITE_URL`, `SITE_NAME`, `LOGO_SRC`, `CROSS_SRC`) with `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_SITE_NAME`. Updated metadata, JSON-LD, breadcrumbs, footer, CI/deploy workflows, `package.json` name, cookie event `store:show-cookie-banner`, password key `store_access_granted`. Public assets referenced as `/pictures/logo.svg` and `/pictures/cross.svg`. Removed legacy product redirect from `next.config.mjs`. Workflows use deploy dir `shopify-storefront-web` and PM2 `storefront-web` (server must match).
+
+## 2026-04-15 20:00
+- **Context:** User asked for a near 1:1 replica of `mortonslight.com` homepage (placeholder images), using Playwright screenshots to compare reference vs local.
+- **Decision:** Added `@playwright/test` and `scripts/screenshot-pages.mjs` (`reference` / `local`, sets `shopify_analytics_consent` before navigation so the cookie modal does not block captures). `.gitignore` includes `.screenshots/`. Home is `components/mortons/mortons-landing.tsx` + `mortons-header.tsx` (Manrope + IBM Plex Mono, teal glow bands, alternating image/text blocks, white statement strip, ruled designer grid, large wordmark footer). Removed `IntroOverlay` from `providers.tsx` so the hero is visible on load. `package.json` scripts: `screenshot:reference`, `screenshot:local`.
+- **Next step:** Run `npm run screenshot:reference` after design tweaks; local dev may bind to `3001` if `3000` is taken—set `PLAYWRIGHT_BASE_URL` accordingly.
