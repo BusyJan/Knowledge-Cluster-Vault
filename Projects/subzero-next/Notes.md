@@ -31,6 +31,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: 74LVC125 overlapping units is a design issue (units should be placed separately as U32A–D); script now skips duplicates to avoid shorts, but physical separation still needed for correct ERC.
 - Next step: Open subzero-next in KiCad, annotate, run ERC — expect significantly fewer errors.
 
+## 2026-04-15 20:50
+- GUI ERC report (2026-04-15T20:48:38): 0 errors, 700 warnings. Improvement vs prior run: unconnected_wire_endpoint 9→2, no_connect_dangling 28→16, lib_symbol_mismatch 18→12, pin_to_pin 10→7. Sheets Connectors, Peripherals, ESD, ESP32-C6 clean in report. Dominant: endpoint_off_grid=620 on root `/` (cosmetic grid), isolated_pin_label=14, footprint_link_issues=10.
+
 ## 2026-04-15 13:15
 - User ran GUI ERC → 0 errors, 842 warnings. Key remaining warnings: unconnected_wire_endpoint=9, no_connect_dangling=28, lib_symbol_mismatch=18, pin_to_pin=10, endpoint_off_grid=729.
 - Root cause of unconnected_wire_endpoint=9 found: `_FALLBACK_PINS["Device:C_Polarized"]` (and similar entries for Buzzer, Speaker, Crystal, FerriteBead, Thermistor_NTC) used `wire_y=±5.08` but actual KiCad library has pin tips at `±3.81`. Script was placing wires 1.27mm off from actual pin positions, causing wire endpoints to not coincide with pin tips in ERC.
