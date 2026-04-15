@@ -184,4 +184,11 @@
 - Problem: Numeric substitutions can either create a distinctive identity or make the name harder to parse and remember.
 - Decision: Prefer KR1O over KR10 for company/brand naming unless practical availability constraints force otherwise.
 - Next step: When checking domains/handles, prioritize KR1O-based variants first and only fall back to KR10 if availability or legal issues make KR1O unusable.
+## 2026-04-15 22:30
+
+- Insight: Brand direction now has a concrete preferred structure: company/studio name 'KR1O Labs' and product presentation along the lines of 'SubZero by KR1O Labs'.
+- Context: User said KR1O Labs feels right and explicitly liked the framing 'SubZero by KR1O Labs'. This is a meaningful naming decision for website copy, GitHub org, domain selection, and public brand voice.
+- Problem: Brand choices can drift if they are not recorded as soon as they start feeling 'real' to the founder.
+- Decision: Use KR1O Labs as the leading company/studio name direction for now, while keeping SubZero as the preferred product name and 'SubZero by KR1O Labs' as a strong presentation pattern.
+- Next step: Carry this naming structure into future website, GitHub, and domain decisions, then later validate availability and legal/trademark constraints before final lock-in.
 
