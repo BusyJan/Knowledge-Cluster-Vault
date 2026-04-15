@@ -33,3 +33,8 @@
 - **Context:** Extend the light zinc/stone hardware UI (Roboto + Roboto Mono baseline) across shop routes, CMS pages, checkout review, errors, footer, and split-section.
 - **Decision:** Replaced remaining dark-era Tailwind classes with zinc borders/text (`app/products`, `collections`, PDP/collection detail breadcrumbs, `checkout/review`, `error.tsx`, `not-found.tsx`, `global-error.tsx`). `globals.css` `.shopify-page-body.prose` colors updated for light prose (no `prose-invert` on CMS). `split-section` right column: `bg-zinc-50`, light form controls; left hero stays cinematic on photos. `IntroOverlay` shell uses `bg-zinc-100` if re-enabled. Footer cross uses black asset without `invert` on light.
 - **Next step:** Visual QA on catalog, PDP, cart, checkout, legal pages, and 404/500.
+
+## 2026-04-15 24:00
+- **Context:** User supplied a filled SubZero product brief (project-apex + subzero-website); hero/specs/ethics + `/docs` skeleton.
+- **Decision:** `lib/site.ts` defaults: `SITE_NAME` SubZero, tagline/headline per brief. `home-landing.tsx` rewritten with repo-backed spec band + grid, elevator pitch, RF/spectrum ethics (EU EIRP example, no CE/FCC claims), hero `data-product-hero` + note for future GLB. `app/docs/page.tsx` skeleton (overview, bring-up, firmware, safety). Header `Docs` → `/docs`. `.env.example` and `PRODUCT_AI_CONTEXT_PROMPT.md` blurb updated.
+- **Next step:** Wire interactive 3D when GLB exists; replace TBD footer/domain when known.
