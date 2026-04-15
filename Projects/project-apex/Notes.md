@@ -177,4 +177,11 @@
 - Problem: Need to distinguish between names that are technically usable and names that create the strongest brand impression.
 - Decision: Treat KR1OTECH as a solid backup option, especially if domain/handle availability is better, but keep KR1O Labs as the stronger creative recommendation unless practical constraints force otherwise.
 - Next step: Compare KR1O Labs vs KR1OTECH on domain availability, GitHub handle availability, and visual brand feel before locking the company identity.
+## 2026-04-15 22:26
+
+- Insight: Naming readability point: KR1O is stronger than KR10 for branding because the intended reading ('Krio' / 'Cryo'-adjacent alias) is clearer and feels more deliberate, while KR10 is more likely to be read literally as 'K-R-ten'.
+- Context: User asked whether the brand should use KR10 or KR1O. This affects pronunciation, memorability, logo design, and handle/domain clarity.
+- Problem: Numeric substitutions can either create a distinctive identity or make the name harder to parse and remember.
+- Decision: Prefer KR1O over KR10 for company/brand naming unless practical availability constraints force otherwise.
+- Next step: When checking domains/handles, prioritize KR1O-based variants first and only fall back to KR10 if availability or legal issues make KR1O unusable.
 
