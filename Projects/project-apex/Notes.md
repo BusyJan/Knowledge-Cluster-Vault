@@ -114,4 +114,11 @@
 - Problem: There is a risk of turning one ambitious flagship into an even more complex platform strategy before the first product, pricing, audience, and strongest use cases are validated.
 - Decision: Best near-term path is flagship first, likely Lite second, and only then evaluate whether the winning direction is specialized single-purpose handhelds or a modular stack ecosystem. A stack platform is strategically interesting but should be treated as a later ecosystem play, not a requirement for v1.
 - Next step: After flagship validation, decide whether user demand points toward lower-cost derivatives, specialized vertical devices, or a shared modular platform with reused design language and common software/UI.
+## 2026-04-15 21:56
+
+- Insight: Strategic direction refined: Main and Lite are considered fixed releases; the real long-term branch point is now specialized single-purpose handhelds versus a stackable modular ecosystem. Recommendation leans toward the stack concept as the stronger differentiator, but only if v1 products are designed to be 'stack-ready' rather than forcing the full platform to exist immediately.
+- Context: User clarified they definitely want SubZero Main and likely Lite. Their actual decision is between releasing many small specialized devices or building a true multi-module stack system where users can combine multiple modules at once behind a main display/control unit.
+- Problem: A full modular stack is more differentiated than isolated handhelds, but it is also much harder mechanically, electrically, and operationally. Building it too early could turn product development into platform development.
+- Decision: Prefer a staged approach: ship Main first, Lite optional/soon after, and architect both around a future stack bus/mechanical interface. Do not build many separate niche devices first unless the stack concept proves impossible or unnecessary.
+- Next step: Define a future-proof stack interface spec early (power, data, alignment, module identity, physical envelope), but postpone the full ecosystem rollout until the flagship validates demand and UX.
 
