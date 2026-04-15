@@ -86,4 +86,11 @@
 - Problem: The BOM export reflects an earlier/current snapshot and under-represents the eventual flagship cost because several expensive later-stage parts are not in the CSV.
 - Decision: Treat core BOM as affordable on paper, but recognize the expensive scope creeps in through added radios, coprocessors, premium charging, secure parts, display/battery/antenna accessories, and manufacturing complexity. Overkill candidates for a first product include multiple overlapping radios, RP2350A, DS2482, MAX3232, secure-element upgrades, and SDR/UWB-class additions.
 - Next step: If product scope is reduced, start cuts with P4 expansion radios and secondary peripherals before touching the core S3 + one companion radio + one or two strongest identity features.
+## 2026-04-15 21:40
+
+- Insight: Saved the recent product evaluation as durable guidance: the SubZero concept is strong and differentiated, but the current hardware scope likely exceeds what a first polished product should carry. Extra radios, extra MCUs, and premium subsystems are the main over-scope drivers; the path forward is to reduce scope without abandoning the larger vision.
+- Context: User said this evaluation is very important but does not want to act on it immediately. They next asked whether the board design and code should be open source, noting strong SWE experience and AI-assisted development capacity.
+- Problem: Need to preserve the strategic evaluation while the team continues exploring both hardware and software direction.
+- Decision: Keep the evaluation as a reference point for future scope and roadmap discussions. Treat open-source strategy as a separate product/business decision rather than a direct consequence of the current over-scope assessment.
+- Next step: When software architecture is clearer, decide separately which layers could be open (firmware, SDK, docs, hardware files) and which, if any, should remain proprietary for launch or commercialization.
 
