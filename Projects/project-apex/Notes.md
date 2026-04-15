@@ -93,4 +93,11 @@
 - Problem: Need to preserve the strategic evaluation while the team continues exploring both hardware and software direction.
 - Decision: Keep the evaluation as a reference point for future scope and roadmap discussions. Treat open-source strategy as a separate product/business decision rather than a direct consequence of the current over-scope assessment.
 - Next step: When software architecture is clearer, decide separately which layers could be open (firmware, SDK, docs, hardware files) and which, if any, should remain proprietary for launch or commercialization.
+## 2026-04-15 21:42
+
+- Insight: Open-sourcing firmware does not automatically eliminate the need for secure hardware. Secure elements are still useful when the device must store secrets, protect identity, support attestation/pairing, or isolate sensitive credentials from extracted firmware and flash contents.
+- Context: User agreed software can be public and asked whether that means security chips are unnecessary. Clarification: code visibility and secret storage are different concerns.
+- Problem: There is a risk of conflating 'public source code' with 'no device secrets to protect', which could lead to removing hardware security that still supports trust and product integrity.
+- Decision: Do not keep a secure element just because it sounds premium. Keep it only if SubZero truly needs on-device secret storage, signing identity, secure pairing, or credential isolation. If the product can function without device-held secrets, the security chip may be removable in v1.
+- Next step: List all actual secret-bearing use cases (keys, pairing, encrypted storage, attestation, anti-clone, update trust) and decide whether each is real for v1 before keeping or cutting the secure hardware.
 
