@@ -28,3 +28,8 @@
 ## 2026-04-15 22:00
 - **Context:** User wanted a light, Flipper-like technical hardware site (black device on light canvas), monospace/ASCII accents, plus a reusable AI context prompt.
 - **Decision:** Root layout and `globals.css` default to light (`#fafafa`). Marketing home uses **Plus Jakarta Sans** + **JetBrains Mono**; hero ASCII block, dark device placeholder, spec terminal band (`#specs`), spec grid, ethics block. `lib/site.ts` adds `PRODUCT_TAGLINE` and `PRODUCT_HERO_HEADLINE` (env). Cookie consent panel restyled for light. `docs/PRODUCT_AI_CONTEXT_PROMPT.md` is the fill-in prompt for AI sessions. Layout metadata keywords updated toward hardware/research.
+
+## 2026-04-15 23:30
+- **Context:** Extend the light zinc/stone hardware UI (Roboto + Roboto Mono baseline) across shop routes, CMS pages, checkout review, errors, footer, and split-section.
+- **Decision:** Replaced remaining dark-era Tailwind classes with zinc borders/text (`app/products`, `collections`, PDP/collection detail breadcrumbs, `checkout/review`, `error.tsx`, `not-found.tsx`, `global-error.tsx`). `globals.css` `.shopify-page-body.prose` colors updated for light prose (no `prose-invert` on CMS). `split-section` right column: `bg-zinc-50`, light form controls; left hero stays cinematic on photos. `IntroOverlay` shell uses `bg-zinc-100` if re-enabled. Footer cross uses black asset without `invert` on light.
+- **Next step:** Visual QA on catalog, PDP, cart, checkout, legal pages, and 404/500.
