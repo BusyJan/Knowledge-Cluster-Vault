@@ -128,4 +128,11 @@
 - Problem: Important strategic ideas can get lost while day-to-day focus stays on the flagship. This one matters because it defines a possible long-term moat and ecosystem direction, but it would be dangerous to pursue too early.
 - Decision: Preserve the stack ecosystem and shared-software vision as a durable north star, while keeping present execution strictly focused on SubZero Main and later Lite if traction appears. Treat the stack platform as a phase unlocked only after flagship validation, funding, and operational maturity.
 - Next step: When SubZero Main is more concrete, keep future stack-readiness in mind where cheap to do so (software architecture, branding, interface philosophy), but avoid forcing full modular-platform requirements into v1.
+## 2026-04-15 22:03
+
+- Insight: Release cadence preference clarified: full focus stays on SubZero Main first, but SubZero Lite should already be in development before Main launches so Lite can follow only a few months later rather than years later.
+- Context: User wants Main to be the immediate focus, yet does not want a long gap before Lite. Desired strategy is effectively a staged rollout where Main launches first and Lite drops shortly after, with Lite already partially developed by the time Main releases.
+- Problem: If Lite starts only after Main ships, the gap could become too long and momentum could die; but if Lite competes for too much attention too early, Main execution may suffer.
+- Decision: Treat Lite as a shadow roadmap item during Main development: enough parallel planning/development to enable a fast follow-up launch, but not enough to dilute Main as the primary shipping target.
+- Next step: When scope is clearer, define which hardware/software pieces are shared between Main and Lite so Main development naturally de-risks Lite and shortens the post-launch gap.
 
