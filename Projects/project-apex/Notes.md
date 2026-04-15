@@ -65,4 +65,11 @@
 - Problem: Aggressive positioning like 'best pentesting tool' invites legal/reputation risk and direct comparison traps against Flipper, HackRF, Proxmark, and SDR gear where expectations may not match the actual product story.
 - Decision: Position SubZero as a serious handheld research platform for RF, embedded, and hardware-security workflows; emphasize authorized testing, field portability, multi-radio integration, and engineering quality. Treat Flipper comparison as an external reference point, not the core brand identity.
 - Next step: Develop message pillars and tagline options centered on 'portable lab', 'multi-radio workflow', and 'research platform' rather than 'ultimate hacking device'.
+## 2026-04-15 21:24
+
+- Insight: A polished premium website and first-party webshop can be a meaningful differentiator for SubZero, but they are not by themselves enough to justify premium pricing; they need to reinforce a stronger product story and trust signal.
+- Context: User asked whether being the only gadget with its own premium website and webshop would be a major differentiator. Strategic answer: strong DTC presentation helps credibility, conversion, and brand perception, but does not replace product-market fit or unique hardware value.
+- Problem: There is a risk of overestimating the value of presentation alone versus the underlying product capability and positioning.
+- Decision: Treat the premium website/webshop as an amplifier of premium positioning, not the core reason to buy. Use it to make the product feel trustworthy, polished, and worth understanding, while the hardware itself remains the main value driver.
+- Next step: When website work resumes, make the site communicate seriousness, clarity, and trust rather than just looking expensive; tie visuals and copy directly to what SubZero actually enables.
 
