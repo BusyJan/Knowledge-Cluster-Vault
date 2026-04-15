@@ -4,7 +4,7 @@ title: "subzero-website (Sanctum Shopify storefront)"
 slug: "subzero-website"
 status: active
 created: "2026-04-15 12:00:00"
-updated: "2026-04-15 12:00:00"
+updated: "2026-04-15 14:00:00"
 repo: ""
 tags: [project, nextjs, shopify]
 ---
