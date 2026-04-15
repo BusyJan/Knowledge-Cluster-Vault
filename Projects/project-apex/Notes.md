@@ -170,4 +170,11 @@
 - Problem: Using the product name as the company name risks legal/name conflicts and limits future expansion beyond a single device family.
 - Decision: Recommend a short parent brand with cryo/KR1O DNA, with 'KR1O Labs' as the leading option and a few backup candidates in the same style.
 - Next step: Shortlist 3-5 final company names, then check domain, GitHub org, and basic trademark availability before locking the website branding.
+## 2026-04-15 22:25
+
+- Insight: Company-name variation considered: 'KR1OTECH' / 'KR1O Tech' is viable and fits the alias, but it feels more generic and slightly less premium/distinctive than 'KR1O Labs'.
+- Context: User asked specifically about KR1OTECH as the company name. This is relevant to upcoming website, GitHub, and domain choices.
+- Problem: Need to distinguish between names that are technically usable and names that create the strongest brand impression.
+- Decision: Treat KR1OTECH as a solid backup option, especially if domain/handle availability is better, but keep KR1O Labs as the stronger creative recommendation unless practical constraints force otherwise.
+- Next step: Compare KR1O Labs vs KR1OTECH on domain availability, GitHub handle availability, and visual brand feel before locking the company identity.
 
