@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-15 23:30
+- Decision: wire_schematics.py now places `global_label` exactly at pin wire endpoints `(wx, wy)` with no wire stub. Stubs + label at stub end caused small coordinate mismatch vs KiCad’s embedded `lib_symbols` pin geometry → `unconnected_wire_endpoint` in ERC.
+- Added `WIRE_SCHEMATICS_SHEETS` env override so `WIRE_SCHEMATICS_SHEETS=.../subzero-next/sheets python3 wire_schematics.py` updates the greenfield tree without copying sheets.
+- Regenerated subzero-next/sheets + flat merge; CLI ERC on `subzero-next.kicad_sch` dropped to 80 violations (was ~171): mainly `label_dangling` 35, `endpoint_off_grid` 33.
+
 ## 2026-04-15 22:45
 - Context: User asked for a second flat schematic with everything on one page (single-net canvas for review/ERC).
 - Decision: Added `subzero-next/scripts/merge_schematic_flat.py` generating `subzero-next-flat.kicad_sch` + `subzero-next-flat.kicad_pro`; merges 13/14 subsheets in a 4-column grid, prefixes References (PWR_, S3_, …), merges lib_symbols, new UUIDs. `peripherals.kicad_sch` excluded: `kicad-cli` fails to load that file (CLI parse/load error); re-add after fixing sheet in KiCad. Documented in `FLAT-SCHEMATIC.txt`.
