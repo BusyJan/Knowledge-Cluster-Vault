@@ -142,4 +142,11 @@
 - Problem: Without this framing, Lite could accidentally become a second large project instead of a fast-follow product derived from the flagship.
 - Decision: Model Lite as a derivative SKU: reuse as much PCB logic, firmware, UI, docs, website, and manufacturing flow as possible; concentrate engineering on component selection, BOM reduction, and value-preserving simplification.
 - Next step: When Main scope is more stable, explicitly tag every subsystem as core, optional, premium, or removable so Lite can be assembled as a disciplined subtraction exercise rather than a redesign.
+## 2026-04-15 22:09
+
+- Insight: Documentation principle elevated to a core rule: progress, milestones, iterations, decisions, setbacks, prototype evolution, and development story should be captured continuously, not reconstructed later. The value is not just engineering traceability but future storytelling, credibility, historical context, and publishable behind-the-scenes material that cannot be authentically recreated afterward.
+- Context: User said this is incredibly important: document everything important about progress, not only code comments or formal technical docs, but the real development journey so it can later support public storytelling, internet sharing, company history, and unique non-reproducible knowledge artifacts.
+- Problem: If progress is not captured in the moment, the most valuable narrative and process details are lost permanently and cannot be recreated accurately after the fact.
+- Decision: Treat progress documentation as a first-class part of the project, not optional overhead. Preserve prototype evolution, rationale, milestones, and notable moments continuously because these records may later become strategic assets for branding, trust, and storytelling.
+- Next step: Keep appending durable progress notes during project work and, when useful, maintain richer milestone logs or media-ready summaries that can later be adapted into public devlogs, launch storytelling, or company history.
 
