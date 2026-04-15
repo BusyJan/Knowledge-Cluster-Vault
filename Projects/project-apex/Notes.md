@@ -135,4 +135,11 @@
 - Problem: If Lite starts only after Main ships, the gap could become too long and momentum could die; but if Lite competes for too much attention too early, Main execution may suffer.
 - Decision: Treat Lite as a shadow roadmap item during Main development: enough parallel planning/development to enable a fast follow-up launch, but not enough to dilute Main as the primary shipping target.
 - Next step: When scope is clearer, define which hardware/software pieces are shared between Main and Lite so Main development naturally de-risks Lite and shortens the post-launch gap.
+## 2026-04-15 22:06
+
+- Insight: Lite strategy sharpened: SubZero Lite should be treated primarily as a cost- and scope-reduced derivative of Main, not as a separate invention. Main's shipped hardware/software/docs become the base; Lite mainly removes expensive or non-essential components and may downgrade selected peripherals like the display based on real user feedback and price targets.
+- Context: User agreed that feedback from Main should flow into Lite and highlighted that the heavy lifting (files, architecture, core software base) already exists once Main is built. The main Lite work is selecting which components/features to remove or downgrade to hit a better price point.
+- Problem: Without this framing, Lite could accidentally become a second large project instead of a fast-follow product derived from the flagship.
+- Decision: Model Lite as a derivative SKU: reuse as much PCB logic, firmware, UI, docs, website, and manufacturing flow as possible; concentrate engineering on component selection, BOM reduction, and value-preserving simplification.
+- Next step: When Main scope is more stable, explicitly tag every subsystem as core, optional, premium, or removable so Lite can be assembled as a disciplined subtraction exercise rather than a redesign.
 
