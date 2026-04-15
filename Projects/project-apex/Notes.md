@@ -30,4 +30,11 @@
 - Problem: User asked for an end-cost calculation, but current repo BOM reflects an earlier/current hardware snapshot and does not include unit prices or all later prototype additions.
 - Decision: Use a range-based estimate with clear buckets: electronics BOM, fab/assembly, and prototype-vs-batch differences; exclude certification, tooling, and development time from per-unit hardware COGS.
 - Next step: Create a proper cost spreadsheet by assigning live supplier prices to each BOM line and adding missing P3/P4 parts, then split into one-off prototype, 10-unit pilot, and 100-unit batch scenarios.
+## 2026-04-15 20:48
+
+- Insight: Product-line strategy should be flagship-first: launch SubZero as the halo product, then consider a SubZero Lite later as a deliberate second SKU once demand, cost drivers, and support burden are understood. A Nano only makes sense after a clear single-purpose use case emerges.
+- Context: User asked whether it would be tactically smart to release a Lite/Mini later when hype fades or sales drop. Current hardware is feature-dense and expensive, so a lower-cost derivative could widen the funnel, but too-early SKU expansion would increase manufacturing, firmware, and support complexity.
+- Problem: Need a commercialization strategy that extends product life without fragmenting the roadmap or turning the launch into three unfinished products.
+- Decision: Do not plan Lite/Mini as a desperation reaction to falling sales; treat it as a pre-planned phase-two product. Use the flagship to build brand and validate which features users actually value, then remove the most expensive subsystems for Lite while keeping the same ecosystem/software feel.
+- Next step: When hardware architecture stabilizes, define which modules are core vs optional so a future Lite SKU can drop costly radios/secure/peripheral blocks cleanly without rewriting the whole platform.
 
