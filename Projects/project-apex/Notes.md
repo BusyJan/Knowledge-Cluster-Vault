@@ -100,4 +100,11 @@
 - Problem: There is a risk of conflating 'public source code' with 'no device secrets to protect', which could lead to removing hardware security that still supports trust and product integrity.
 - Decision: Do not keep a secure element just because it sounds premium. Keep it only if SubZero truly needs on-device secret storage, signing identity, secure pairing, or credential isolation. If the product can function without device-held secrets, the security chip may be removable in v1.
 - Next step: List all actual secret-bearing use cases (keys, pairing, encrypted storage, attestation, anti-clone, update trust) and decide whether each is real for v1 before keeping or cutting the secure hardware.
+## 2026-04-15 21:46
+
+- Insight: A dedicated USB coprocessor can still be justified even with open firmware, but for architectural reasons like concurrency, isolation, timing reliability, and recovery boundaries rather than for secret 'attack logic'.
+- Context: User asked whether an extra BadUSB-oriented chip is beneficial because a single main MCU may only handle one action well at a time, while a secondary processor could manage USB interaction alongside wireless/control tasks. Discussion kept at high level for authorized testing context.
+- Problem: Main MCU consolidation can create scheduling, latency, and reliability bottlenecks when one subsystem needs deterministic USB behavior while another handles UI, radio, storage, or orchestration.
+- Decision: Evaluate extra coprocessors based on clear technical roles: deterministic IO timing, subsystem isolation, independent reset/recovery, and reduced firmware complexity. Avoid adding dedicated chips purely for vague capability stacking without a defined product need.
+- Next step: Map each proposed coprocessor to a concrete systems role (USB device/host handling, radio offload, UI isolation, capture timing) and verify whether that role cannot be met acceptably on the primary MCU before keeping it in v1.
 
