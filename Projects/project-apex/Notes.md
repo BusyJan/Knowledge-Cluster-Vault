@@ -121,4 +121,11 @@
 - Problem: A full modular stack is more differentiated than isolated handhelds, but it is also much harder mechanically, electrically, and operationally. Building it too early could turn product development into platform development.
 - Decision: Prefer a staged approach: ship Main first, Lite optional/soon after, and architect both around a future stack bus/mechanical interface. Do not build many separate niche devices first unless the stack concept proves impossible or unnecessary.
 - Next step: Define a future-proof stack interface spec early (power, data, alignment, module identity, physical envelope), but postpone the full ecosystem rollout until the flagship validates demand and UX.
+## 2026-04-15 22:01
+
+- Insight: Saved as high-priority long-term vision: after SubZero Main and likely a later Lite, build toward a genuinely stackable modular SubZero ecosystem with a shared software platform across devices/modules. User sees this as potentially even more brilliant than the flagship itself, but clearly as a future company phase rather than a present implementation target.
+- Context: User stressed that the stacking concept is a future continuation of the company story, not the current focus. The long-term idea is a modular hardware ecosystem where a main handheld can accept multiple stackable modules, paired with a common modular software layer reused across products. Current reality: near-zero capital, highly founder-driven execution, and immediate focus on shipping SubZero Main first.
+- Problem: Important strategic ideas can get lost while day-to-day focus stays on the flagship. This one matters because it defines a possible long-term moat and ecosystem direction, but it would be dangerous to pursue too early.
+- Decision: Preserve the stack ecosystem and shared-software vision as a durable north star, while keeping present execution strictly focused on SubZero Main and later Lite if traction appears. Treat the stack platform as a phase unlocked only after flagship validation, funding, and operational maturity.
+- Next step: When SubZero Main is more concrete, keep future stack-readiness in mind where cheap to do so (software architecture, branding, interface philosophy), but avoid forcing full modular-platform requirements into v1.
 
