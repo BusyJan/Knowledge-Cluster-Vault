@@ -156,4 +156,11 @@
 - Problem: Brand, naming, and identity choices made too late can create inconsistency, privacy leaks, domain loss, and weak marketing foundations while hardware/software are already progressing.
 - Decision: Use a company/studio voice without personal exposure; prefer a unique company brand (e.g. KR1O/Cryo-derived) separate from product naming; secure a brandable domain early after a basic trademark/domain sanity check; create a separate GitHub org/account under the brand; and keep the current complex snowflake as a secondary emblem while developing a simpler primary mark for favicon, silkscreen, packaging, and recognition.
 - Next step: Before locking the website, shortlist 3-5 company names and 3-5 domains, run basic availability/trademark checks, and define a simple brand system: company name, product name, org handle, primary logo, secondary emblem, and public voice guidelines.
+## 2026-04-15 22:22
+
+- Insight: Naming preference clarified: user strongly wants to keep 'SubZero' (or stylized variants like sub0/sub-zero) as the product name because it feels right and has already become central in thinking/talking about the device. Software naming could potentially follow a related pattern such as 'SubZero Frostbite' or a similar family convention.
+- Context: User emphasized that despite earlier brand-structure discussion, the product name itself is something they would very much like to retain. This should be treated as an important identity preference, even though legal/trademark checks may still be necessary.
+- Problem: Strong emotional/product identity around a name can conflict with later brand architecture or legal availability if not acknowledged early.
+- Decision: Preserve SubZero as the preferred product-name direction for now, while still separating product naming from company/studio naming and flagging trademark/domain checks as necessary before final lock-in.
+- Next step: Keep exploring company/brand names separately from the product name, and later verify whether 'SubZero' or a stylized variant is legally/practically safe to use in the intended markets.
 
