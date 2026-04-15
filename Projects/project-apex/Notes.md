@@ -44,4 +44,11 @@
 - Problem: A flagship-only product can hit a ceiling on price and complexity; waiting too long to introduce a cheaper variant risks making it feel like a downgrade instead of a planned lineup expansion.
 - Decision: Prefer a staged roadmap: flagship first for attention and brand identity, then Lite once the flagship is established and real usage data shows which features most users do not need.
 - Next step: When product scope is clearer, define which modules/features are core vs premium so a future Lite can remove expensive radios, secure hardware, or peripherals without killing the main value proposition.
+## 2026-04-15 20:55
+
+- Insight: Pricing opinion: USD 399 is defensible for SubZero only if it ships as a clearly premium, polished flagship with strong perceived value beyond lower-cost handhelds like Flipper, Cardputer, or single-function RFID tools.
+- Context: Compared against current market anchors: Flipper Zero around USD 199, HackRF/PortaPack class roughly USD 200-300+, Cardputer class around USD 20-30 dev-kit pricing, and cheaper RFID tools often under USD 100-170. SubZero aims to combine multiple functions, but USD 399 sits above impulse-buy territory and will require better industrial design, docs, UX, and clear feature justification.
+- Problem: User asked whether 399 is too much relative to other handhelds.
+- Decision: Treat 399 as a flagship price ceiling that can work for a niche enthusiast/professional audience, but expect it to feel too high for mainstream curiosity buyers unless the product looks and feels finished, differentiated, and trustworthy.
+- Next step: Refine a pricing ladder: flagship around 349-399 if polished, with a future Lite target nearer the sub-200/sub-250 band if broader accessibility becomes important.
 
