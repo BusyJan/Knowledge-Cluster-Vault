@@ -72,4 +72,11 @@
 - Problem: There is a risk of overestimating the value of presentation alone versus the underlying product capability and positioning.
 - Decision: Treat the premium website/webshop as an amplifier of premium positioning, not the core reason to buy. Use it to make the product feel trustworthy, polished, and worth understanding, while the hardware itself remains the main value driver.
 - Next step: When website work resumes, make the site communicate seriousness, clarity, and trust rather than just looking expensive; tie visuals and copy directly to what SubZero actually enables.
+## 2026-04-15 21:25
+
+- Insight: Core product assessment: SubZero's idea is strong and genuinely differentiated, but the current hardware ambition is probably too broad for a first product if the goal is a polished, shippable flagship rather than an impressive engineering exercise.
+- Context: User asked for an honest opinion on the hardware and core idea. The concept of a premium handheld multi-radio research platform is compelling, but the present scope combines too many subsystems, radios, MCUs, and supporting features at once.
+- Problem: Over-scope risks delaying launch, inflating cost, hurting reliability, complicating firmware, and weakening the product story because the device tries to do too many things before proving one sharp value proposition.
+- Decision: Treat the core idea as good, but narrow the first release to a smaller, more coherent feature set that feels excellent. Preserve the bigger vision for later revisions, modules, or higher-tier variants.
+- Next step: Identify the 3-5 capabilities that define SubZero's identity and aggressively move the rest to later milestones or expansion products.
 
