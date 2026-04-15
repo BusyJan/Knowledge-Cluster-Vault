@@ -149,4 +149,11 @@
 - Problem: If progress is not captured in the moment, the most valuable narrative and process details are lost permanently and cannot be recreated accurately after the fact.
 - Decision: Treat progress documentation as a first-class part of the project, not optional overhead. Preserve prototype evolution, rationale, milestones, and notable moments continuously because these records may later become strategic assets for branding, trust, and storytelling.
 - Next step: Keep appending durable progress notes during project work and, when useful, maintain richer milestone logs or media-ready summaries that can later be adapted into public devlogs, launch storytelling, or company history.
+## 2026-04-15 22:15
+
+- Insight: Early brand/privacy direction matters alongside hardware: user wants strong anonymity, company-style 'we' voice without exposing the solo founder, a cryo-themed brand, a separate GitHub identity, early domain decisions, and a logo system built around an ice-crystal form.
+- Context: Discussion covered privacy-first public positioning, naming, domains, GitHub, and logo strategy while website work is already underway. Key cautions: avoid fake team bios, treat 'we' as brand voice rather than fabricated staff narratives, keep product and company naming legally checkable, and note that 'SubZero' and 'Frostbite' may carry trademark risk in some contexts.
+- Problem: Brand, naming, and identity choices made too late can create inconsistency, privacy leaks, domain loss, and weak marketing foundations while hardware/software are already progressing.
+- Decision: Use a company/studio voice without personal exposure; prefer a unique company brand (e.g. KR1O/Cryo-derived) separate from product naming; secure a brandable domain early after a basic trademark/domain sanity check; create a separate GitHub org/account under the brand; and keep the current complex snowflake as a secondary emblem while developing a simpler primary mark for favicon, silkscreen, packaging, and recognition.
+- Next step: Before locking the website, shortlist 3-5 company names and 3-5 domains, run basic availability/trademark checks, and define a simple brand system: company name, product name, org handle, primary logo, secondary emblem, and public voice guidelines.
 
