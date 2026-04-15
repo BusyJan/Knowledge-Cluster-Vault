@@ -24,3 +24,7 @@
 ## 2026-04-15 21:00
 - **Context:** User asked to remove Mortons-specific branding and footer copy after the replica pass.
 - **Decision:** Replaced `components/mortons/*` with `components/marketing/home-landing.tsx` + `home-header.tsx` (`HomeLanding`, `HomeHeader`). Header/footer wordmark uses `SITE_NAME` from `lib/site.ts`. Added `CONTACT_EMAIL` / `CONTACT_PHONE` (optional) with defaults in `lib/site.ts` and `.env.example`. Body copy, collaborator grid, and hero subline are generic placeholders. Screenshot reference output file renamed to `reference-external-home-full.png`. Privacy footer link points to `/pages/privacy-policy` to match cookie banner.
+
+## 2026-04-15 22:00
+- **Context:** User wanted a light, Flipper-like technical hardware site (black device on light canvas), monospace/ASCII accents, plus a reusable AI context prompt.
+- **Decision:** Root layout and `globals.css` default to light (`#fafafa`). Marketing home uses **Plus Jakarta Sans** + **JetBrains Mono**; hero ASCII block, dark device placeholder, spec terminal band (`#specs`), spec grid, ethics block. `lib/site.ts` adds `PRODUCT_TAGLINE` and `PRODUCT_HERO_HEADLINE` (env). Cookie consent panel restyled for light. `docs/PRODUCT_AI_CONTEXT_PROMPT.md` is the fill-in prompt for AI sessions. Layout metadata keywords updated toward hardware/research.
