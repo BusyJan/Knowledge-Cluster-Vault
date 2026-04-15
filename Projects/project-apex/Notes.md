@@ -58,4 +58,11 @@
 - Problem: Retail price and unit production cost were being blended together in discussion, which can mislead pricing decisions.
 - Decision: Treat 399 only as a candidate MSRP anchor. For now, present production cost as a range: rough assembled COGS likely around USD 220-300 for a polished batch unit, with exact figures unavailable until supplier and assembly quotes are collected.
 - Next step: Build a proper cost model with line-item prices, PCB fab/assembly, display/battery/antenna/external parts, packaging, freight, and expected scrap/yield to determine true COGS and required MSRP.
+## 2026-04-15 21:22
+
+- Insight: Brand positioning should avoid 'best penetration testing tool' or 'better Flipper' framing. Stronger positioning is a premium handheld research platform / multi-radio field lab for authorized testing and hardware workflows.
+- Context: User asked how SubZero should promote itself: best pentesting tool, or a more expensive/better Flipper. Recommended strategy is to avoid direct superiority claims and avoid language that sounds illegal, immature, or hype-driven. The product likely wins on integration, portability, workflow breadth, and premium execution rather than on a single benchmark.
+- Problem: Aggressive positioning like 'best pentesting tool' invites legal/reputation risk and direct comparison traps against Flipper, HackRF, Proxmark, and SDR gear where expectations may not match the actual product story.
+- Decision: Position SubZero as a serious handheld research platform for RF, embedded, and hardware-security workflows; emphasize authorized testing, field portability, multi-radio integration, and engineering quality. Treat Flipper comparison as an external reference point, not the core brand identity.
+- Next step: Develop message pillars and tagline options centered on 'portable lab', 'multi-radio workflow', and 'research platform' rather than 'ultimate hacking device'.
 
