@@ -51,4 +51,11 @@
 - Problem: User asked whether 399 is too much relative to other handhelds.
 - Decision: Treat 399 as a flagship price ceiling that can work for a niche enthusiast/professional audience, but expect it to feel too high for mainstream curiosity buyers unless the product looks and feels finished, differentiated, and trustworthy.
 - Next step: Refine a pricing ladder: flagship around 349-399 if polished, with a future Lite target nearer the sub-200/sub-250 band if broader accessibility becomes important.
+## 2026-04-15 21:14
+
+- Insight: Clarified that USD 399 was not an internally derived requirement; it came from the user's hypothetical flagship price point. Production cost should be discussed separately as COGS, not inferred from target retail.
+- Context: User asked why 399 was assumed and what the exact production costs would be. Current project data supports only estimate ranges because BOM export lacks live part prices, assembly quotes, freight, yield loss, enclosure/accessory quotes, and certification overhead.
+- Problem: Retail price and unit production cost were being blended together in discussion, which can mislead pricing decisions.
+- Decision: Treat 399 only as a candidate MSRP anchor. For now, present production cost as a range: rough assembled COGS likely around USD 220-300 for a polished batch unit, with exact figures unavailable until supplier and assembly quotes are collected.
+- Next step: Build a proper cost model with line-item prices, PCB fab/assembly, display/battery/antenna/external parts, packaging, freight, and expected scrap/yield to determine true COGS and required MSRP.
 
