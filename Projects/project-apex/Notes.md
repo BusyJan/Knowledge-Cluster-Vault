@@ -37,4 +37,11 @@
 - Problem: Need a commercialization strategy that extends product life without fragmenting the roadmap or turning the launch into three unfinished products.
 - Decision: Do not plan Lite/Mini as a desperation reaction to falling sales; treat it as a pre-planned phase-two product. Use the flagship to build brand and validate which features users actually value, then remove the most expensive subsystems for Lite while keeping the same ecosystem/software feel.
 - Next step: When hardware architecture stabilizes, define which modules are core vs optional so a future Lite SKU can drop costly radios/secure/peripheral blocks cleanly without rewriting the whole platform.
+## 2026-04-15 20:50
+
+- Insight: Product-line strategy: a later 'SubZero Lite' could be smart, but it should be planned as a deliberate second-tier product rather than a desperate reaction after hype fully collapses.
+- Context: User asked whether launching a lighter/cheaper variant near the end of the hype or once sales drop would be tactically good. Strategic recommendation: use Lite to broaden the funnel, reduce BOM/cost barriers, and preserve the flagship's premium positioning.
+- Problem: A flagship-only product can hit a ceiling on price and complexity; waiting too long to introduce a cheaper variant risks making it feel like a downgrade instead of a planned lineup expansion.
+- Decision: Prefer a staged roadmap: flagship first for attention and brand identity, then Lite once the flagship is established and real usage data shows which features most users do not need.
+- Next step: When product scope is clearer, define which modules/features are core vs premium so a future Lite can remove expensive radios, secure hardware, or peripherals without killing the main value proposition.
 
