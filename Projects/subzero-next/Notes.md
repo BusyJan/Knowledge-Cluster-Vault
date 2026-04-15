@@ -31,6 +31,14 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: 74LVC125 overlapping units is a design issue (units should be placed separately as U32A–D); script now skips duplicates to avoid shorts, but physical separation still needed for correct ERC.
 - Next step: Open subzero-next in KiCad, annotate, run ERC — expect significantly fewer errors.
 
+## 2026-04-15 13:15
+- User ran GUI ERC → 0 errors, 842 warnings. Key remaining warnings: unconnected_wire_endpoint=9, no_connect_dangling=28, lib_symbol_mismatch=18, pin_to_pin=10, endpoint_off_grid=729.
+- Root cause of unconnected_wire_endpoint=9 found: `_FALLBACK_PINS["Device:C_Polarized"]` (and similar entries for Buzzer, Speaker, Crystal, FerriteBead, Thermistor_NTC) used `wire_y=±5.08` but actual KiCad library has pin tips at `±3.81`. Script was placing wires 1.27mm off from actual pin positions, causing wire endpoints to not coincide with pin tips in ERC.
+- Fix: Removed all fallbacks for symbols that exist in the KiCad standard library (C_Polarized, FerriteBead, Thermistor_NTC, Crystal, Buzzer, Speaker). Corrected Device:Motor_DC fallback to use `wire_y=±3.81` pattern. After fix, wires now at correct pin positions.
+- lib_symbol_mismatch cause: extends symbols (2N7002 extends Q_NMOS_GSD) — script embeds parent definition renamed as child, but child's inner sub-symbols kept parent names (Q_NMOS_GSD_0_1 instead of 2N7002_0_1). Attempted full merge (rename sub-symbols + apply child property overrides) but this BROKE 11 previously-clean sheets (CLI ERC jumped 171→1011). Reverted extends merge fix.
+- Current state: 171 CLI violations, 11/14 sheets clean. C_Polarized fix reduces unconnected_wire_endpoint. lib_symbol_mismatch=12 remains (cosmetic warning, not affecting connectivity). The 18 `lib_symbol_mismatch` in GUI ERC come from extends symbols; acceptable as warnings only.
+- WARNING: Do NOT attempt to rename inner sub-symbols in lib_symbols for extends resolution — this breaks connectivity in KiCad's ERC engine for currently-clean sheets.
+
 ## 2026-04-15 12:00
 - Problem: After running wire_schematics.py, ERC showed 1630 warnings (GUI) / 2338 violations (CLI) with all wires and labels "unconnected". Root cause identified: (lib_symbols) section was EMPTY in all schematic sheets (version 20250901/kicad_symdir format). KiCad's ERC connectivity graph uses ONLY lib_symbols for pin positions — disk library is used for pin_not_connected but NOT for netlist-level connectivity. Empty lib_symbols → all labels appear "dangling", all wires appear with unconnected endpoints.
 - Discovery: `label_dangling` in KiCad ERC means the entire NET has no component pins (semantic check), not just a positional check. Confirmed by minimal test schematic (wire + label: label_dangling even when wire endpoint touches it, until a component pin joins the net).
