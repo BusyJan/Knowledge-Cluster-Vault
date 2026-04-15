@@ -79,4 +79,11 @@
 - Problem: Over-scope risks delaying launch, inflating cost, hurting reliability, complicating firmware, and weakening the product story because the device tries to do too many things before proving one sharp value proposition.
 - Decision: Treat the core idea as good, but narrow the first release to a smaller, more coherent feature set that feels excellent. Preserve the bigger vision for later revisions, modules, or higher-tier variants.
 - Next step: Identify the 3-5 capabilities that define SubZero's identity and aggressively move the rest to later milestones or expansion products.
+## 2026-04-15 21:31
+
+- Insight: Base BOM review from bom-lcsc.csv suggests the current core hardware (without display, battery, antenna pigtails, later P3/P4 additions, PCB fab, or assembly) is roughly USD 76 in parts using rough small-batch pricing. The major real cost/complexity drivers are the RF stack, extra MCUs, advanced power chain, and later P4 expansion radios.
+- Context: User asked for a grouped hardware list with price/functionality and which parts look overkill. Reviewed all BOM line items by class and compared them with planned P3/P4 additions from prototypes/README.md.
+- Problem: The BOM export reflects an earlier/current snapshot and under-represents the eventual flagship cost because several expensive later-stage parts are not in the CSV.
+- Decision: Treat core BOM as affordable on paper, but recognize the expensive scope creeps in through added radios, coprocessors, premium charging, secure parts, display/battery/antenna accessories, and manufacturing complexity. Overkill candidates for a first product include multiple overlapping radios, RP2350A, DS2482, MAX3232, secure-element upgrades, and SDR/UWB-class additions.
+- Next step: If product scope is reduced, start cuts with P4 expansion radios and secondary peripherals before touching the core S3 + one companion radio + one or two strongest identity features.
 
