@@ -107,4 +107,11 @@
 - Problem: Main MCU consolidation can create scheduling, latency, and reliability bottlenecks when one subsystem needs deterministic USB behavior while another handles UI, radio, storage, or orchestration.
 - Decision: Evaluate extra coprocessors based on clear technical roles: deterministic IO timing, subsystem isolation, independent reset/recovery, and reduced firmware complexity. Avoid adding dedicated chips purely for vague capability stacking without a defined product need.
 - Next step: Map each proposed coprocessor to a concrete systems role (USB device/host handling, radio offload, UI isolation, capture timing) and verify whether that role cannot be met acceptably on the primary MCU before keeping it in v1.
+## 2026-04-15 21:52
+
+- Insight: Roadmap idea discussed: ship SubZero Main first, then likely introduce a cheaper Lite later; a broader family of specialized handhelds or a modular 'SubZero Stack' could be explored afterward, but modular stacking should not replace proving the flagship first.
+- Context: User described a phased plan: release the flagship despite high price, maybe follow with Lite/Nano, and later possibly create either multiple purpose-built handhelds (sub-GHz, WiFi, Bluetooth, NFC, etc.) or a stackable modular platform using a more modern interconnect than simple exposed pin headers.
+- Problem: There is a risk of turning one ambitious flagship into an even more complex platform strategy before the first product, pricing, audience, and strongest use cases are validated.
+- Decision: Best near-term path is flagship first, likely Lite second, and only then evaluate whether the winning direction is specialized single-purpose handhelds or a modular stack ecosystem. A stack platform is strategically interesting but should be treated as a later ecosystem play, not a requirement for v1.
+- Next step: After flagship validation, decide whether user demand points toward lower-cost derivatives, specialized vertical devices, or a shared modular platform with reused design language and common software/UI.
 
