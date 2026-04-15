@@ -11,3 +11,7 @@
 ## 2026-04-15 16:00
 - **Problem:** Runtime crash when `SHOPIFY_*` env vars missing — `lib/shopify/config.ts` threw at import time, which ran in the browser via `CartProvider` → cart → client → config.
 - **Decision:** Export `isShopifyConfigured`; no throw at module load. `shopifyRequest` throws only when a GraphQL call runs without config. `CartProvider` skips cart bootstrap when not configured. `/api/health` reports Shopify unhealthy if not configured.
+
+## 2026-04-15 18:00
+- **Context:** Remove all references to the former brand name across the repo.
+- **Decision:** Added `lib/site.ts` (`SITE_URL`, `SITE_NAME`, `LOGO_SRC`, `CROSS_SRC`) with `NEXT_PUBLIC_SITE_URL` / `NEXT_PUBLIC_SITE_NAME`. Updated metadata, JSON-LD, breadcrumbs, footer, CI/deploy workflows, `package.json` name, cookie event `store:show-cookie-banner`, password key `store_access_granted`. Public assets referenced as `/pictures/logo.svg` and `/pictures/cross.svg`. Removed legacy product redirect from `next.config.mjs`. Workflows use deploy dir `shopify-storefront-web` and PM2 `storefront-web` (server must match).
