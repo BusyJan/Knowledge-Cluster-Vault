@@ -48,3 +48,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Fix 4: global_label format updated to match KiCad 10 native: added `(fields_autoplaced yes)`, `(property "Intersheetrefs" ...)`, proper `justify left/right` based on rotation.
 - Final state: 11/14 sub-sheets completely clean (0 ERC violations). Remaining 171 violations: 124 endpoint_off_grid (cosmetic — pins at non-50mil grid), 35 label_dangling (hand-placed floating labels in original design), 3 isolated_pin_label (debug pins with no 2nd connection), 6 pin_not_connected + 3 power_pin_not_driven (floating power flag symbols in original design). All legitimate net connections are correctly established.
 - Next step: Open subzero-next in KiCad, run ERC (expect ~170 warnings, 0 real connectivity errors), then proceed to netlist + PCB update.
+## 2026-04-15 20:37
+
+- Insight: Fixed KiCad hierarchical-sheet load errors caused by mismatched embedded symbol child prefixes in subzero-next/sheets/*.kicad_sch. The parent lib_ids were correct, but several child unit names still used old base names from copied/extended symbols.
+- Context: User screenshot showed 'Invalid symbol unit name prefix' for USBLC6-2P6, Q_NMOS_GSD, ATECC608A-SSHDA, TPD4EUSB30, and 74LS125 across mcu-c6, usb, esd-protection, security, rf-subghz, rf-lora, rf-24ghz, power, peripherals, io-expander, and connectors. Patched child names to match the actual parent lib symbols: USBLC6-2SC6, 2N7002, ATECC608B-SSHDA, TPD4E05U06DQA, and 74LVC125.
+- Problem: KiCad refused to load the root schematic because embedded lib_symbols blocks had child unit names whose prefixes did not match their parent symbol names/lib_ids.
+- Decision: Normalize the embedded child symbol names to the parent symbol base name used by each sheet's lib_id, then verify the stale bad prefixes are gone from subzero-next.
+- Next step: Reopen subzero-next in KiCad and confirm the hierarchical sheets load; if ERC or symbol mismatches worsen, inspect whether any of the renamed symbols are extend-based edge cases that need a different embedding strategy.
+
