@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 22:00
+- Context: User asked to fix **ERC** warnings for **not connected** items from `ERC.rpt` (flat schematic).
+- Decision: Added **`subzero-next/scripts/connect_power_symbols.py`** — wires each **`power:#PWR`** pin to nearest matching **`global_label`** on the sheet (28 wires). **`power.kicad_sch`**: removed conflicting **`no_connect`** at `(331.47, 41.91)` (L2 vs `#PWR003`); **`#PWR003`** value **`V5V_BOOST`** (matches boost rail). **`wire_schematics.py`**: **U41** pins **5/6** → **`FE1_XI`/`FE1_XO`**, new **`Y1`**, **`C82`/`C83`** load caps to GND (removed incorrect `+3V3` decoupling for C82/C83). **`rf-subghz.kicad_sch`**: swapped **U32** **74LVC125** **VCC/GND** **global_label** text at stub ends (wire script had swapped pin labels vs physical pins 7/14; **re-run `wire_schematics` overwrites** generated block — manual swap **after** regen until fixed in `wire_schematics`).
+- Insight: **Flat** root `Sheet /` **label_dangling** in ERC is **not** fixed by subsheet edits — **run ERC on hierarchical `subzero-next.kicad_pro`** for authoritative connectivity.
+- Next step: User re-run **`kicad-cli sch erc`** on project; **RF** module `pin_not_connected` / **missing** **74LVC125** **units** may remain until NET_MAP or symbol placement is updated.
+
 ## 2026-04-16 21:00
 - Context: User concerned many schematic issues (e.g. orphan `power:GND`, overlaps) are **ignored**.
 - Insight: **`spread_schematic_layout.py`** and **`wire_schematics.py`** do **not** run **ERC**, do **not** auto-connect power symbols, and do **not** prove electrical completeness — they are layout/helpers only. **Authoritative** electrical checks = **KiCad Inspect → Electrical Rules Checker** (or `kicad-cli sch erc` when installed). Agent environment here had **no** `kicad-cli` to batch ERC.
