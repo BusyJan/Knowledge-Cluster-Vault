@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 21:00
+- Context: User concerned many schematic issues (e.g. orphan `power:GND`, overlaps) are **ignored**.
+- Insight: **`spread_schematic_layout.py`** and **`wire_schematics.py`** do **not** run **ERC**, do **not** auto-connect power symbols, and do **not** prove electrical completeness — they are layout/helpers only. **Authoritative** electrical checks = **KiCad Inspect → Electrical Rules Checker** (or `kicad-cli sch erc` when installed). Agent environment here had **no** `kicad-cli` to batch ERC.
+- Next step: User runs ERC on `subzero-next.kicad_sch`, triages `pin_not_connected` / `label_dangling` / etc.; wire orphan `#PWR` pins or remove redundant symbols.
+
 ## 2026-04-16 20:15
 - Insight: **`SPREAD_SCALE`** applies `x' = margin + (x - min_x) * scale` to manual-region `(at)`/`(xy)` — it **stretches relative spacing** (e.g. 1.38 = +38% between points), **not** a minimum gap between text vs symbols. Tight **vertical stacks** (e.g. `power.kicad_sch` USB CC resistors: `USB_CC1` at y≈47, R1 at ~56, `USB_CC2` at ~61 vs R1 value at ~60) stay **one-column**; label graphics + ref/value can still overlap after spread.
 - Next step: In KiCad, **move** the CC pair **sideways** or **increase** vertical pin-to-pin spacing / hide/move value fields; optional bump `WIRE_SCHEMATICS_LABEL_OFFSET` or edit stubs manually.
