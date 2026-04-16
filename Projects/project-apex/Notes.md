@@ -191,4 +191,11 @@
 - Problem: Brand choices can drift if they are not recorded as soon as they start feeling 'real' to the founder.
 - Decision: Use KR1O Labs as the leading company/studio name direction for now, while keeping SubZero as the preferred product name and 'SubZero by KR1O Labs' as a strong presentation pattern.
 - Next step: Carry this naming structure into future website, GitHub, and domain decisions, then later validate availability and legal/trademark constraints before final lock-in.
+## 2026-04-16 07:20
+
+- Insight: Current snowflake/ice-crystal logo direction is visually strong, memorable in mood, and highly on-theme for SubZero/KR1O Labs, but the mark is probably too detailed/complex to serve as the only primary logo across favicon, PCB silkscreen, small packaging, and rapid recognition contexts.
+- Context: User asked for an opinion on the provided cyan crystal logo. Assessment: strong secondary emblem / hero mark, but likely needs a simplified primary mark or reduced-detail variant for practical brand use.
+- Problem: Highly intricate symbols can look impressive at large size yet become hard to distinguish, remember, or reproduce cleanly at small sizes.
+- Decision: Keep the current crystal as an important visual asset and stylistic reference, but plan a simpler primary logo derived from it for small-scale and high-recognition use cases.
+- Next step: When branding work resumes, create at least two variants: a simplified master mark and the existing detailed emblem for hero/marketing art.
 
