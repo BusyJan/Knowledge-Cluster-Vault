@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 17:00
+- Problem: User marked **USB + TP4056** area — IC drawn **on top of** USB-C; R3 on IC; TH1 on notes; not only label text.
+- Context: **Label script cannot fix symbol coordinates** — only nets. J1 at (50,35), U1 was (50,55): ~20mm vertical gap insufficient for tall USB symbol + ESOP8.
+- Decision: **`power.kicad_sch`** — moved **U1** to (50,80), **R3** (70,77), **TH1** (35,83), **D1/D2** (88,82)/(98,82), notes shifted; **`wire_schematics.py`** re-run. ERC: no `unconnected_wire` on `power.kicad_sch`.
+- Next step: Other dense blocks may need the same **manual spacing** in KiCad or by editing `(at x y)` for symbols.
+
 ## 2026-04-16 16:00
 - Problem: Overlays remained after label offset — **section banners** (2.5mm font) drew across symbols; **duplicate `VBAT_PROT`** on U3 pins 1+2 stacked; **manual** `label`/`global_label` duplicated script output; notes sat on top of nets.
 - Decision: `wire_schematics.py` — **stagger** second+ same `(ref, net)` with **+2.54mm X** per duplicate. `power.kicad_sch` — section titles **1.27mm** font; moved TPS63020 banner and notes; removed redundant `VBAT_PROT` manual labels and duplicate global.
