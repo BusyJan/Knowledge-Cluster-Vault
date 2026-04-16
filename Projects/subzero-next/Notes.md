@@ -2,6 +2,13 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 19:30
+- Context: User wanted **wide spacing** between schematic blocks and **fewer confusing crossings**; concern about junction dots at crossings.
+- Insight: **`spread_schematic_layout.py`** scales `(at …)` / `(xy …)` in the manual region after `lib_symbols` and re-snaps to grid; **`wire_schematics.py`** must run after. In KiCad, **90° crossings without a junction dot do not short nets**; only **T-junctions / explicit junctions** tie nets.
+- Problem: This environment’s Python 3.13 **`sys` has no `environ`** — script now uses **`os.environ`** for `SPREAD_*` and paths.
+- Decision: Applied **SCALE=1.38, MARGIN 28mm** to all **14** `subzero-next/sheets/*.kicad_sch`, then re-ran **`wire_schematics.py`** with `WIRE_SCHEMATICS_SHEETS` set to that folder.
+- Next step: User enlarges sheet/paper in KiCad if needed; manual orthogonal routing to minimize crossings when tightening layout.
+
 ## 2026-04-16 18:00
 - Context: User asked whether **manual** schematic layout is OK; whether **`wire_schematics.py`** resets positions; requested **full connectivity-style check**.
 - Insight: Script removes only the block from **`WIRE_SCHEMATICS_PY_V1`** marker through **`(sheet_instances`** — **symbol `(at …)` placements are not touched**. Re-run **regenerates** auto wires/labels/no_connect/lib_symbols in that block; manual edits **inside** that region are overwritten.
