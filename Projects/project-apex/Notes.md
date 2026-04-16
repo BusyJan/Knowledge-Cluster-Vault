@@ -212,4 +212,11 @@
 - Problem: A pixel-style display may be charming and cheaper, but it risks making the device feel more novelty/retro/toy-like, which clashes with the desired premium research-tool positioning.
 - Decision: Recommend a high-quality screen for Main. A lower-cost or more playful display style could be considered for Lite/Nano later if needed, but the flagship should feel crisp, modern, and premium.
 - Next step: Choose display based on readability, brightness, touch responsiveness, outdoor visibility, power draw, and industrial feel rather than nostalgia aesthetics.
+## 2026-04-16 15:40
+
+- Insight: UI complexity trade-off acknowledged: a high-quality modern screen is better for SubZero Main's premium positioning, but it raises software/UI burden significantly. The right response is not automatically to downgrade the screen, but to keep the UI scope deliberately simple for v1.
+- Context: User pointed out that a better screen makes the UI much harder to build. This is true and should influence product planning: premium hardware must be matched with a realistic software scope.
+- Problem: A strong display can create pressure to overbuild the interface, stretching development and delaying the product.
+- Decision: Keep the premium-screen recommendation for Main, but constrain v1 UI to a small, disciplined interaction model: few views, strong information hierarchy, low animation complexity, and reuse across future devices.
+- Next step: When UI work starts, design the Main interface as a compact system shell rather than a feature-heavy app environment, so the display feels premium without requiring an enormous software stack.
 

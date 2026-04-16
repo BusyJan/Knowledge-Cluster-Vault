@@ -2,9 +2,13 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 22:30
+- Insight: **U32** **74LVC125** **GND**/**VCC** **stubs** were **not** buggy in **`wire_schematics.py`** — **pin 7** (GND) maps to **larger** schematic **Y** (~254 mm) than **pin 14** (VCC, ~228 mm) with symbol rot 0. A **manual** swap of **`global_label`** text had **crossed** the nets; **regenerating** with **`wire_schematics.py`** restores correct **GND**/**+3V3** placement. Comment added in **`wire_schematics.py`** next to **U32** **NET_MAP** to avoid repeating that mistake.
+- Next step: Do **not** hand-edit those two labels after regen unless pin geometry changes.
+
 ## 2026-04-16 22:00
 - Context: User asked to fix **ERC** warnings for **not connected** items from `ERC.rpt` (flat schematic).
-- Decision: Added **`subzero-next/scripts/connect_power_symbols.py`** — wires each **`power:#PWR`** pin to nearest matching **`global_label`** on the sheet (28 wires). **`power.kicad_sch`**: removed conflicting **`no_connect`** at `(331.47, 41.91)` (L2 vs `#PWR003`); **`#PWR003`** value **`V5V_BOOST`** (matches boost rail). **`wire_schematics.py`**: **U41** pins **5/6** → **`FE1_XI`/`FE1_XO`**, new **`Y1`**, **`C82`/`C83`** load caps to GND (removed incorrect `+3V3` decoupling for C82/C83). **`rf-subghz.kicad_sch`**: swapped **U32** **74LVC125** **VCC/GND** **global_label** text at stub ends (wire script had swapped pin labels vs physical pins 7/14; **re-run `wire_schematics` overwrites** generated block — manual swap **after** regen until fixed in `wire_schematics`).
+- Decision: Added **`subzero-next/scripts/connect_power_symbols.py`** — wires each **`power:#PWR`** pin to nearest matching **`global_label`** on the sheet (28 wires). **`power.kicad_sch`**: removed conflicting **`no_connect`** at `(331.47, 41.91)` (L2 vs `#PWR003`); **`#PWR003`** value **`V5V_BOOST`** (matches boost rail). **`wire_schematics.py`**: **U41** pins **5/6** → **`FE1_XI`/`FE1_XO`**, new **`Y1`**, **`C82`/`C83`** load caps to GND (removed incorrect `+3V3` decoupling for C82/C83).
 - Insight: **Flat** root `Sheet /` **label_dangling** in ERC is **not** fixed by subsheet edits — **run ERC on hierarchical `subzero-next.kicad_pro`** for authoritative connectivity.
 - Next step: User re-run **`kicad-cli sch erc`** on project; **RF** module `pin_not_connected` / **missing** **74LVC125** **units** may remain until NET_MAP or symbol placement is updated.
 
