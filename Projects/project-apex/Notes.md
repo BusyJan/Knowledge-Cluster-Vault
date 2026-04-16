@@ -205,4 +205,11 @@
 - Problem: Detailed marks can feel impressive in a hero treatment but lose clarity and distinctiveness once converted to flat monochrome, favicon, silkscreen, packaging, or tiny UI contexts.
 - Decision: Keep the current emblem as the expressive/high-detail version, but derive a simpler primary mark optimized for black-on-white use with stronger negative space, fewer internal cuts, and cleaner geometry.
 - Next step: When logo work resumes, create a 3-tier system: hero emblem, primary simplified mark, and tiny icon/favicon variant.
+## 2026-04-16 15:39
+
+- Insight: Display direction recommendation: for SubZero Main, prefer a high-quality modern screen over a deliberately pixel-like display. The product is being positioned as premium, technical, and more serious than toy-like handhelds; a good screen supports that identity much better.
+- Context: User asked whether the device should use a high-quality screen or a pixel-like screen. This is both a hardware and brand decision because the screen strongly influences perceived quality, UI clarity, and differentiation from retro-gadget aesthetics.
+- Problem: A pixel-style display may be charming and cheaper, but it risks making the device feel more novelty/retro/toy-like, which clashes with the desired premium research-tool positioning.
+- Decision: Recommend a high-quality screen for Main. A lower-cost or more playful display style could be considered for Lite/Nano later if needed, but the flagship should feel crisp, modern, and premium.
+- Next step: Choose display based on readability, brightness, touch responsiveness, outdoor visibility, power draw, and industrial feel rather than nostalgia aesthetics.
 
