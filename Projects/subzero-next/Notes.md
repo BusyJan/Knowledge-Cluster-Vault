@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 16:00
+- Problem: Overlays remained after label offset — **section banners** (2.5mm font) drew across symbols; **duplicate `VBAT_PROT`** on U3 pins 1+2 stacked; **manual** `label`/`global_label` duplicated script output; notes sat on top of nets.
+- Decision: `wire_schematics.py` — **stagger** second+ same `(ref, net)` with **+2.54mm X** per duplicate. `power.kicad_sch` — section titles **1.27mm** font; moved TPS63020 banner and notes; removed redundant `VBAT_PROT` manual labels and duplicate global.
+- Next step: Re-run `wire_schematics` after any NET_MAP edit; avoid manual net labels on the same nets as auto labels.
+
 ## 2026-04-16 15:00
 - Problem: Schematic screenshots showed **labels, NC markers, and passives overlapping** symbols — unreadable.
 - Context: `wire_schematics.py` placed **global_label** exactly at pin coordinates (no stub), so label graphics sat on top of USB-C, TP4056, BMS, load switches, boost block.
