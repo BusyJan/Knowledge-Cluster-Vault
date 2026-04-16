@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 12:30
+- Context: User is inexperienced and asked the assistant to **lead** and decide when the schematic is finished.
+- Decision: Published a single **finish line** — `SCHEMATIC-FINISH-LINE.md` in the repo + `Tasks.md` / `README` in the vault. “Done” = Phases 1–5 (integrity, electrical honesty, parts/footprints, triaged warnings, BOM/handoff). Optional **schematic beta** if they want to learn layout before full cleanup.
+- Next step: Start Phase 1 (every sheet opens; flat merge scope); then tighten ERC and fix or waive pin/power issues.
+
 ## 2026-04-16 12:00
 - Problem: KiCad GUI error opening `subzero-next-flat.kicad_sch`: "Invalid symbol unit name prefix Q_NMOS_GSD_0_1" — embedded `lib_symbols` for extended symbols (e.g. 2N7002 extends Q_NMOS_GSD) kept parent inner unit names (`Q_NMOS_GSD_0_1`) while outer symbol was `Transistor_FET:2N7002`.
 - Fix: In `wire_schematics.py` `_get_sym_text_for_lib_symbols`, after merging parent body and renaming outer to `lib_id`, replace `(symbol "{parent_name}_` with `(symbol "{child_sym_name}_` so inner units are `2N7002_0_1`, etc. Regenerated subzero-next sheets and flat merge; `kicad-cli sch erc subzero-next-flat.kicad_sch` loads successfully.
