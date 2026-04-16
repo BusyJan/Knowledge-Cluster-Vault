@@ -2,6 +2,10 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 20:15
+- Insight: **`SPREAD_SCALE`** applies `x' = margin + (x - min_x) * scale` to manual-region `(at)`/`(xy)` — it **stretches relative spacing** (e.g. 1.38 = +38% between points), **not** a minimum gap between text vs symbols. Tight **vertical stacks** (e.g. `power.kicad_sch` USB CC resistors: `USB_CC1` at y≈47, R1 at ~56, `USB_CC2` at ~61 vs R1 value at ~60) stay **one-column**; label graphics + ref/value can still overlap after spread.
+- Next step: In KiCad, **move** the CC pair **sideways** or **increase** vertical pin-to-pin spacing / hide/move value fields; optional bump `WIRE_SCHEMATICS_LABEL_OFFSET` or edit stubs manually.
+
 ## 2026-04-16 19:30
 - Context: User wanted **wide spacing** between schematic blocks and **fewer confusing crossings**; concern about junction dots at crossings.
 - Insight: **`spread_schematic_layout.py`** scales `(at …)` / `(xy …)` in the manual region after `lib_symbols` and re-snaps to grid; **`wire_schematics.py`** must run after. In KiCad, **90° crossings without a junction dot do not short nets**; only **T-junctions / explicit junctions** tie nets.
