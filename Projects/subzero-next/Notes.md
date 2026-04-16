@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 23:30
+- Problem: **~50 components** across 10 sheets had **no NET_MAP entry** — `wire_schematics.py` was placing **fake `no_connect`** markers on pins that should have real connections (Q10–Q13, Q20–Q23, R60–R75, SW10–SW13, R100–R104, D30–D32, Q30–Q40, M1, BZ1, LS1, D10–D11, R90–R95, J5, R40–R44, U22, L3, C75–C76, U71, R80–R82, TH1, D1–D2, Q1–Q2). Also **`U51_GPS`** should have been **`U51`** to match schematic ref.
+- Decision: Added all missing `_add()` entries with correct nets and pin numbers (LED pins = K/A not 1/2). Fixed `U51_GPS` → `U51`. Result: **628 NET_MAP + 9 inferred** vs previous 482; **no_connect** dropped from **390 → 249**; **0 unmapped refs** across all 14 sheets, **210 unique components**, **666 pin→net** entries.
+- Next step: Open in KiCad, run ERC on hierarchical project, verify visually that PA switch networks (Q10/Q20/R60 etc.) now show correct gate/drain/source nets.
+
 ## 2026-04-16 22:30
 - Insight: **U32** **74LVC125** **GND**/**VCC** **stubs** were **not** buggy in **`wire_schematics.py`** — **pin 7** (GND) maps to **larger** schematic **Y** (~254 mm) than **pin 14** (VCC, ~228 mm) with symbol rot 0. A **manual** swap of **`global_label`** text had **crossed** the nets; **regenerating** with **`wire_schematics.py`** restores correct **GND**/**+3V3** placement. Comment added in **`wire_schematics.py`** next to **U32** **NET_MAP** to avoid repeating that mistake.
 - Next step: Do **not** hand-edit those two labels after regen unless pin geometry changes.
