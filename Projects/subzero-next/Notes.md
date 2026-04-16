@@ -204,3 +204,10 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Result: Schematic loads cleanly in KiCad GUI (no more popup error). ERC: 89 violations (down from 243 → 90 → 70 → 100 (when broken) → 89). 0 errors, all warnings. The 7 remaining `lib_symbol_mismatch` warnings are auto-resolvable by `Tools → Update Symbols from Library`. The 16 `footprint_link_issues` are this-machine library-path issues.
 - Next step: Reopen `subzero-next.kicad_pro` — it should load without the popup. Re-run Update from Library to clear the last 7 mismatches. Save and re-run ERC.
 
+
+## 2026-04-16 23:26
+- Insight: KiCad 7+ stores hierarchical annotation in per-symbol `(instances (project ... (path "/<sheet-uuid>") (reference "X") (unit N)))` blocks; the static `(property "Reference" ...)` is only the displayed label. A legacy schematic without `(instances)` blocks is reported as "not fully annotated" and can trigger false "Duplicate items <ref>" errors when the annotation engine tries to re-register each symbol.
+- Context: After embedding-fix work, ERC was clean (89 violations, 0 shorts) but opening the Annotate dialog showed "Error: Duplicate items J1" even though every sheet had exactly one Reference=J1 and no duplicate UUIDs. Root cause was 237 symbols with zero `(instances)` blocks.
+- Problem: KiCad couldn't locate each symbol on its hierarchical path, so the annotator fell back to flat-schematic logic and misfired on J1 (the only USB-C in `power.kicad_sch`).
+- Decision: Wrote `/tmp/add_instances.py` to walk every top-level `(symbol ...)` in each sheet (skipping `(lib_symbols)`), map the sheet file to its UUID from the root `.kicad_sch`, and inject `(instances (project "subzero-next" (path "/<sheet-uuid>") (reference "<ref>") (unit 1)))` immediately before each symbol's closing paren. 237 blocks added, netlist still clean (209 unique refs), ERC unchanged at 89.
+- Next step: User runs `Tools → Update Symbols from Library` then `Annotate` — should now succeed without the Duplicate J1 error and the "not fully annotated" banner should disappear.
