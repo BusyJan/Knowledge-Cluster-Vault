@@ -2,6 +2,10 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 12:00
+- Problem: KiCad GUI error opening `subzero-next-flat.kicad_sch`: "Invalid symbol unit name prefix Q_NMOS_GSD_0_1" — embedded `lib_symbols` for extended symbols (e.g. 2N7002 extends Q_NMOS_GSD) kept parent inner unit names (`Q_NMOS_GSD_0_1`) while outer symbol was `Transistor_FET:2N7002`.
+- Fix: In `wire_schematics.py` `_get_sym_text_for_lib_symbols`, after merging parent body and renaming outer to `lib_id`, replace `(symbol "{parent_name}_` with `(symbol "{child_sym_name}_` so inner units are `2N7002_0_1`, etc. Regenerated subzero-next sheets and flat merge; `kicad-cli sch erc subzero-next-flat.kicad_sch` loads successfully.
+
 ## 2026-04-15 23:30
 - Decision: wire_schematics.py now places `global_label` exactly at pin wire endpoints `(wx, wy)` with no wire stub. Stubs + label at stub end caused small coordinate mismatch vs KiCad’s embedded `lib_symbols` pin geometry → `unconnected_wire_endpoint` in ERC.
 - Added `WIRE_SCHEMATICS_SHEETS` env override so `WIRE_SCHEMATICS_SHEETS=.../subzero-next/sheets python3 wire_schematics.py` updates the greenfield tree without copying sheets.
