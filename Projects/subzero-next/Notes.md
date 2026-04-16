@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 21:30
+- Context: ERC.rpt at 21:01 still had **255 warnings, 0 errors** (~210 in flat root `Sheet /`, ~45 in subsheets).
+- Decision: Added **`subzero-next/scripts/fix_erc_mechanical.py`** — idempotent cleanup post-regen that (a) drops **local `label`** siblings of a `global_label` of the same name (fixes `[same_local_global_label]`), (b) removes dangling **`no_connect`** at listed coords, (c) deletes listed **orphan `power:` symbols** (`#PWR032`, `#PWR034`, `#PWR036` on RF 2.4GHz / RF LoRa / NFC — their `+3V3` net has no counterpart on sheets whose supply is `V3V3_{LoRa,nRF24,NFC}`). Also fixed **`wire_schematics.py`** `Device:Crystal` fallback (was vertical; Crystal is horizontal with pins at x=±3.81 y=0) so **Y1** now gets `FE1_XI` / `FE1_XO` labels from disk definition.
+- Result: 13 redundant local labels removed (power/rf-24ghz/rf-lora/rf-subghz), 3 dangling no_connects gone, 3 orphan `#PWR` symbols removed, Y1 wired. Workflow order now `wire_schematics.py` → `connect_power_symbols.py` → `fix_erc_mechanical.py`.
+- Next step: In KiCad open `subzero-next.kicad_pro`, run **Tools → Update Symbols from Library** (kills `lib_symbol_mismatch`), install KiCad footprint libs + `project-apex` lib (kills `footprint_link_issues`), use **F11 highlight net** to find the 4 supply shorts (`+3V3↔GND` in peripherals & mcu-nrf52840, `+3V3↔I2C_SDA` in io-expander, `GND↔V3V3_NFC` in nfc-rfid), add remaining **74LVC125 U32** units B/C/D/E or swap to single-gate variant, add `PWR_FLAG` on `U1 V_CC`, `U14 ON`, `D20 VDD` rails, then re-run ERC on the **hierarchical** project (not flat) for the authoritative count.
+
 ## 2026-04-16 20:05
 - Insight: **`Downloads/ERC.rpt`** (~255 warnings, 0 errors) matches **flat** schematic: **`***** Sheet /`** is full of **`label_dangling`** / **`isolated_pin_label`** — expected noise on one merged canvas, **not** the primary backlog for connectivity. **`footprint_link_issues`** and **`lib_symbol_mismatch`** reflect **local** KiCad footprint/symbol resolution, not Python net mapping.
 - Decision: Documented **`PRO-SCHEMATIC-WORKFLOW.md` §5** — run ERC on **`subzero-next.kicad_pro`** first; use flat ERC only for spot checks. Subsheet issues (e.g. **`multiple_net_names`**, **`U32` missing units**, **`#PWR` stubs**) are triaged on **`sheets/*.kicad_sch`**.
