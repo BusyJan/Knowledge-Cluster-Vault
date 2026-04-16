@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 18:00
+- Context: User asked whether **manual** schematic layout is OK; whether **`wire_schematics.py`** resets positions; requested **full connectivity-style check**.
+- Insight: Script removes only the block from **`WIRE_SCHEMATICS_PY_V1`** marker through **`(sheet_instances`** — **symbol `(at …)` placements are not touched**. Re-run **regenerates** auto wires/labels/no_connect/lib_symbols in that block; manual edits **inside** that region are overwritten.
+- Decision: Moved **`=== TPS63020 BUCK-BOOST 3.3V ===`** from `(25,100)` to `(25,136)` — it was drawn over **U2 DW01A** (U3 buck is at y≈150). Full ERC on `subzero-next.kicad_sch`: **1005** violations (project severities → warnings); top: `endpoint_off_grid` ~729, `label_dangling` ~147, `pin_not_connected` ~37; **241** symbol instances across 14 sheets.
+- Next step: User tidy in KiCad; then ERC triage; fix or waive real issues.
+
 ## 2026-04-16 17:00
 - Problem: User marked **USB + TP4056** area — IC drawn **on top of** USB-C; R3 on IC; TH1 on notes; not only label text.
 - Context: **Label script cannot fix symbol coordinates** — only nets. J1 at (50,35), U1 was (50,55): ~20mm vertical gap insufficient for tall USB symbol + ESOP8.
