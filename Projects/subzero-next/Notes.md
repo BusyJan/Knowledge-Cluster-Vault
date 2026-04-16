@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 20:05
+- Insight: **`Downloads/ERC.rpt`** (~255 warnings, 0 errors) matches **flat** schematic: **`***** Sheet /`** is full of **`label_dangling`** / **`isolated_pin_label`** — expected noise on one merged canvas, **not** the primary backlog for connectivity. **`footprint_link_issues`** and **`lib_symbol_mismatch`** reflect **local** KiCad footprint/symbol resolution, not Python net mapping.
+- Decision: Documented **`PRO-SCHEMATIC-WORKFLOW.md` §5** — run ERC on **`subzero-next.kicad_pro`** first; use flat ERC only for spot checks. Subsheet issues (e.g. **`multiple_net_names`**, **`U32` missing units**, **`#PWR` stubs**) are triaged on **`sheets/*.kicad_sch`**.
+- Next step: Re-export ERC from **hierarchical** project and compare counts; fix libraries/paths and real shorts; place **74LVC125** remaining units or split symbol.
+
 ## 2026-04-16 23:30
 - Problem: **~50 components** across 10 sheets had **no NET_MAP entry** — `wire_schematics.py` was placing **fake `no_connect`** markers on pins that should have real connections (Q10–Q13, Q20–Q23, R60–R75, SW10–SW13, R100–R104, D30–D32, Q30–Q40, M1, BZ1, LS1, D10–D11, R90–R95, J5, R40–R44, U22, L3, C75–C76, U71, R80–R82, TH1, D1–D2, Q1–Q2). Also **`U51_GPS`** should have been **`U51`** to match schematic ref.
 - Decision: Added all missing `_add()` entries with correct nets and pin numbers (LED pins = K/A not 1/2). Fixed `U51_GPS` → `U51`. Result: **628 NET_MAP + 9 inferred** vs previous 482; **no_connect** dropped from **390 → 249**; **0 unmapped refs** across all 14 sheets, **210 unique components**, **666 pin→net** entries.
