@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 15:00
+- Problem: Schematic screenshots showed **labels, NC markers, and passives overlapping** symbols — unreadable.
+- Context: `wire_schematics.py` placed **global_label** exactly at pin coordinates (no stub), so label graphics sat on top of USB-C, TP4056, BMS, load switches, boost block.
+- Decision: Default **`LABEL_OFFSET_MM = 5.08`** (4× grid); `label_offset_world()` moves label along outward pin normal; **`make_global_label(..., pin_x, pin_y)`** emits a **wire** pin→label. Env **`WIRE_SCHEMATICS_LABEL_OFFSET=0`** restores legacy. Regenerated all `subzero-next/sheets/*.kicad_sch`. ERC spot-check: no `unconnected_wire_endpoint` flood on `power.kicad_sch`.
+- Next step: In KiCad, **move symbols** that were drawn on top of each other (placement is still manual); rerun flat merge if used.
+
 ## 2026-04-16 14:00
 - Context: User wants schematic first then PCB, **professional** process, and to know **which schematic** is the real one.
 - Decision: **Authoritative** project = `subzero-next.kicad_pro` + root `subzero-next.kicad_sch` + `sheets/*.kicad_sch`. **`subzero-next-flat`** = optional merged view for review/print; not primary for Update PCB. Documented in repo `PRO-SCHEMATIC-WORKFLOW.md` + refreshed `README.md`.
