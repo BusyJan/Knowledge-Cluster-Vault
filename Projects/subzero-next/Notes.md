@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 13:00
+- Context: User wants all relevant files at “one point” and asked whether **PCB editor** files must be finished too.
+- Insight: Schematic finish (ERC, nets, footprints on symbols) and **PCB finish** (routing, **DRC**, fab) are **sequential milestones** — not the same checklist. `subzero-next.kicad_pro` currently has **no** `.kicad_pcb` linked; legacy boards are under `project-apex/`. Unifying means one project folder + **Update PCB from Schematic** when ready.
+- Decision: Documented in repo `SCHEMATIC-FINISH-LINE.md` (section “One project folder: schematic files vs PCB editor files”).
+
 ## 2026-04-16 12:30
 - Context: User is inexperienced and asked the assistant to **lead** and decide when the schematic is finished.
 - Decision: Published a single **finish line** — `SCHEMATIC-FINISH-LINE.md` in the repo + `Tasks.md` / `README` in the vault. “Done” = Phases 1–5 (integrity, electrical honesty, parts/footprints, triaged warnings, BOM/handoff). Optional **schematic beta** if they want to learn layout before full cleanup.
