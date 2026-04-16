@@ -198,4 +198,11 @@
 - Problem: Highly intricate symbols can look impressive at large size yet become hard to distinguish, remember, or reproduce cleanly at small sizes.
 - Decision: Keep the current crystal as an important visual asset and stylistic reference, but plan a simpler primary logo derived from it for small-scale and high-recognition use cases.
 - Next step: When branding work resumes, create at least two variants: a simplified master mark and the existing detailed emblem for hero/marketing art.
+## 2026-04-16 07:24
+
+- Insight: Logo refinement guidance: the crystal mark becomes even more sensitive to over-detail in black-on-white usage. The core shape is strong, but simplification should preserve the six-point crystal silhouette while reducing interior cuts, micro-spikes, and visual noise so the mark stays recognizable in small monochrome contexts.
+- Context: User said the logo will likely end up black on white and also feels somewhat too complex. Practical branding implication: monochrome use cases will expose complexity more harshly than the current cyan-on-black presentation.
+- Problem: Detailed marks can feel impressive in a hero treatment but lose clarity and distinctiveness once converted to flat monochrome, favicon, silkscreen, packaging, or tiny UI contexts.
+- Decision: Keep the current emblem as the expressive/high-detail version, but derive a simpler primary mark optimized for black-on-white use with stronger negative space, fewer internal cuts, and cleaner geometry.
+- Next step: When logo work resumes, create a 3-tier system: hero emblem, primary simplified mark, and tiny icon/favicon variant.
 
