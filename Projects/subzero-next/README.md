@@ -4,7 +4,7 @@ title: "subzero-next (greenfield KiCad)"
 slug: "subzero-next"
 status: active
 created: "2026-04-14 19:58:51"
-updated: 2026-04-16 13:05:00
+updated: 2026-04-16 14:00:00
 repo: ""
 tags: [project]
 ---
@@ -17,6 +17,7 @@ tags: [project]
 
 ## Key insights
 
+- **Canonical KiCad project:** `ESP Projects/subzero-next/subzero-next.kicad_pro` + `sheets/*.kicad_sch`. **Not** `subzero-next-flat` (review-only). Pro workflow: repo `PRO-SCHEMATIC-WORKFLOW.md`.
 - **Finished** means: phases in [[Tasks]] / repo `SCHEMATIC-FINISH-LINE.md` are complete — not merely “ERC errors = 0” via relaxed rules.
 - First-time designs prioritize **clarity and reviewability** over zero warnings.
 

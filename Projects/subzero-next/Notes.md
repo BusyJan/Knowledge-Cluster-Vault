@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-16 14:00
+- Context: User wants schematic first then PCB, **professional** process, and to know **which schematic** is the real one.
+- Decision: **Authoritative** project = `subzero-next.kicad_pro` + root `subzero-next.kicad_sch` + `sheets/*.kicad_sch`. **`subzero-next-flat`** = optional merged view for review/print; not primary for Update PCB. Documented in repo `PRO-SCHEMATIC-WORKFLOW.md` + refreshed `README.md`.
+- Next step: Work through `SCHEMATIC-FINISH-LINE.md` Phase 1; then tighten ERC and procurement fields before **File → New Board** in the same project.
+
 ## 2026-04-16 13:00
 - Context: User wants all relevant files at “one point” and asked whether **PCB editor** files must be finished too.
 - Insight: Schematic finish (ERC, nets, footprints on symbols) and **PCB finish** (routing, **DRC**, fab) are **sequential milestones** — not the same checklist. `subzero-next.kicad_pro` currently has **no** `.kicad_pcb` linked; legacy boards are under `project-apex/`. Unifying means one project folder + **Update PCB from Schematic** when ready.
