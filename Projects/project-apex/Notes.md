@@ -219,4 +219,11 @@
 - Problem: A strong display can create pressure to overbuild the interface, stretching development and delaying the product.
 - Decision: Keep the premium-screen recommendation for Main, but constrain v1 UI to a small, disciplined interaction model: few views, strong information hierarchy, low animation complexity, and reuse across future devices.
 - Next step: When UI work starts, design the Main interface as a compact system shell rather than a feature-heavy app environment, so the display feels premium without requiring an enormous software stack.
+## 2026-04-16 15:43
+
+- Insight: UI prototyping recommendation: start with an HTML/CSS mockup for SubZero Main before implementing the embedded UI. This is a strong way to validate layout, navigation, information hierarchy, and overall product feel cheaply before committing to firmware/UI framework complexity.
+- Context: User asked whether it would be good to first program an HTML mockup for the UI. Given the premium-screen direction and concern about software complexity, a browser-based mockup is a good intermediate step.
+- Problem: Jumping straight into embedded UI code risks wasting time on rendering/framework details before the UX structure is proven.
+- Decision: Use HTML mockups early for screen flows and visual system validation, but avoid overbuilding them into full web apps. Treat them as a fast prototyping layer, not the final product architecture.
+- Next step: Prototype the main screens and navigation in HTML first, then translate only the validated UI patterns into the embedded implementation.
 
