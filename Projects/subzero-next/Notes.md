@@ -266,3 +266,32 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: User asked "what's the best one?" without prior knowledge. Trade-off table: TX power vs battery drain vs RF design complexity vs ecosystem fit. The 22S is the clear sweet spot for a battery-powered Flipper-clone form factor.
 - Final 5 vendor-module footprints to draw next session: U30+U31 (Ebyte E07-433M20S), U33 (Ebyte E01-2G4M27SX), U34 (Ebyte E22-900M22S — newly chosen), U51 (Zhongkewei ATGM336H GPS). All have public datasheet mechanical drawings → straightforward custom `.kicad_mod` generation programmatically (pad layout = castellated rectangles around perimeter, courtyard = module body, silkscreen outline + pin 1 marker).
 - Next step: User explicitly deferred — will issue a separate prompt asking me to draw the 5 footprints. Hold off until that prompt arrives.
+
+## 2026-04-17 15:03
+- Insight: Generated all 5 vendor-module footprints programmatically into `subzero-next/libs/project-apex.pretty/` (4 unique `.kicad_mod` files; U30 and U31 share the E07 footprint). Pattern follows KiCad's stock `RF_Module:Ai-Thinker-Ra-01-LoRa.kicad_mod`: SMD `rect` pads on F.Cu+F.Mask+F.Paste, body silkscreen with notch + dot at pin 1, F.Fab outline + REFERENCE text, courtyard at body+0.5mm. The project's `fp-lib-table` already had `project-apex` registered as `${KIPRJMOD}/libs/project-apex.pretty` — so the new footprints were instantly visible to `kicad-cli` without table edits.
+- Dimension sources used (all from official datasheets):
+  - **E07-433M20S**: 18×32mm, 16 castellated pads, 1.27mm pitch, 8 per long side. Source: cdebyte product page + ebyteiot pin table.
+  - **E01-2G4M27SX**: 14.5×18mm, 16 castellated pads, 1.27mm pitch, 8 per long side. Source: cdebyte spec ("Connector: 1.27mm pin", "Size: 18*14.5mm").
+  - **E22-900M22S**: 14×20mm, 20 castellated pads, 1.27mm pitch, 10 per long side. Source: hubtronics-hosted Ebyte E22-900M22S User Manual chapter 3 (full pin definition + dimensions). NOTE: discovered conflicting pinouts published — Ebyte's own PDF lists 20 pins, while LCSC C411293 datasheet lists 22 pins. Went with Ebyte's official 20-pin layout.
+  - **ATGM336H-5N**: 9.7×10.1mm, 18 castellated pads, **1.1mm pitch** (not 1.27 — this is the only non-Ebyte-spaced module), 9 per long side. Source: Zhongkewei datasheet (LCSC C2940946) chapter 2.1 dimension table (A=10.1, B=9.7, E=1.1mm) + chapter 2.3 Top View pinout figure + chapter 2.4 pin definition table. Most complete + reliable datasheet of the four.
+- **Critical discovery**: The project's symbols (`project-apex.kicad_sym`) for these vendor modules are **simplified** (10–12 pins each) versus the actual physical modules (16/16/20/18 pads). This is fine — KiCad supports duplicate pad numbers (which auto-short, used here for extra GND pads) and unnumbered/extra-numbered pads (no-net mechanical-only). Wrote the generator so each footprint:
+  - Maps schematic-symbol pin numbers to **functionally correct** physical pad positions (e.g., E07 symbol pin 3 = "VCC" → physical pin 11 of the CC1101 module = VCC, NOT physical pin 3 = SCK).
+  - Numbers the extra physical pads (TX_EN, RX_EN, NC, RESERVED, extra GNDs) past the symbol's pin range (13, 14, 15, …) so they appear as "no net" in netlist — flagged by DRC, user can wire if needed.
+- **Per-module caveats logged in the footprint `descr` block**:
+  - E07: pads 13 (TX_EN) and 14 (RX_EN) MUST be wired to MCU GPIOs for full RX/TX operation per CC1101 PA/LNA datasheet. Symbol currently doesn't expose them — will likely show as DRC warnings once PCB layout starts. Either update the symbol to expose TX_EN/RX_EN or wire them via on-board jumpers.
+  - E01: peak TX current ~720mA — power rail must source it; place 10µF decoupling close to VCC pad.
+  - E22: TXEN (pad 16) should tie to SX1262 DIO2 in symbol so chip auto-controls TX RF switch; RXEN (pad 17) optional unless external T/R switching used.
+  - ATGM336H: symbol pins 7/8 are mislabeled "SDA/SCL" but the chip is UART-only (those are RXD1/TXD1 — the secondary UART). No I2C exists on this module. Symbol relabel recommended.
+- Stamping: Wrote `/tmp/sheets-backup-before-fp-r4`-backed sheet pass; same idempotent paren-walker as previous rounds. Mapping: `project-apex:E07-433M20S → project-apex:E07-433M20S`, `project-apex:E01-2G4M27SX → project-apex:E01-2G4M27SX`, `project-apex:SX1262_SPI_Module → project-apex:E22-900M22S`, `project-apex:ATGM336H → project-apex:ATGM336H`. 5 instances stamped (U30, U31, U33, U34, U51) across 4 sheets (rf-subghz, rf-24ghz, rf-lora, peripherals).
+- Verification: `kicad-cli sch erc` → "Found 0 violations". `kicad-cli sch export netlist` → all 210 real components have a footprint. **Final coverage: 210/210 = 100%. ERC: 0/0.**
+
+| Module | Body (mm) | Pads | Pitch | Refs |
+|---|---|---|---|---|
+| E07-433M20S | 18 × 32 | 16 | 1.27 | U30, U31 |
+| E01-2G4M27SX | 14.5 × 18 | 16 | 1.27 | U33 |
+| E22-900M22S | 14 × 20 | 20 | 1.27 | U34 |
+| ATGM336H | 9.7 × 10.1 | 18 | 1.10 | U51 |
+
+- Decision: Schematic-side work is now **done**. Project is ready for the PCB layout phase (`File → New → PCB from Schematic`). Generated footprints are PRELIMINARY — must be visually overlaid against each datasheet's mechanical drawing in the KiCad footprint editor (Ctrl+L → project-apex → open each footprint → measure pad positions vs datasheet PDF figure) before sending to fab. Tolerance is roughly ±0.2mm, but castellated pad placement is unforgiving — even 0.3mm off and the module won't sit on the pads.
+- Next step: User opens KiCad, runs `Tools → Update PCB from Schematic` (will be empty PCB, all 210 footprints land in a pile in the corner), then begins layout. The 4 vendor-module footprints will visually appear with proper rectangular bodies + correct pad counts; user should drag each one to its intended location and check pad positions match datasheet before locking.
+- Lesson: **For programmatically generated footprints from datasheets, always (i) match symbol pin labels to the FUNCTIONAL meaning of each physical pad (not the pad number), (ii) expose ALL physical pads (extras get duplicate or out-of-range numbers, never omit copper or the module won't sit flat), (iii) document the symbol↔pad mapping in the footprint `descr` field for the next person, and (iv) flag any symbol pins missing from the symbol that the chip actually requires (E07's TX_EN/RX_EN are the textbook example).**
