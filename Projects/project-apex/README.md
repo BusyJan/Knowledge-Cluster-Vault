@@ -4,7 +4,7 @@ title: project-apex (SubZero KiCad)
 slug: project-apex
 status: active
 created: 2026-04-12 12:00:00
-updated: 2026-04-17 18:14:48
+updated: 2026-04-17 18:17:00
 repo: ""
 tags: [project, pcb, kicad]
 ---
