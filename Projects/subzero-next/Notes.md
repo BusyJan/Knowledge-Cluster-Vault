@@ -238,3 +238,19 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Codified the geometry rule and shipped 4 spare-unit instances + 8 power symbols + 3 NC markers on `rf-subghz.kicad_sch`. Each spare buffer (B/C/D): `~OE → +3V3` (disable), `A → GND` (tie input low), `Y → NC` (tristate output, leave floating). Unit E (the power-only unit): `VCC → +3V3`, `GND → GND`. Proper CMOS hygiene — no floating gate inputs.
 - Final ERC state: **0 errors, 0 warnings.** Schematic is 100% clean. 210 unique components in netlist; `+3V3` net has U32 pins {4, 10, 13, 14}; `GND` net has U32 pins {5, 7, 9, 12}.
 - Lesson: When emitting schematic geometry programmatically, ALWAYS verify the first iteration's output via `kicad-cli sch export netlist` and check which net each pin landed on. ERC + visual inspection alone won't catch a sign error if the wrong-sign symbol still happens to be at a valid coord.
+
+## 2026-04-17 13:50
+- Insight: Bulk footprint assignment for passives is safe, programmatic, and idempotent. Wrote `/tmp/assign_passive_footprints.py` — a paren-walker that finds every top-level `(symbol (lib_id "X") ...)` instance (skipping `(lib_symbols ...)` defs which start `(symbol "LIB:NAME"`) and stamps the empty `(property "Footprint" "" ...)` value with a sensible default keyed off `lib_id`. **Skip rule:** if the property already has a non-empty value, leave it alone (no clobbering manual picks). Safe to re-run.
+- Defaults chosen (all 0603 metric SMD; common, cheap, JLC/LCSC stocked):
+  - `Device:R[/_Small/_US]` → `Resistor_SMD:R_0603_1608Metric`
+  - `Device:C[/_Small]` → `Capacitor_SMD:C_0603_1608Metric`
+  - `Device:C_Polarized[/_Small]` → `Capacitor_SMD:CP_Elec_5x5.4` (generic small electrolytic)
+  - `Device:L[/_Small/_Core_Iron]` → `Inductor_SMD:L_0603_1608Metric`
+  - `Device:Ferrite_Bead[/_Small]`, `Device:FerriteBead` → `Inductor_SMD:L_0603_1608Metric`
+  - `Device:D[/_Small/_TVS/_Schottky/_Zener]` → `Diode_SMD:D_SOD-123`
+  - `Device:LED[/_Small]` → `LED_SMD:LED_0603_1608Metric`
+- **Intentionally skipped** (vendor-specific package needed): `Device:C_Variable` (trimmer), `Device:Crystal` (3225 vs 5032 vs HC-49 etc).
+- Result: 129 passives stamped across 13 sheets in one pass. Netlist coverage jumped from 47/210 → 176/210 (84%). ERC remained at 0/0 — confirmed via `kicad-cli sch erc` after the bulk write.
+- Remaining 34 footprintless parts (need user pick in CvPcb or per-part assignment): 14× connectors (USB-A/USB-C, U.FL coax, 0.1″ pin headers — vendor-dependent), 9× ICs (TPS63020/TPS61232/CC1101/nRF24/SX1262/FT6236/ATGM336H/TSOP38238 — exact package per datasheet), 5× switches (4× SW_Push tactile, 1× SW_SPST slide), 1× crystal (Y1), 1× trimmer (C76), 1× transistor (Q30 = 2N2222 — TO-92 vs SOT-23), 1× motor (M1), 1× speaker (LS1), 1× buzzer (BZ1).
+- Decision: Hand back to user for the 34 specialty parts. ICs/connectors/switches are quick in CvPcb (~30–60 min); after that, the project is ready for `Tools → Generate → PCB from Schematic` and the layout phase begins.
+- Lesson: Always back up `sheets/` first (`cp -r sheets /tmp/sheets-backup-before-fp`), always re-export netlist + re-run ERC after a bulk schematic write, and never overwrite an already-set footprint value (skip-if-non-empty rule). The KiCad footprint libraries on this box live at `/tmp/squashfs-root/usr/share/kicad/footprints/` (AppImage) — different from the usual `/usr/share/kicad/footprints/` install path.
