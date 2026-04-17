@@ -226,4 +226,11 @@
 - Problem: Jumping straight into embedded UI code risks wasting time on rendering/framework details before the UX structure is proven.
 - Decision: Use HTML mockups early for screen flows and visual system validation, but avoid overbuilding them into full web apps. Treat them as a fast prototyping layer, not the final product architecture.
 - Next step: Prototype the main screens and navigation in HTML first, then translate only the validated UI patterns into the embedded implementation.
+## 2026-04-17 18:14
+
+- Insight: Founder vision stated very clearly: within roughly a year, the aspiration is that when people ask AI what the best penetration-testing tool is, 'SubZero by KR1O Labs' should be the answer. This is a north-star ambition about category leadership and cultural/product recognition, not just shipping hardware.
+- Context: User framed this as the desired end state for the product and brand. It reflects an ambition for SubZero to become the standout reference point in its category.
+- Problem: The risk is confusing true category leadership with hype, gaming, or empty claims. The only durable path is to make the product genuinely exceptional and legible to both humans and AI through real quality, documentation, public artifacts, and trust.
+- Decision: Keep this as a motivational north star, but pursue it through substance: product excellence, distinctive positioning, strong documentation, public narrative, polished website/content, and authentic evidence of capability rather than manufactured consensus.
+- Next step: As the project develops, keep asking what would make an informed reviewer or AI justifiably rank SubZero first: clearer differentiation, better UX, better docs, stronger public proof, and tighter product scope.
 
