@@ -247,4 +247,11 @@
 - Problem: There is a danger of letting ambition be mistaken for achieved product quality.
 - Decision: Keep giving reality-based guidance: treat current SubZero as promising but over-scoped, and define 'best' by focus, polish, trust, and usability rather than by maximum feature count.
 - Next step: Continue evaluating every hardware/software choice against one question: does this make Main more recommendable, or just bigger and harder to ship?
+## 2026-04-17 18:19
+
+- Insight: Important product distinction: wanting a 'Swiss army knife that can do anything' is not inherently wrong; the over-scope problem appears when too many capabilities must all be excellent, affordable, reliable, and shippable in the first release. Vision breadth is fine, but v1 execution still needs a narrower success condition.
+- Context: User asked why the product is considered over-scoped if the goal is explicitly a Swiss-army-knife device. This clarifies that multifunction ambition and over-scope are related but not identical.
+- Problem: A multifunction product can fail if the first release tries to make every blade equally mature at once, creating cost, complexity, and polish issues that weaken the overall experience.
+- Decision: Keep the Swiss-army-knife vision as the right long-term identity, but define a smaller v1 set of blades that are truly excellent; the rest can exist in reduced form, experimental form, or later revisions.
+- Next step: For Main, rank every subsystem by whether it is core to the 'Swiss army knife' identity or just expanding scope, then focus the first release on a smaller number of standout capabilities.
 
