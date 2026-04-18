@@ -233,4 +233,11 @@
 - Problem: Display choice depends on the real active board family, and older notes contain at least one outline figure that could confuse selection.
 - Decision: Treat 80 x 140 mm portrait-oriented TOP/MAIN boards as the current primary size baseline for display search, while noting that final visible display window and keepout still depend on top-board layout and UI/button placement.
 - Next step: When display sourcing starts, evaluate portrait-friendly modules against the 80 x 140 TOP board, central battery/mechanical constraints, touch controller compatibility, FPC routing, brightness, and bezel footprint rather than relying on the older 120 x 80 placeholder note.
+## 2026-04-18 13:24
+
+- Insight: Target-audience and ethics framing clarified: SubZero should be positioned for authorized testing, research, protocol analysis, hardware labs, and advanced learning, while openly acknowledging that dual-use tools can be misused. The right response to critics is not denial but a serious stance on lawful, consent-based use, documentation, and responsible positioning.
+- Context: User asked who the target audience is and how to explain the product to critics, noting that the device still has unethical potential. This is a durable messaging question for the website and brand voice.
+- Problem: Dual-use hardware invites criticism if marketed carelessly or framed as a novelty 'hacking' tool. Pretending misuse is impossible destroys credibility; glorifying misuse destroys trust.
+- Decision: Use a sober dual-use narrative: the device is built for researchers, labs, educators, and authorized assessments; like many security and RF tools, it can be abused, which is why the brand must emphasize consent, lawfulness, and serious documentation rather than edgy marketing.
+- Next step: Turn this into a public-facing ethics block, FAQ language, and tone guidelines for the website so the product is explained consistently and credibly.
 
