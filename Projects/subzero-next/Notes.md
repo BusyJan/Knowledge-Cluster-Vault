@@ -2,6 +2,14 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-18 12:53
+- Insight: Industrial-design spec refined (v4 render `assets/subzero-showcase-v4.png` approved). Two adjustments to the 12:47 spec.
+- Adjustment 1 — Power button: **Down to ONE power button on the right side only**, positioned directly below the right-side SMA in the upper portion of the right edge (was: 2 mirrored buttons, one each side). Cleaner industrial-design language (Apple-style "one button does one thing in one place"), saves one BoM entry + one PCB trace. Left side is now completely smooth uninterrupted matte-black aluminum from below the upper-left SMA all the way to the bottom corner.
+- Adjustment 2 — SMA placement on side edges: Both side SMAs (left = nRF24, right = ESP32-C6) move to the **upper ~15 mm of the side edge**, essentially aligned in height with the top-edge SMAs (was: positioned mid-upper). Visually unifies the antenna cluster at the top of the device, frees the entire mid + lower side edges for clean ungbroken aluminum surface.
+- Adjustment 3 — Encoder visual: Confirmed **strictly 4 cardinal arrows only** (UP/DOWN/LEFT/RIGHT at 12/3/6/9 o'clock) on the outer rim — no diagonal arrows, no 8-way layout. Matches the actual ANO mechanism (4 directional press zones + center OK, not 8).
+- Decision unchanged: matte-black anodized CNC aluminum case, custom 22mm anodized cap on Bourns PVA1 ANO, 6 silver nickel-plated SMAs (4 top + 1 each side at the top corners), 3.5" IPS TFT 320×480, BACK button right of encoder, 5 RGB pinhole status LEDs at bottom edge.
+- Next step: same as 12:47 — finalize display module pinout → integrate into J30 → re-export netlist → re-run `generate_p5.py`. Then sourcing-quote round.
+
 ## 2026-04-18 12:47
 - Insight: **Industrial-design language locked** for the premium production version (prototype stays raw PCB / no case / standard plastic ANO). Showcase render `assets/subzero-showcase-v3.png` approved as the visual North Star after 3 iterations.
 - Context: User pushed for an Apple/Leica-grade premium build after seeing the first hand-held mockup. Three render iterations narrowed down: v1 (gunmetal + hand) → v2 (all-black, wrong encoder + 3 SMAs + gold + power buttons in grip zone) → v3 (correct).
