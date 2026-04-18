@@ -240,4 +240,11 @@
 - Problem: Dual-use hardware invites criticism if marketed carelessly or framed as a novelty 'hacking' tool. Pretending misuse is impossible destroys credibility; glorifying misuse destroys trust.
 - Decision: Use a sober dual-use narrative: the device is built for researchers, labs, educators, and authorized assessments; like many security and RF tools, it can be abused, which is why the brand must emphasize consent, lawfulness, and serious documentation rather than edgy marketing.
 - Next step: Turn this into a public-facing ethics block, FAQ language, and tone guidelines for the website so the product is explained consistently and credibly.
+## 2026-04-18 18:33
+
+- Insight: Confirmed the current six external antenna connectors in prototype-5: CC1101_A, CC1101_B, ESP32-S3 WiFi/BLE, nRF24, ESP32-C6 WiFi/BLE/802.15.4, and LoRa. GPS is not one of the six; it uses a separate 25x25 patch antenna on the TOP board. nRF52840 (MDBT50Q) uses its module antenna, and NFC uses an external coil rather than one of the six RF connectors.
+- Context: User asked which six antennas the device currently has. Cross-checked bom-lcsc.csv with prototype-5 PCB outputs.
+- Problem: Older BOM language mentions six u.FL antenna connectors generically, but the active prototype-5 PCB now names the actual RF assignments explicitly and uses edge-mount coax connectors in the layout.
+- Decision: Use the prototype-5 mapping as the current authoritative answer for the six external antennas/connectors.
+- Next step: When finalizing mechanicals, decide whether those six stay as SMA, revert to u.FL+pigtail, or mix connector types by radio class.
 
