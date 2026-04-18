@@ -226,4 +226,11 @@
 - Problem: Jumping straight into embedded UI code risks wasting time on rendering/framework details before the UX structure is proven.
 - Decision: Use HTML mockups early for screen flows and visual system validation, but avoid overbuilding them into full web apps. Treat them as a fast prototyping layer, not the final product architecture.
 - Next step: Prototype the main screens and navigation in HTML first, then translate only the validated UI patterns into the embedded implementation.
+## 2026-04-18 11:46
+
+- Insight: Display-selection context consolidated: the strongest current mechanical baseline for SubZero is the 2-board stacked format with identical TOP and MAIN boards at 80 x 140 mm, centered around a 60 x 140 x 4 mm Li-Po battery zone. Earlier assembly notes still mention ~120 x 80 mm as an adjustable board outline, but the prototype series and current product context consistently point to the 80 x 140 family as the active direction.
+- Context: User asked for the whole project context plus the current size so a display can be selected. Relevant files: prototypes/README.md, subzero-product-context.txt, and assembly-notes.md.
+- Problem: Display choice depends on the real active board family, and older notes contain at least one outline figure that could confuse selection.
+- Decision: Treat 80 x 140 mm portrait-oriented TOP/MAIN boards as the current primary size baseline for display search, while noting that final visible display window and keepout still depend on top-board layout and UI/button placement.
+- Next step: When display sourcing starts, evaluate portrait-friendly modules against the 80 x 140 TOP board, central battery/mechanical constraints, touch controller compatibility, FPC routing, brightness, and bezel footprint rather than relying on the older 120 x 80 placeholder note.
 
