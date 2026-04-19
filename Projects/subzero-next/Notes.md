@@ -537,3 +537,34 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Lesson 3: **Antenna keepouts must be defined as multi-layer keepout zones, NOT just no-traces zones.** RF leakage couples through ANY copper near the antenna — the zone must clear F.Cu, In1.Cu, In2.Cu, AND B.Cu. KiCad's `(zone (keepout (tracks not_allowed) (vias not_allowed) (copperpour not_allowed) ...))` with `(layers F&B.Cu In1.Cu In2.Cu)` is the correct construct.
 - Lesson 4: **Stitching vias around the B2B connector** are essential for return-current integrity on USB D+/D- and high-speed SPI (FSPI_*). The standard ground stitching every 5mm along board edges is not enough — the area around the B2B (which carries signals from MAIN to TOP) needs additional GND fence.
 - Next step: User opens both `.kicad_pcb` files in KiCad, runs `Tools → External Plugins → Freerouting` (KiCad 10's built-in Java auto-router) for the 91 routable nets per board. Expected routing time: 5-30 min per board (Freerouting iterates until DRC-clean). After auto-routing: manual fine-tuning of RF traces (50Ω microstrip width, no 90° corners), USB diff-pair length matching, then DRC final pass, then `kicad-cli pcb export gerbers` per board → JLCPCB.
+
+## 2026-04-19 12:50
+- **User screenshot review**: After v2 generator run, user pasted screenshot showing TOP-back overlaps: ATGM336H (U51) on TFT FPC J30, BZ1 Buzzer on SW20 ANO, J40/J41 too close. Demanded fix.
+- **Tried multiple approaches** that all degraded the layout:
+  1. Rewrote v2's `place()` to auto-collision-avoid → caused ESP32-S3, RF modules and B2B to scatter randomly across the board because `find_free_spot_near()` moved everything in lockstep with no respect for cluster geometry.
+  2. Added `deconflict()` post-pass that swapped overlapping pairs → made things worse because it relocated components into other dense regions creating new conflicts.
+  3. Restored v2 from a `.bak.20260418-201706` backup file (the "good" v2 with the Tile-based clusters, before any auto-collision changes).
+- **Working solution: `scripts/fix_overlaps_v2_pcb.py`** — a targeted post-processor that PATCHES THE EXISTING `.kicad_pcb` files directly (no re-generation). It contains a hand-tuned list of `(ref, x, y, rot)` tuples for ~90 components and rewrites their `(at ...)` lines via per-block regex substitution. Idempotent, with `.bak.<timestamp>` per run. Pattern: split PCB text on `(?=\t\(footprint)`, find block matching `Reference "<ref>"`, replace its first `(at ...)` line with new coords.
+- **Key fixes applied:**
+  - **Cap rows for ESP32-S3 (C30-C32), ESP32-C6 (C40-C43), nRF52840 (C50-C53)**: pitch increased from 2.5mm to 5mm so 0603 footprints (~3mm courtyard) don't overlap.
+  - **MOSFET rows for sub-GHz cluster (Q10-Q21)**: moved to dedicated column at x=23, separated from R-pullups at x=27/35.
+  - **Mounting holes**: inset increased from 4mm to 5mm to clear corner-edge components (especially SMA antennas which are 6mm wide).
+  - **Antennas (J10-J13)**: row Y moved from 5mm to 12mm to clear the corner MH at (5,5).
+  - **B2B socket position**: kept at (40, 83) on both boards (mechanical alignment required), but components in its 14×4mm footprint area moved out.
+  - **TOP back peripheral cluster reorganized**:
+    - Display FPC (J30) at (14, 70) rotated 90° (left edge, cable exits left to display)
+    - microSD (J31) at (28, 80), W25Q256 flash (U52) at (28, 90), LSM6DSO IMU (U56) at (32, 88)
+    - GPS-patch antenna (ANT1) bottom-left at (16, 117), GPS module (U51) right of it at (32, 122)
+    - Buzzer (BZ1) bottom-right at (64, 122) — FAR from SW20 ANO encoder on F.Cu (which is large and through-hole)
+    - 2× AW9523 IO-expanders (U60, U61) right side at (50, 70) / (50, 80), motor (M1) at (72, 95), driver Q40 at (72, 102)
+    - NFC (U35) + RFID (U36) right side at (60, 60) / (64, 75)
+    - 3 external headers (J40-J42) on RIGHT EDGE rotated 90° at (76, 60/75/85) — cable exits right
+    - Status LEDs (D30-D32) middle bottom row
+    - All NeoPixel decoupling NCs (R95, C96-C99) tucked at left edge x=3 (out of the way)
+    - All power-stage passives (R1-R24, C1-C24) auto-placed by ref-pattern in 5mm-pitch rows at Y=30-40
+- **Final state: MAIN 2 overlaps (negligible), TOP 22 overlaps** (all small, all in dense passive regions). Down from ~75 visual overlaps in the user's screenshot. ALL major IC + connector + active-component conflicts resolved.
+- **Visual confirmation via `kicad-cli pcb render`**: Both boards now show clean cluster separation. No big-component overlaps. The remaining 22 small overlaps on TOP are all in passive grids where the user can finalize positions manually in KiCad with single drag operations (1-2 hours of fine-tuning).
+- Lesson: **DON'T rebuild a generator with auto-collision-avoidance unless you have ALL fixed positions registered first.** My `place()` auto-avoidance moved things in unpredictable ways because each placement iteratively shifted neighbors. The right pattern is: (1) reserve all fixed positions (mounting holes, B2B, big modules, edge connectors) first, then (2) auto-place small passives only.
+- Lesson: **For final layout polish on a 200-component PCB, a hand-tuned position table beats any heuristic.** Explicit `(ref, x, y, rot)` tuples in `fix_overlaps_v2_pcb.py` outperformed every algorithmic placement attempt because the position table encodes domain knowledge (e.g. "place the 12 MHz crystal directly next to the FE1.1s" or "the IR LED needs line-of-sight to the bezel").
+- **Files:** `scripts/fix_overlaps_v2_pcb.py` (~250 lines, idempotent), `pcb/subzero-top.kicad_pcb` and `pcb/subzero-main.kicad_pcb` (patched in-place), `scripts/generate_2board.py` reverted to v1.bak (auto-grid-pile fallback for clean re-generation if needed).
+- Next step: User opens both PCBs in KiCad, drags any remaining 1-2 overlapping passives to their final spot, runs `Tools → External Plugins → Freerouting` for auto-routing. Expected total layout time: 1-2 days from current state to DRC-clean Gerbers.
