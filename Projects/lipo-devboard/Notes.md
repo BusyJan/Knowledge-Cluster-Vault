@@ -1,0 +1,11 @@
+# Notes (append-only)
+
+Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
+
+## 2026-04-20 10:35
+
+- Insight: atopile (0.15.6) installiert via `uv tool install atopile`. KiCad-Plugin (~/.local/share/kicad/9.0/scripting/plugins/atopile.py) wird auto-installed, IPC-API in kicad_common.json auto-aktiviert. Build cycle: schreibe `.ato` (Python-ähnlich) → `ato build` (15-30s) → KiCad-PCB+BOM+Datasheets+Power-Tree+Manifest. Für realistic Mini-Projekt (4 Module, 273 LOC, 14 echte Komponenten + 2 abstract waiting for atomic-component): full build in 14s.
+- Context: Trial-Projekt `/home/jdoe/Documents/Projects/ESP Projects/lipo-devboard/` enthält power.ato (USB-C → LDO 3.3V), mcu.ato (DecouplingTriple + BootResetCircuit für ESP32), peripherals.ato (StatusLED + I2C_Header), main.ato (top-level App). Reusable Module wie DecouplingTriple und BootResetCircuit sind copy-paste-ready für jedes neue ESP32-Projekt. BOM hat echte JLCPCB-Parts (C52923, C15850, C1525, C25744, C11702, C25905, C25900) — alle auf Lager. Datasheets in build/cache/ auto-downloadet.
+- Problem: Doku-Inkonsistenzen kosten Iteration: USB_C VBUS path ist `connector.usb3.usb3_if.usb_if.buspower` (nicht wie in Web-Docs), `signal` ist reserved keyword (musste ctl umbenennen), `LDO.OutputType.FIXED` enum und `enable_output()` function funktionieren nicht im DSL, LDO muss als `from "regulators.ato" import FixedLDO` importiert werden (nicht direkt). Direct `lcsc_id` auf abstract module schlägt fehl mit `LCSC_PinmapException` — braucht atomic component für Pinmap.
+- Decision: Trial bestätigt atopile als TAUGLICH für künftige Hardware-Projekte. SubZero v1 bleibt in KiCad (zu weit für Migration). Alle NEUEN Hardware-Projekte starten als atopile-Projekte. SubZero v2 wäre in atopile machbar mit atomic-component-Setup für ESP32-S3-WROOM-1U/ESP32-C6-MINI-1U/nRF52840/CC1101/SX1262/TP4056/DW01A/ME6211C33 (geschätzt 3-4h Setup + 4-6h Modul-Composition vs ~3 Wochen direkt in KiCad gehabt).
+- Next step: Atomic Components für SubZero-relevante Parts als wiederverwendbare Library bauen. Diese landen in `parts/` und sind dann in jedem zukünftigen atopile-Projekt importierbar via `from "parts/esp32_s3_wroom_1u.ato" import ESP32_S3_WROOM_1U`.
