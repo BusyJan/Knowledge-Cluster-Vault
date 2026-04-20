@@ -2,6 +2,14 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-20 12:15
+
+- Insight: End-to-end PCB-Pipeline (Schematic → Placement → Routing) komplett programmatisch machbar via atopile + 2 Skripte. Kompletter Cycle: `ato build` (12s) → `auto_layout.py` (1s) → `auto_route.py` (15s) = **~30 Sekunden** für ein 22-Komponenten 2-Layer 70×50mm Devboard inkl placed components, routed tracks, BOM, Datasheets. Same board manuell in KiCad: 4-6 Stunden.
+- Context: Workflow basiert auf der `atopile_address` Property die atopile auf jeden Footprint schreibt (z.B. `charger.cap_in`, `mcu.cap_bulk`). Auto-Layout-Script clustert nach Modul-Prefix und positioniert each cluster auf einem dedicated Tile (USB links → Charger → Protection → LDO → MCU rechts). Auto-Route nutzt Freerouting v2.1.0 (Java) headless via DSN → SES Roundtrip mit pcbnew Python-API (KiCad AppImage's bundled Python 3.11 + LD_LIBRARY_PATH=AppDir/shared/lib).
+- Problem: Trotz functional pipeline, **DRC nicht clean**: 79 violations (hauptsächlich shorting_items wo Freerouting Tracks zu nah an Pads platziert hat, plus annular_width-Errors bei USB-C non-standard PTH-Pads, plus 32 unconnected items für freie ESP32-GPIOs). Auto-Routing braucht in 2-Layer 70×50mm dichten Boards manuelle Iteration. 4-Layer Board oder größere Cluster-Spacing würde DRC-clean machen.
+- Decision: Pipeline-Pattern (`ato build` → `auto_layout.py` → `auto_route.py`) als Standard-Workflow für neue atopile-Projekte etabliert. Die zwei Helper-Scripts (`scripts/auto_layout.py`, `scripts/auto_route.py`) sind copy-paste-reusable. Für DRC-clean Boards: nach Auto-Pipeline manuelle KiCad-Iteration (~30 min) ODER besser: Layout Reuse mit pre-built Cluster-Layouts in der atopile-parts Library.
+- Next step: (1) Layout Reuse für jedes Wrapper-Modul implementieren (LipoCharger_TP4056, LDO_3V3_ME6211 etc. bekommen je ein eigenes optimales `.kicad_pcb` Sub-Layout in der Library). (2) Vault-Skill `pcb-engineer` mit dem Auto-Layout/Route-Workflow erweitern. (3) Größeres Test-Board mit 4-Layer für DRC-clean Auto-Routing.
+
 ## 2026-04-20 10:35
 
 - Insight: atopile (0.15.6) installiert via `uv tool install atopile`. KiCad-Plugin (~/.local/share/kicad/9.0/scripting/plugins/atopile.py) wird auto-installed, IPC-API in kicad_common.json auto-aktiviert. Build cycle: schreibe `.ato` (Python-ähnlich) → `ato build` (15-30s) → KiCad-PCB+BOM+Datasheets+Power-Tree+Manifest. Für realistic Mini-Projekt (4 Module, 273 LOC, 14 echte Komponenten + 2 abstract waiting for atomic-component): full build in 14s.
