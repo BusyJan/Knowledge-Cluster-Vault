@@ -247,4 +247,11 @@
 - Problem: Older BOM language mentions six u.FL antenna connectors generically, but the active prototype-5 PCB now names the actual RF assignments explicitly and uses edge-mount coax connectors in the layout.
 - Decision: Use the prototype-5 mapping as the current authoritative answer for the six external antennas/connectors.
 - Next step: When finalizing mechanicals, decide whether those six stay as SMA, revert to u.FL+pigtail, or mix connector types by radio class.
+## 2026-04-27 11:24
+
+- Insight: Industrial-design control discussion: a flatter all-metal input cluster with directional arrows, OK, and Back may be the better near-term choice than centering the hardware around a complex Adafruit-style rotary encoder, especially if the encoder mechanism is hard to engineer reliably. The encoder concept is attractive, but manufacturability and mechanical simplicity may matter more for v1.
+- Context: User shared a render showing a handheld with a central ANO-style control cluster and asked whether to use an Adafruit-style rotary encoder or instead a flatter rotary wheel / arrow buttons / OK / back arrangement. The concern is that the more complex encoder may be difficult to engineer and manufacture.
+- Problem: A signature input device can improve identity, but if it adds too much mechanical complexity, tolerance risk, cost, or assembly pain, it can damage the first product more than it helps.
+- Decision: Favor the simpler, flatter, more manufacturable control solution for v1 unless the rotary encoder is truly core to the product feel and can be implemented robustly without becoming a major mechanical bottleneck.
+- Next step: When UI/input design is narrowed, choose the control scheme that minimizes mechanical risk while still feeling premium: likely either a flat metal wheel plus separate buttons, or a simpler directional-pad style cluster with excellent tactile quality.
 
