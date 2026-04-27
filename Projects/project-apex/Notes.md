@@ -289,4 +289,11 @@
 - Problem: The user does not necessarily have CAD skill. Choosing between DIY in Fusion 360, hiring an Upwork freelancer (~150-400 CHF), or hiring a local CH/DE engineer (~300-800 CHF) is the next decision before week 3 of the timeline.
 - Decision: Recommended freelancer route via Upwork to keep KR1O focused on hardware/firmware/website tracks in parallel. Created project-apex/docs/metal-caps-measurement-checklist.md and project-apex/docs/metal-caps-freelancer-brief.md so the moment the physical ANO arrives the user has a turnkey path. Suppliers ranked by CH delivery speed: Mouser CH > Digi-Key CH > Anodas (LT) > Pimoroni (UK) > Adafruit direct (US).
 - Next step: User to order 2x Adafruit ANO 5001 (and optional breakout 5221) from Mouser CH today. While waiting for delivery, KR1O to decide CAD path (DIY vs Upwork freelancer vs local engineer) so the brief can be posted the day the parts arrive.
+## 2026-04-27 15:43
+
+- Insight: Major shortcut: Adafruit publishes a real engineering STEP file of the ANO encoder on GitHub (Adafruit_CAD_Parts/5221 ANO Rotary Encoder). 6234 lines, 1411 geometric primitives, full B-rep solid model originally exported via ST-Developer. Mirrored locally to project-apex/mechanical/ano-reference/.
+- Context: User clarified they want OUTSOURCED production, not self-production, and pointed out that ANO dimensions are publicly available. The published STEP is even better than dimensions on paper — it gives the CNC vendor or freelancer the exact geometry to mate against, eliminating the physical-measurement step entirely.
+- Problem: Original 8-10 week timeline assumed a measurement step (1-2 weeks for ANO shipping + reverse engineering). With the STEP file, that step disappears.
+- Decision: Pivot to Modell 2 turnkey RFQ: send Adafruit STEP + a single design+machining brief to PCBWay or Xometry, they handle CAD AND CNC. Created project-apex/docs/metal-caps-turnkey-rfq.md as the ready-to-send RFQ. Buying physical ANOs is now optional and parallel-tracked (only needed for fit-testing prototype caps once they arrive).
+- Next step: User to pick 2-3 turnkey suppliers (recommend PCBWay + Xometry CH/DE), upload the local STEP file plus the RFQ template, and request quotes. Compare quotes on cost AND on quality of clarifying questions from each supplier.
 
