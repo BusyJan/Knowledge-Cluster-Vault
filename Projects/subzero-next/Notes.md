@@ -626,3 +626,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: User-Report TOP/MAN „USB-C/ USB-A fehlt / falsch, B2B ausserhalb, USB-A nicht unten“ — Ursache: **USB-Cluster lag oben (y=8–50) auf B.Cu** (nur sichtbar mit B.Cu-Layer); **B2B_T ist auf B.Cu** — bei nur F.Cu sichtbar „leer“ / irritierend. USB-A (J20) war bei y=38 Mitte.
 - Decision: `scripts/fix_placement_v4.py` — 14 Patches auf `pcb/subzero-top.kicad_pcb` (J1, J20, U40–U43, Y1, C80–C83, R80–R82) → **untere Kante y≈98–124**; MAIN `J5` (C6-Debug USB-C) auf **(34, 123.5) r180** weg von B2B. Kurzdoc `pcb/VIEWING_TOP_BACK_LAYER.md` für B.Cu-Bedienung. `generate_2board.py` nur Kommentar (kein auto-Grid nach unten — kollidiert sonst mit B2B-Zone).
 - Next step: In KiCad B.Cu prüfen, ggf. J1/J20 Feinrot um ±90°; DRC; Airwires für verschobene USB-Gruppe neu routen.
+
+## 2026-04-27 22:45
+
+- Insight: User-Report „ganze Platine bei **beiden** Boards nicht sichtbar“ — primär **KiCad-Viewport/Bounding-Box**, kein fehlendes Board. **TOP** hatte **80× `fp_*` auf `Edge.Cuts` innerhalb Footprints** (SK6812 u.ä.); das bläht die Outline-Bounding-Box auf → Zoom-to-fit zeigt die echte 80×130mm-Fläche winzig oder abgeschnitten.
+- Decision: `scripts/strip_footprint_edge_cuts.py` — entfernt alle `(fp_line|arc|poly|…)` mit `(layer "Edge.Cuts")` aus eingebetteten Footprints; TOP: **80** entfernt, danach nur noch **12** Edge.Cuts-Referenzen (Board-Umriss). MAIN: 0 (kein Problem). Doku ergänzt in `pcb/VIEWING_TOP_BACK_LAYER.md`.
+- Next step: KiCad neu laden; View → Zoom to Objects. Optional: Cutouts künftig als `User.Eco`/`Cmts` statt `Edge.Cuts` im Footprint.
