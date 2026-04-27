@@ -261,4 +261,11 @@
 - Problem: Input hardware is both a UX-defining choice and a mechanical/manufacturing risk. A more premium-looking control can also introduce precision, feel, tolerance, durability, and firmware complexity challenges.
 - Decision: Do not switch purely for appearance. Judge the flatter metal control by whether it preserves fast one-handed navigation and can be built reliably. For Main, the safer choice is whichever control system gives strong tactile feel, easy manufacturing, and low risk; the flatter concept is promising if it does not compromise usability.
 - Next step: Before locking the design, compare both input systems on one-handed use, glove use, accidental presses, tactile clarity, assembly complexity, enclosure tolerances, and perceived premium feel.
+## 2026-04-27 11:38
+
+- Insight: Input-design alternative on the table: flat all-metal control cluster (flush brushed-metal rotary wheel + 4 flat arrow keys + flat OK in the wheel center + separate flat BACK button) instead of the Adafruit-style raised rotary encoder.
+- Context: User likes the all-metal premium look and is worried the Adafruit-style encoder is harder to engineer/source/integrate cleanly into the matte black aluminum body. Flat metal cluster matches the same aesthetic family as the SubZero vision render and is closer to mass-manufacturable button stacks.
+- Problem: Flat metal wheel without a real shaft encoder is hard to make feel as good as a true rotary encoder; capacitive/optical/magnetic flat wheels are doable but add BOM and tuning cost. Pure dome-switch arrows lose the fast-scroll feel that the rotary gives for spectrum browsing, file lists, frequency tuning.
+- Decision: Do NOT decide on aesthetics alone. Keep the Adafruit-style rotary as the current favorite for SubZero Main v1 because tactile feel + reliable scroll matter for the core RF/pentest UX. Treat the flat all-metal cluster as a strong candidate for SubZero Lite/Nano (cheaper, easier to manufacture) and as a possible v2 of Main if a flat magnetic/optical encoder can be qualified.
+- Next step: Build two cheap physical mockups (one with a real rotary, one with a flat wheel + arrow keys) and dry-run the actual UI flows: spectrum scan, frequency tuning, file browser, menu nav. Pick based on hands-on feel, not renders.
 
