@@ -268,4 +268,11 @@
 - Problem: Flat metal wheel without a real shaft encoder is hard to make feel as good as a true rotary encoder; capacitive/optical/magnetic flat wheels are doable but add BOM and tuning cost. Pure dome-switch arrows lose the fast-scroll feel that the rotary gives for spectrum browsing, file lists, frequency tuning.
 - Decision: Do NOT decide on aesthetics alone. Keep the Adafruit-style rotary as the current favorite for SubZero Main v1 because tactile feel + reliable scroll matter for the core RF/pentest UX. Treat the flat all-metal cluster as a strong candidate for SubZero Lite/Nano (cheaper, easier to manufacture) and as a possible v2 of Main if a flat magnetic/optical encoder can be qualified.
 - Next step: Build two cheap physical mockups (one with a real rotary, one with a flat wheel + arrow keys) and dry-run the actual UI flows: spectrum scan, frequency tuning, file browser, menu nav. Pick based on hands-on feel, not renders.
+## 2026-04-27 11:41
+
+- Insight: Input-design path lockdown: keep Adafruit ANO (Product 5001) as the mechanism for SubZero Main v1, but replace the visible plastic parts (outer ring, 4 directional pads, center cap) with custom CNC-machined anodized aluminum parts.
+- Context: User wants the all-metal premium feel of the flat-cluster concept but does NOT want to lose the rotary encoder UX of the ANO. The ANO is internally a standard rotary encoder + 5-way switch, so only the visible plastic needs swapping.
+- Problem: A fully custom rotary+nav module (Option B: EC11/EC12 + 4 tactile + center tact + custom metal ring on a sub-PCB) or an OEM custom build at ALPS/Bourns (Option C, MOQ 5k-10k, NRE 5-30k CHF) is over-scope for v1.
+- Decision: v1 = Option A: source Adafruit ANO, measure with caliper, 3D-model custom aluminum caps + ring in Fusion 360, fab via PCBWay CNC / JLCCNC / Xometry in 6061 aluminum, anodized matte black with brushed finish to match the SubZero body. Treat Option B as v2 escape hatch if ANO ever becomes a supply risk.
+- Next step: Buy 1-2 ANO units for measurement. Confirm finish choice (matte black anodized vs brushed gunmetal vs natural). Define unit-cost target so we can pick CNC supplier. Generate CAD pass-fit prototypes with 2-3 tolerance variants (0.05/0.075/0.1 mm clearance) and order a single test batch.
 
