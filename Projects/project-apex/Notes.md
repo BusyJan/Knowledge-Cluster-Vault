@@ -254,4 +254,11 @@
 - Problem: A signature input device can improve identity, but if it adds too much mechanical complexity, tolerance risk, cost, or assembly pain, it can damage the first product more than it helps.
 - Decision: Favor the simpler, flatter, more manufacturable control solution for v1 unless the rotary encoder is truly core to the product feel and can be implemented robustly without becoming a major mechanical bottleneck.
 - Next step: When UI/input design is narrowed, choose the control scheme that minimizes mechanical risk while still feeling premium: likely either a flat metal wheel plus separate buttons, or a simpler directional-pad style cluster with excellent tactile quality.
+## 2026-04-27 11:26
+
+- Insight: Input-control decision under consideration: either keep the older Adafruit-style rotary encoder approach or move to a flatter metal control system combining a rotary wheel/encoder with directional arrows, OK, and Back. Initial product judgment: the flatter metal concept can look more premium and manufacturable if executed cleanly, but the older simpler control may still be more efficient and lower-risk for v1.
+- Context: User shared a SubZero vision render showing a 3.5 inch TFT with a central rotary/4-way/OK control and separate back button, and asked whether a flatter all-metal control scheme would be better given that the Adafruit rotary encoder may be harder to engineer and manufacture.
+- Problem: Input hardware is both a UX-defining choice and a mechanical/manufacturing risk. A more premium-looking control can also introduce precision, feel, tolerance, durability, and firmware complexity challenges.
+- Decision: Do not switch purely for appearance. Judge the flatter metal control by whether it preserves fast one-handed navigation and can be built reliably. For Main, the safer choice is whichever control system gives strong tactile feel, easy manufacturing, and low risk; the flatter concept is promising if it does not compromise usability.
+- Next step: Before locking the design, compare both input systems on one-handed use, glove use, accidental presses, tactile clarity, assembly complexity, enclosure tolerances, and perceived premium feel.
 
