@@ -310,4 +310,11 @@
 - Problem: Plastic may be one fused body in CAD; underside must be read via section view + inner faces; physical ANO still needed to confirm snaps/removability.
 - Decision: Documented workflow in project-apex/mechanical/ano-reference/README.md: Board vs Encoder isolation, underside inspection steps, fab print tsw.pdf cross-check, prototype as proof.
 - Next step: When CAD starts: hide Board:1, section Encoder:1 axially, measure bore/boss; order 1 physical ANO to verify plastic removal and switch travel after metal swap.
+## 2026-04-27 22:20
+
+- Insight: Ordered 3× Adafruit ANO 5001 from pi-shop.ch for hands-on evaluation, spare, and potential teardown / metal-cap fit testing.
+- Context: User proceeding with hardware purchase after discussion of feel matching and STEP reference.
+- Problem: (none)
+- Decision: 3 units: use split as test / experiment / backup.
+- Next step: On arrival: verify rotation + all 5 directions + center; optionally compare to STEP; start tact-switch feel matrix vs ANO if breakout or temp wiring available.
 
