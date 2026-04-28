@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-28 12:14
+- Insight: TOP board upper-left power / passive cluster had **severe footprint overlap** from a uniform **4 mm** auto-grid while **C3/C4** use **CP_Elec_5x5.4**; **R20–R24** were stacked on the electros.
+- Context: `subzero-next/scripts/fix_placement_v5_top_power_cluster.py` patches `(at …)` for **38 refs** (R1–R7, R10–R13, R107, C1–C11, C15, C20–C24, C3/C4, Q1/Q2, TH1, U55) with **~5 mm** 0603 pitch, **10 mm** between C3/C4 centers, **~8 mm** row spacing.
+- Decision: Script cleaned (single `TOP_POWER_V5` table, no duplicate R13/R107 hack); **38/38** patches applied to `pcb/subzero-top.kicad_pcb` (backup `*.bak.v5.*`).
+- Next step: Reload PCB in KiCad, expect long airwires; **DRC** then **re-route** that region.
+
 ## 2026-04-18 15:00
 - Insight: **Plan B (undisputed cleanups only).** User chose B from the post-audit triage. Made the only changes that don't require design decisions and parked everything else (TP4056 charger, NeoPixel inversion, 18 missing-consumer connections, ANT1 GND power-symbol topology, 2 power-rail conflicts) for separate dedicated rounds.
 - Implementation — `scripts/cleanup_undisputed.py`:
