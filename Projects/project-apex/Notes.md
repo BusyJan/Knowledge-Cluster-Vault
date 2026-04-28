@@ -331,3 +331,9 @@
 - Problem: AI render may not perfectly match user arm geometry; use as direction only.
 - Decision: Favored hex-core variant over star-connected and diamond-petal hub for this recommendation pass.
 - Next step: User compares mock to their vector builds; align or reject; then lock primary vs simplified tier.
+## 2026-04-28 19:05
+
+- Insight: Alternate SubZero snowflake arm explored: vertically symmetric faceted diamond/rhombus (white horizontal “fracture” band between taller upward triangle and shorter downward triangle; interior white facet lines for cut-gem / ice-shard read). File: `assets/image-55226c49-8d8d-4771-a42b-d143e36f7083.png`. Assessment: much cleaner and more “premium lab / jewel” than the jagged lightning-arm; scales better at small sizes; aligns visually with KR1O crystal-column DNA (facets, fracture); slight risk of reading as generic gem if the single arm is shown without the 6×60° snowflake context — full mark fixes that; loses a bit of aggressive “bite” vs the tribal arm (not necessarily bad for research-tool positioning).
+- Context: User asked for opinion on this arm direction vs prior jagged modular arm.
+- Decision: None — user chooses arm family; this variant is a strong candidate for primary mark + simplified tier with one fewer facet line if needed.
+- Next step: Compose 6×60° + pick center (hex core vs star merge); compare full marks at 16 px and 8 mm silkscreen.
