@@ -632,3 +632,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: User-Report „ganze Platine bei **beiden** Boards nicht sichtbar“ — primär **KiCad-Viewport/Bounding-Box**, kein fehlendes Board. **TOP** hatte **80× `fp_*` auf `Edge.Cuts` innerhalb Footprints** (SK6812 u.ä.); das bläht die Outline-Bounding-Box auf → Zoom-to-fit zeigt die echte 80×130mm-Fläche winzig oder abgeschnitten.
 - Decision: `scripts/strip_footprint_edge_cuts.py` — entfernt alle `(fp_line|arc|poly|…)` mit `(layer "Edge.Cuts")` aus eingebetteten Footprints; TOP: **80** entfernt, danach nur noch **12** Edge.Cuts-Referenzen (Board-Umriss). MAIN: 0 (kein Problem). Doku ergänzt in `pcb/VIEWING_TOP_BACK_LAYER.md`.
 - Next step: KiCad neu laden; View → Zoom to Objects. Optional: Cutouts künftig als `User.Eco`/`Cmts` statt `Edge.Cuts` im Footprint.
+
+## 2026-04-27 23:10
+
+- Insight: KiCad-Meldung „custom design rules could not compile“ — Ursache: Regel `battery_zone_height_limit` nutzte **`A.Property('Height')`**, es gibt in der Custom-Rules-Sprache **keine** `Property()`-Funktion; Felder heißen **`getField('Height')`** (siehe PCB-Handbuch).
+- Decision: `pcb/subzero-main.kicad_dru` + `pcb/subzero-top.kicad_dru`: Bedingung ersetzt durch `A.Type == 'Footprint' && … && A.getField('Height') > 2mm`; Constraint von `disallow track/via/…` auf **`disallow footprint`** (sinnvoll für »zu hohe Bauform in Zone«). Kommentar angepasst (Footprint-Feld, nicht beliebiges Property).
+- Next step: Board Setup → Custom Rules → **Check Rule Syntax**; DRC erneut laufen lassen.
