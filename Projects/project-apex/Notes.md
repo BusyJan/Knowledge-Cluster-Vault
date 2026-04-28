@@ -324,4 +324,10 @@
 - Problem: (none)
 - Decision: 3 units: use split as test / experiment / backup.
 - Next step: On arrival: verify rotation + all 5 directions + center; optionally compare to STEP; start tact-switch feel matrix vs ANO if breakout or temp wiring available.
+## 2026-04-28 18:30
 
+- Insight: Assistant-rendered recommendation mock for modular SubZero snowflake: same construction idea as user (one arm × 6 at 60°) but center locked to solid flat-top hexagon core for crystal-lattice reading and better small-size robustness; arm kept aggressive but slightly restrained jags. Raster reference only — vector rebuild from user master arm preferred. Asset: `assets/subzero-recommended-hex-core-snowflake.png`.
+- Context: User asked for one image of what the assistant would pick vs their four center variants.
+- Problem: AI render may not perfectly match user arm geometry; use as direction only.
+- Decision: Favored hex-core variant over star-connected and diamond-petal hub for this recommendation pass.
+- Next step: User compares mock to their vector builds; align or reject; then lock primary vs simplified tier.
