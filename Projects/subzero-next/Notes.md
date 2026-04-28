@@ -633,6 +633,12 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: `scripts/strip_footprint_edge_cuts.py` — entfernt alle `(fp_line|arc|poly|…)` mit `(layer "Edge.Cuts")` aus eingebetteten Footprints; TOP: **80** entfernt, danach nur noch **12** Edge.Cuts-Referenzen (Board-Umriss). MAIN: 0 (kein Problem). Doku ergänzt in `pcb/VIEWING_TOP_BACK_LAYER.md`.
 - Next step: KiCad neu laden; View → Zoom to Objects. Optional: Cutouts künftig als `User.Eco`/`Cmts` statt `Edge.Cuts` im Footprint.
 
+## 2026-04-28 11:45
+
+- Insight: User „grüne Platine in KiCad nicht sichtbar“ — oft **Erwartung vs. 2D-Canvas**: KiCad zeigt standardmäßig **kein** fotorealistisches FR4-Grün; „Grün“ in Screenshots ist meist **Kupferzonen** (nach **B** Refill) oder **3D-Lack**. Zusätzlich: `fix_edge_cuts.py` nutzte fehleranfälliges Regex → riskante `Edge.Cuts`.
+- Decision: `fix_edge_cuts.py` neu — **klammerbalanciert** alle `(gr_*` mit `Edge.Cuts` entfernen, dann **4-Linien-Rechteck** 80×130 mm **vor** `(embedded_fonts no)` einfügen; auf MAIN+TOP ausgeführt. Doku `pcb/WHY_NO_GREEN_BOARD_IN_2D.md` (2D vs 3D, Layer, filled vs outline).
+- Next step: Projekt neu laden; links Toolbar „filled“ für Zones/Tracks; **B** für Zonenfüllung; 3D für Lackfarbe.
+
 ## 2026-04-27 23:10
 
 - Insight: KiCad-Meldung „custom design rules could not compile“ — Ursache: Regel `battery_zone_height_limit` nutzte **`A.Property('Height')`**, es gibt in der Custom-Rules-Sprache **keine** `Property()`-Funktion; Felder heißen **`getField('Height')`** (siehe PCB-Handbuch).
