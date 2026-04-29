@@ -351,4 +351,11 @@
 - Problem: S3 has zero free GPIO for quadrature; Left/Right need two AW9523 inputs (P1_6/P1_7 or #2 spares) after schematic review.
 - Decision: v1 uses stock ANO; mechanical from tsw.pdf + physical 5001 as golden; encoder decode on C6 + UART to S3 unless pinmap trades are approved.
 - Next step: Design chat: implement nets in io-expander.kicad_sch, place verified footprint on chosen PCB, update pinmap.md, ERC/DRC.
+## 2026-04-29 17:50
+
+- Insight: Marketing direction (2026): avoid mass consumer advertising and billboards; prefer low-key practitioner channel (reviewers, security communities). Primary lever idea: pitch one large tech YouTuber for non-affiliate review; need parallel backbones if it fails.
+- Context: Product is dual-use pentest/RF hardware; user wants ethical positioning without pretending it cannot be misused.
+- Problem: Big YouTuber may decline or coverage may be negative; cannot rely on one hail-mary.
+- Decision: Study Flipper playbook: friendly brand + clear authorized-use framing + strong community + OSS adjacent trust; NOT copying controversy-for-its-own-sake. Build backbones: niche SEO content, GitHub/docs depth, Discord/community, conference/dev outreach, targeted practitioner lists, comparison pages vs HackRF/Flipper with honest specs.
+- Next step: Draft 1-page reviewer pitch + ethics/legal disclaimer boilerplate; list 10 mid-size creators if mega creator declines; define forbidden marketing list (no billboards, no impulse gift mall ads); document authorized-testing language for site.
 
