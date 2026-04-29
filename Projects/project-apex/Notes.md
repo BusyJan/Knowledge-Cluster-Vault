@@ -337,3 +337,11 @@
 - Context: User asked for opinion on this arm direction vs prior jagged modular arm.
 - Decision: None — user chooses arm family; this variant is a strong candidate for primary mark + simplified tier with one fewer facet line if needed.
 - Next step: Compose 6×60° + pick center (hex core vs star merge); compare full marks at 16 px and 8 mm silkscreen.
+## 2026-04-29 16:47
+
+- Insight: ANO 5001 received; physically smaller than expected. Custom CNC metal caps for ANO now judged unlikely: difficult disassembly on the real unit + no budget for metal prototype/production in near term.
+- Context: Prior plan was Path A metal caps from STEP + CNC; user hands-on experience contradicts easy serviceability assumptions.
+- Problem: Premium unified metal control cluster deferred; need v1 input strategy without custom ANO machining.
+- Decision: Defer ANO metal caps to a future revision when budget allows; ship SubZero v1 with stock ANO plastic UX unless a low-cost overlay alternative is chosen later.
+- Next step: Lock v1 industrial design around stock ANO form factor; redirect any metals budget to simpler wins (e.g. back/power caps on standard tacts, front bezel/plate) if desired; revisit STEP-based caps only after funding or proven demand.
+
