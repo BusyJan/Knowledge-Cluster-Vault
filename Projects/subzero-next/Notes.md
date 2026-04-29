@@ -2,6 +2,13 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-29 17:50
+- Insight: TOP rechte Kanten-Leiste (J40–J42) hing mit Footprint-Ankern bei **x=76 mm** (~4 mm vor Board-Ende bei 80 mm); **Horizontal**-Footprints bekamen fälschlich **Vertical**.STEP-Zuordnung → verschobenes 3D + optisch „halb off-board“.
+- Context: PCB `subzero-next/pcb/subzero-top.kicad_pcb` — J40/J41/J42 → **x=62**; STEP `PinHeader_*Horizontal.step`; **TZB4 (C76)** und **0603 C75** XY leicht gegen Murata-/QFN-Verdrängung geschoben; **SW1** `(at … 180)` damit Slider-Lage zur Außenkante passt (im 3D-Viewer weiterhin nur Fußprint-Rotation möglich, kein freies „Pivot“).
+- Problem: Bibliotheks-Footprints `E07-433M20S`/`E22-900M22S` ohne `(model)`; CC1101/868‑LoRa haben im 3D-Viewer keine Körper — entweder vendor STEP unter `${PROJECT}/3dmodels/` oder SnapEDA-Link.
+- Decision: Naming J40 Value **User_Exp_2x6** statt nur „Expansion“; echte **Buchsenleisten** brauchen später **PinSocket**-Footprint + Schaltplan-FP-Zuweisung (nicht nur KiCad-Anzeige).
+- Next step: Boards in KiCad **DRC**; Routing im Randbereich prüfen; optional Buchsen-Leisten beim nächsten Schematic‑Update zuweisen.
+
 ## 2026-04-28 12:14
 - Insight: TOP board upper-left power / passive cluster had **severe footprint overlap** from a uniform **4 mm** auto-grid while **C3/C4** use **CP_Elec_5x5.4**; **R20–R24** were stacked on the electros.
 - Context: `subzero-next/scripts/fix_placement_v5_top_power_cluster.py` patches `(at …)` for **38 refs** (R1–R7, R10–R13, R107, C1–C11, C15, C20–C24, C3/C4, Q1/Q2, TH1, U55) with **~5 mm** 0603 pitch, **10 mm** between C3/C4 centers, **~8 mm** row spacing.
