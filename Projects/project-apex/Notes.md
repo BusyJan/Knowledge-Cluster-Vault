@@ -344,4 +344,11 @@
 - Problem: Premium unified metal control cluster deferred; need v1 input strategy without custom ANO machining.
 - Decision: Defer ANO metal caps to a future revision when budget allows; ship SubZero v1 with stock ANO plastic UX unless a low-cost overlay alternative is chosen later.
 - Next step: Lock v1 industrial design around stock ANO form factor; redirect any metals budget to simpler wins (e.g. back/power caps on standard tacts, front bezel/plate) if desired; revisit STEP-based caps only after funding or proven demand.
+## 2026-04-29 17:12
+
+- Insight: Created project-apex/docs/ano-integration-handoff.md — full cross-chat brief for ANO 5001: official links (product, learn, tsw.pdf, STEP), pin table COMA/COMB, SW1–SW5 to BTN_* mapping vs io-expander SW10–12, BTN_BACK retained, ENCA/B via C6 vs full S3 pinmap, THT mount + bottom-side passive allowance, footprint verification warning vs 11-pin Bourns draft, test + KiCad checklist.
+- Context: User will hand document to another designer chat to update schematic and PCB.
+- Problem: S3 has zero free GPIO for quadrature; Left/Right need two AW9523 inputs (P1_6/P1_7 or #2 spares) after schematic review.
+- Decision: v1 uses stock ANO; mechanical from tsw.pdf + physical 5001 as golden; encoder decode on C6 + UART to S3 unless pinmap trades are approved.
+- Next step: Design chat: implement nets in io-expander.kicad_sch, place verified footprint on chosen PCB, update pinmap.md, ERC/DRC.
 
