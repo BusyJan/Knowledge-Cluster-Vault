@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-30 11:22
+- Decision: **User expansion headers** (Dupont/I²C/UART breakout) dropped from hardware for now → future **lite/modules** carries those pins.
+- Context: Ports were on **TOP** (`J40`, `J41`, `J42`) plus **`U71` TPD4** next to expansion; MAIN had none of these.
+- Implementation: **`sheets/connectors.kicad_sch`** — removed symbols + prior wiring/globals/`no_connect` cleanup + orphan silk text; **`pcb/subzero-top.kicad_pcb`** — footprints removed (backup `*.bak.ext_rm.*`).
+- Next step: Open schematic in KiCad → **Tools → Update PCB from Schematic** to sync UUIDs/metadata; **DRC**/reroute stubs if any ghosts; BOM refresh.
+
 ## 2026-04-29 17:50
 - Insight: TOP rechte Kanten-Leiste (J40–J42) hing mit Footprint-Ankern bei **x=76 mm** (~4 mm vor Board-Ende bei 80 mm); **Horizontal**-Footprints bekamen fälschlich **Vertical**.STEP-Zuordnung → verschobenes 3D + optisch „halb off-board“.
 - Context: PCB `subzero-next/pcb/subzero-top.kicad_pcb` — J40/J41/J42 → **x=62**; STEP `PinHeader_*Horizontal.step`; **TZB4 (C76)** und **0603 C75** XY leicht gegen Murata-/QFN-Verdrängung geschoben; **SW1** `(at … 180)` damit Slider-Lage zur Außenkante passt (im 3D-Viewer weiterhin nur Fußprint-Rotation möglich, kein freies „Pivot“).
