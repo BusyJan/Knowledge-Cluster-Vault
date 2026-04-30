@@ -663,3 +663,10 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: KiCad-Meldung „custom design rules could not compile“ — Ursache: Regel `battery_zone_height_limit` nutzte **`A.Property('Height')`**, es gibt in der Custom-Rules-Sprache **keine** `Property()`-Funktion; Felder heißen **`getField('Height')`** (siehe PCB-Handbuch).
 - Decision: `pcb/subzero-main.kicad_dru` + `pcb/subzero-top.kicad_dru`: Bedingung ersetzt durch `A.Type == 'Footprint' && … && A.getField('Height') > 2mm`; Constraint von `disallow track/via/…` auf **`disallow footprint`** (sinnvoll für »zu hohe Bauform in Zone«). Kommentar angepasst (Footprint-Feld, nicht beliebiges Property).
 - Next step: Board Setup → Custom Rules → **Check Rule Syntax**; DRC erneut laufen lassen.
+
+## 2026-04-30 14:05
+
+- Insight: MAIN hat **keine** „Random“-Dupontreihen mehr; durchgehend nur **J6** = **PinHeader 2×5 ARM SWD** (nRF52840). Der **14-polige** Header im 3D-Render ist TOP **J30** `TFT_ILI9488_Cap_3.5IPS_14pin` auf **B.Cu** (~14 mm / 70 mm, 90°) — flex/Display-Verdrahtung; „floating“ ist Modell-Anker/Footprint-vs-Pads im 3D, nicht ein zweiter Mystery-Connector auf MAIN.
+- Context: Sandwich: **TOP F.Cu** zeigt zur Display-/UI-Seite kleine Y („oben“ im Layout); dort sitzen aktuell **IR-Empfänger**, **BOOT/RESET** (SMD `SW_SPST_CK_RS282G05A3`) wie die Silk‑Tags `IR_TX_RX_TOP` / `BOOT_RESET_TOP` — Nutzer möchte später **Bottom** (z. B. B.Cu/Innenwand) und **Side-Actuator‑Tasters**.
+- Decision: **`pcb/subzero-top.kicad_pcb`** — Unterkante RGB: **SK6812 D20–D23** enger (Mittenabstand **8 mm**, x≈21/29/37/45 mm), **D1/D2** (0603) leicht nach innen (9,2 / 12,5 mm); **Entwicklungs‑`gr_text` + gestrichelte `gr_rect`** von F/B‑Silk nach **`Cmts.User`**; LED‑Zonenrahmen (3…50 × 117…124); **USB‑Footprint** „PCB Edge“-`fp_text` entfernt.
+- Next step: KiCad **DRC** nach Verschieben; **IR/BOOT/RESET** gezielt auf **B.Cu** legen + passende **Seitentaster** aussuchen; **BOOT/Reset** UX: entweder **Case erreichbar** (Support/DFU) oder **versteckt/intern** (nur Werkzeug/Gehäuseöffnung) — im Gehäuse freimachen bevor Footprints final.
