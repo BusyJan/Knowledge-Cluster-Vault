@@ -21,6 +21,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Script cleaned (single `TOP_POWER_V5` table, no duplicate R13/R107 hack); **38/38** patches applied to `pcb/subzero-top.kicad_pcb` (backup `*.bak.v5.*`).
 - Next step: Reload PCB in KiCad, expect long airwires; **DRC** then **re-route** that region.
 
+## 2026-04-27 16:40
+- Insight: **High-power IR TX** path on `sheets/peripherals.kicad_sch`: `VBAT_PROT` → **R108** (3R9, 1206) → **D10** anode; **D10** cathode → **Q32** (AO3400A, SOT-23) drain; source → **GND**; **IR_TX** → **R91** 22R → gate; **R109** 100k gate → GND; **R92** 4k7 marked **DNP** (was unused pull idea). New footprint `project-apex:Luminus_SST10_IR_B90H` (3535 + thermal pad 3 → GND). `subzero-top.kicad_pcb` **D10** replaced with 3-pad device; **R91** value 22R (still run **Update PCB from Schematic** for new symbols/nets).
+- Problem: Old GPIO→resistor→0603 IR could not source **SST-10** pulse current; **2N7002** symbol pinout reused for AO3400 for library compatibility.
+- Next step: KiCad **Tools → Update PCB from Schematic**; place **Q32/R108/R109**, route **VBAT_PROT** fat to R108, thermal vias under **D10** pad 3; tune **R108** + firmware **duty/pulse** per Luminus IRD DS and eye-safety; optional local **bulk cap** on IR switch node.
+
 ## 2026-04-18 15:00
 - Insight: **Plan B (undisputed cleanups only).** User chose B from the post-audit triage. Made the only changes that don't require design decisions and parked everything else (TP4056 charger, NeoPixel inversion, 18 missing-consumer connections, ANT1 GND power-symbol topology, 2 power-rail conflicts) for separate dedicated rounds.
 - Implementation — `scripts/cleanup_undisputed.py`:
