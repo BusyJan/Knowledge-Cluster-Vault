@@ -675,3 +675,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: User-Tipp **Luminus** (Luminus Devices) als Quelle für **IR-Upgrade** jenseits kleiner 940 nm 0603 „Remote“-LEDs — typisch **höhere zulässige Stromspitzen** und bessere Thermik/Strahlcharakteristik, braucht aber **getakteten Treiber** (MOSFET/Peak-If) und oft **Optik + Wärmeabfüh** statt GPIO+Widerstand allein.
 - Next step: Konkretes **MPN** eintragen und `IR_TX`-Schaltpfad (Schaltplan) gegen **Vf/If-Puls** und EMC abgleichen.
+
+## 2026-04-30 16:05
+
+- Insight: **SST-10-IRD-B90H** ist **kein** Ersatzteil für **D10** (0603) + **R91** 100 Ω von **IR_TX**/`GPIO9` RMT: braucht **3535-Thermikpad**, **Dual-Junction Vf**, und **Stromverstärker** (Ampere-Pulse), nicht mA-GPIO-Serien­widerstand — inhaltlich aber passend als **940 nm‑Flood‑TX** wenn der Treiber neu entworfen wird.
