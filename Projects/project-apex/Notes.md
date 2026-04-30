@@ -358,4 +358,11 @@
 - Problem: Big YouTuber may decline or coverage may be negative; cannot rely on one hail-mary.
 - Decision: Study Flipper playbook: friendly brand + clear authorized-use framing + strong community + OSS adjacent trust; NOT copying controversy-for-its-own-sake. Build backbones: niche SEO content, GitHub/docs depth, Discord/community, conference/dev outreach, targeted practitioner lists, comparison pages vs HackRF/Flipper with honest specs.
 - Next step: Draft 1-page reviewer pitch + ethics/legal disclaimer boilerplate; list 10 mid-size creators if mega creator declines; define forbidden marketing list (no billboards, no impulse gift mall ads); document authorized-testing language for site.
+## 2026-04-30 09:33
+
+- Insight: Brand spelling locked: company name is KR1O Labs (digit 1 + letter O), not KR10. All logos, domain copy, and PCB silk must use KR1O consistently to avoid KR10 misread.
+- Context: User clarified after reviewing KR10 LABS / KR10 TECH logo drafts.
+- Problem: Current logo image assets may still show KR10; need vector/text update before production marketing.
+- Decision: Official string: KR1O Labs; product line SubZero by KR1O Labs (unchanged intent).
+- Next step: Regenerate or edit wordmark in design tool: KR1O on first line LABS second line; consider slight stylistic distinction for the O vs 1 for legibility at small sizes.
 
