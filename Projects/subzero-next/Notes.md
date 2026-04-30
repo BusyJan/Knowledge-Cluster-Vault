@@ -670,3 +670,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: Sandwich: **TOP F.Cu** zeigt zur Display-/UI-Seite kleine Y („oben“ im Layout); dort sitzen aktuell **IR-Empfänger**, **BOOT/RESET** (SMD `SW_SPST_CK_RS282G05A3`) wie die Silk‑Tags `IR_TX_RX_TOP` / `BOOT_RESET_TOP` — Nutzer möchte später **Bottom** (z. B. B.Cu/Innenwand) und **Side-Actuator‑Tasters**.
 - Decision: **`pcb/subzero-top.kicad_pcb`** — Unterkante RGB: **SK6812 D20–D23** enger (Mittenabstand **8 mm**, x≈21/29/37/45 mm), **D1/D2** (0603) leicht nach innen (9,2 / 12,5 mm); **Entwicklungs‑`gr_text` + gestrichelte `gr_rect`** von F/B‑Silk nach **`Cmts.User`**; LED‑Zonenrahmen (3…50 × 117…124); **USB‑Footprint** „PCB Edge“-`fp_text` entfernt.
 - Next step: KiCad **DRC** nach Verschieben; **IR/BOOT/RESET** gezielt auf **B.Cu** legen + passende **Seitentaster** aussuchen; **BOOT/Reset** UX: entweder **Case erreichbar** (Support/DFU) oder **versteckt/intern** (nur Werkzeug/Gehäuseöffnung) — im Gehäuse freimachen bevor Footprints final.
+
+## 2026-04-30 15:40
+
+- Insight: User-Tipp **Luminus** (Luminus Devices) als Quelle für **IR-Upgrade** jenseits kleiner 940 nm 0603 „Remote“-LEDs — typisch **höhere zulässige Stromspitzen** und bessere Thermik/Strahlcharakteristik, braucht aber **getakteten Treiber** (MOSFET/Peak-If) und oft **Optik + Wärmeabfüh** statt GPIO+Widerstand allein.
+- Next step: Konkretes **MPN** eintragen und `IR_TX`-Schaltpfad (Schaltplan) gegen **Vf/If-Puls** und EMC abgleichen.
