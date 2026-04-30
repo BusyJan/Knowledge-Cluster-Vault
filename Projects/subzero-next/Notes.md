@@ -684,3 +684,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 ## 2026-04-30 16:05
 
 - Insight: **SST-10-IRD-B90H** ist **kein** Ersatzteil für **D10** (0603) + **R91** 100 Ω von **IR_TX**/`GPIO9` RMT: braucht **3535-Thermikpad**, **Dual-Junction Vf**, und **Stromverstärker** (Ampere-Pulse), nicht mA-GPIO-Serien­widerstand — inhaltlich aber passend als **940 nm‑Flood‑TX** wenn der Treiber neu entworfen wird.
+## 2026-04-30 16:07
+
+- Insight: RF ANT nets split from SPI: CC1101 ANT paths renamed to global RF_ANT_CC1101_A/B; schematic wires now reach SMA centers; compliance doc at subzero-next/docs/compliance-subghz-pa-upgrade.md.
+- Context: 24V PA/boost workstream; backups under subzero-next/backups/rf-pa-*.
+- Problem: ANT had been mis-labeled CC1101*_MISO vs buffer/SPI nets; XL4015 is not generic boost—doc + power sheet note.
+- Decision: MAIN pcb project net class VPA_24HV pattern VPA_24* (1.2mm default track, 0.35 clearance, via 0.8/0.4).
+- Next step: Update PCB from schematic; route RF_ANT_* to J10/J11 pad1; add discrete boost + VPA nets; optional board π DNP.
+

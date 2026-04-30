@@ -4,7 +4,7 @@ title: "subzero-next (greenfield KiCad)"
 slug: "subzero-next"
 status: active
 created: "2026-04-14 19:58:51"
-updated: 2026-04-30 16:06:00
+updated: 2026-04-30 16:07:06
 repo: ""
 tags: [project]
 ---
