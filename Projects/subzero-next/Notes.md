@@ -2,6 +2,11 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-04-27 22:14
+- Insight: **`peripherals.kicad_sch` IR cluster** rewired toward ERC pin anchors: MCU **IR_TX** via east pillar (**259.714** mm aligned with **R91**), gate drive **182.88** column to **MC** pillar **193.04** only (no MCU column spanning **R109**); **gate→pulldown** jog **237.49/182.88 → 239.764 → R109 pin1** isolates MCU from resistor mid-node; cathode→drain **east at y=184.15** (avoids crossing gate at **y=182.88**); source **GND** at **229.87** row **190.5**; removed vertical through **PAD (179)** and **through R108 pins** that shorted nets; **`generate_2board.py`** still synthesizes **`D10`** `<comp>` when XML omits it.
+- Problem: **`kicad-cli` netlist** still lists **no `<comp ref="D10">`** and lumps **all D10 pins (+ R109 pin2)** on **`Net-(Q32-G)`** until schematic **annotation**/library export is fixed in KiCad GUI—PCB airwires for **D10** remain wrong despite routing edits.
+- Next step: KiCad → **Annotate** (resolve D10 BOM); **ERC** cleanup off-grid (**R108** pin1 **169.954** vs **VBAT PROT** elbow); confirm netlist separates **GND / anode / cathode / gate**; then **generate_2board** again.
+
 ## 2026-04-30 11:22
 - Decision: **User expansion headers** (Dupont/I²C/UART breakout) dropped from hardware for now → future **lite/modules** carries those pins.
 - Context: Ports were on **TOP** (`J40`, `J41`, `J42`) plus **`U71` TPD4** next to expansion; MAIN had none of these.
