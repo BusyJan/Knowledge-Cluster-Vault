@@ -2,6 +2,12 @@
 
 Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `## [YYYY-MM-DD]` may exist).
 
+## 2026-05-03 21:54
+- Insight: **IR cluster** edits in `peripherals.kicad_sch`: single **242.57** drain mast (**177.80–190.5** mm) tees **R108** pin 2 (**237.49–242.57 @177.80**), **anode**/cathode row at **182.88** (**232.41–247.65** split at **242.57** for ERC), cathode stubs on **232.41** plus **184.15** tee; **PAD** (**D10 pin 3**) uses vertical stub **(240.03 176.53)–(240.03 179.07)** into existing **GND** run to **`#PWR_IR_PAD`**; **`Luminus_IR_LED_3P`** in `libs/project-apex.kicad_sym` keeps PAD pin **orient 90** / length **2.54** mm.
+- Context: **`kicad-cli sch erc`** still **26 warnings**: root **/** slice — PAD stub endpoint, **`R91`** off-grid stubs, **`IR_TX` mast`; **Peripherals** — **Flashes** (**U52/U56** vs **#FLG1/U3**), **GPS_RF_IN** singleton; **`Pin 3`** line may still cite symbol **anchor (240.03,182.88)** despite stub.
+- Problem: **`kicad-cli sch export netlist`** warns **annotation errors** and **`Net-(D10-Pad??)`** lumps **D10 pins 1–3** until **Annotate** + connectivity refresh in KiCad GUI—not fixable by text-only PCB edits.
+- Next step: KiCad → **Annotate** → **Update symbols from library** → ERC + net export → **`generate_2board.py`** → **Update PCB from Schematic**.
+
 ## 2026-05-03 22:17
 - Insight: **DRC CLI** on `pcb/subzero-top.kicad_pcb` reports **1174** violations and **421** unconnected items; `pcb/subzero-main.kicad_pcb` **919** violations and **275** unconnected (KiCad 10 AppImage `kicad-cli pcb drc --severity-all`). TOP shows **D10** pads on **`Net-(Q32-G)`** shorting vs **GND** / **+3V3** pads of **U53** (placement + bad netlist merge); many more **shorting_items** / **clearance** stem from dense auto-placement and unrouted nets.
 - Next step: Fix schematic **D10** / IR nets then **Update PCB from Schematic**; rerun DRC; triage **shorting** (real copper) vs **overlap from airwires**; route or nudge clusters (USB, TOP power, MAIN RF/LoRa/CC1101 caps).
