@@ -4,6 +4,10 @@ tags: [dashboard, cluster]
 
 # Knowledge cluster dashboard
 
+## Struktur (Baum · Cluster · Farben)
+
+Vollständig: **`[[Vault-Leitfaden]]`**. Kurz: **`[[CLUSTER-TREE]]`** zeigt die **Mermaid-Baum**-Hierarchie nach Clustern; die **Graph-Ansicht** nutzt **farbige Gruppen** aus `cluster-registry.json` (Skript: `python3 scripts/refresh_cluster_tree.py`). **Neues Thema** → eigene Datei unter **`Topics/<cluster>/`**, **keine** unnötigen `[[wikilinks]]`. Optional: **Clusters/** für MOCs.
+
 **Tree layout (root → projects → files):** open **[[CLUSTER-TREE]]** — a Mermaid diagram. The **Graph** view cannot draw the whole vault as a tree; use that note when you want hierarchy.
 
 ## Graph view (center + structure)

@@ -177,3 +177,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: `infer_power_net()` nur für eindeutige Namen (`GND`/`VSS`/… und `+3V3`/`3V3`); Rest `no_connect`. `--strict` bricht ab, wenn noch `no_connect` nötig wäre (Ziel: volles NET_MAP ohne NC).
 - Next step: Bei Bedarf NET_MAP erweitern + `--strict` bis Exit 0.
 
+## 2026-04-27 22:15
+
+- Insight: **Vault-Struktur** gewünscht wie **Baum + farbige Cluster**, wenig Graph-Spaghetti: `cluster-registry.json` (Projekt → Cluster), `scripts/refresh_cluster_tree.py` erzeugt **CLUSTER-TREE** (Mermaid-Subgraphen + `classDef`) und schreibt **Graph-Farben** (`showTags: false`). Neue Pfade **`Topics/<cluster>/`** (atomare Themen), **`Clusters/`** (sparsame MOCs), **`Vault-Leitfaden.md`**, CSS-Snippet **`cluster-tag-colors`** (Appearance aktivieren).
+- Next step: Bei neuem Projekt-Slug Registry + Skript; losgelöste Themen als Topic-Datei statt Crosslink-Wolke.
+

@@ -1,0 +1,56 @@
+{
+  "$schema_comment": "Zuordnung Projekt-Slug → Cluster. Neues Projekt: slug unter passendem cluster.projects eintragen, dann scripts/refresh_cluster_tree.py ausführen.",
+  "clusters": {
+    "hardware": {
+      "label": "Hardware & PCB",
+      "emoji": "🔧",
+      "graph_rgb": 1402304,
+      "mermaid_style": "fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#0D47A1",
+      "projects": [
+        "subzero-next",
+        "project-apex",
+        "subzero-pcb-engine",
+        "lipo-devboard",
+        "atopile-parts"
+      ]
+    },
+    "software": {
+      "label": "Web & Commerce",
+      "emoji": "🌐",
+      "graph_rgb": 6953882,
+      "mermaid_style": "fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px,color:#4A148C",
+      "projects": ["subzero-website", "neutral-shopify-shell"]
+    },
+    "meta": {
+      "label": "Meta & Story",
+      "emoji": "📚",
+      "graph_rgb": 15690752,
+      "mermaid_style": "fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#E65100",
+      "projects": ["esp-projects", "nocturn"]
+    },
+    "uncategorized": {
+      "label": "Noch ohne Cluster",
+      "emoji": "⚪",
+      "graph_rgb": 7901340,
+      "mermaid_style": "fill:#ECEFF1,stroke:#78909C,stroke-width:2px,color:#37474F",
+      "projects": []
+    }
+  },
+  "vault_paths": {
+    "topics": {
+      "query": "path:Topics/",
+      "graph_rgb": 5606191,
+      "label": "Themen-Punkte (atomar)"
+    },
+    "clusters": {
+      "query": "path:Clusters/",
+      "graph_rgb": 4545124,
+      "label": "Cluster-Übersichten"
+    },
+    "indexes": {
+      "query": "path:Dashboard OR path:CLUSTER-TREE OR path:Vault-Leitfaden",
+      "graph_rgb": 35195,
+      "label": "Index & Leitfaden"
+    }
+  }
+}
