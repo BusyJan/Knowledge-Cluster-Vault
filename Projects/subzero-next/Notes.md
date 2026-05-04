@@ -707,3 +707,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: MAIN pcb project net class VPA_24HV pattern VPA_24* (1.2mm default track, 0.35 clearance, via 0.8/0.4).
 - Next step: Update PCB from schematic; route RF_ANT_* to J10/J11 pad1; add discrete boost + VPA nets; optional board π DNP.
 
+## 2026-04-27 14:20
+
+- Insight: User reported MAIN PCB view as unusable (overlaps, missing routing, keep-out noise). **This session’s agent edits were on schematic** (`sheets/*.kicad_sch`, `libs/project-apex.kicad_sym`) for ERC—not direct `pcb/subzero-main.kicad_pcb` placement in this thread. A bad **2D/PCB** state usually comes from **auto-place/auto-route scripts**, **Update PCB** after large netlist churn, or a **truncated** `.kicad_pcb`—not from a single GPS net fix alone.
+- Context: On disk, `pcb/subzero-main.kicad_pcb` (2026-05-03 22:14, ~320 KB) is **smaller** than `backups/pre-regen-main-20260503-215422.kicad_pcb` (~412 KB); that backup is a plausible **rollback** if the current file is the broken one.
+- Next step: If user wants undo: copy backup over `pcb/subzero-main.kicad_pcb`, reload KiCad; otherwise keep current PCB and fix placement/DRC from a known-good snapshot. Re-run `kicad-cli sch erc` after any schematic revert.
+
