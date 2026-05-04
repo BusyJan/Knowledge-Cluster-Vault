@@ -723,3 +723,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: **`pre-regen` PCB snapshots already matched** `fix_placement_v4`/`v5` coordinates (TOP USB bottom, MAIN `J5`, TOP power cluster) — rerun printed “0 patches” because targets were identical; nothing lost.
 - Decision: Added **`scripts/fix_placement_sma_main.py`** and applied **6/6** `(at …)` patches on **`pcb/subzero-main.kicad_pcb`** (`J10,J11,J13,J3` evenly on top edge **y≈12**; **`J12` left**, **`J4` right** at **y≈12**).
 - Next step: KiCad MAIN 3D/2D check SMA openings vs enclosure; rerun script after manual edits only if refs move.
+
+## 2026-05-05 09:05
+
+- Decision: SMA **alignment** refinement — script now places top row at **x = 10 / 30 / 50 / 70** (even **20 mm** pitch in **80 mm** width) and **mirrors** sides **J12 / J4** at **x ≈ 5.3625 / 74.6375** at the same **y = 12**; re-run **6/6** patches on MAIN.
