@@ -727,3 +727,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 ## 2026-05-05 09:05
 
 - Decision: SMA **alignment** refinement — script now places top row at **x = 10 / 30 / 50 / 70** (even **20 mm** pitch in **80 mm** width) and **mirrors** sides **J12 / J4** at **x ≈ 5.3625 / 74.6375** at the same **y = 12**; re-run **6/6** patches on MAIN.
+
+## 2026-05-05 16:10
+
+- Insight: User wants **assembly-ready** progress while preserving **personal layout rules** — “overlay” meant **silk / ref-des / courtyard noise** plus DRC hygiene, not only ERC.
+- Decision: Added **`subzero-next/docs/PERSONAL-DESIGN-RULES.md`** (product + RF + USB + layer rules) and **`docs/ASSEMBLY-READINESS.md`** checklist. **`scripts/bump_f_silk_gr_text_sizes.py`** bumps **4-tab** **`(size 0.7)`** (avoids B2B pad lines) → **0.8 mm** on MAIN (**clears KiCad silk min-height warnings**). **`generate_2board.py`** silk labels likewise **0.8**. **`fix_placement_sma_main.py`** now patches placement via **`uuid`→`(at`** line (**avoids rewriting `property (at)`**); widened SMA grid (**top x ≈ 21–63**, **side y ≈ 17.25**) to shave **MAIN DRC courtyard/ref overlap counts** (**~655→630** violations, **courtyard_overlap 9→8** in sample run — broad routing/short warnings remain until copper work).
+- Next step: Route priority nets (RF/USB/B2B), re-DRC TOP+MAIN; nudge remaining **reference** fields in KiCad for D42/D43/D45/etc.; optional **Courtyard clearance** tweaks for remaining **8×** overlaps.
