@@ -713,3 +713,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: On disk, `pcb/subzero-main.kicad_pcb` (2026-05-03 22:14, ~320 KB) is **smaller** than `backups/pre-regen-main-20260503-215422.kicad_pcb` (~412 KB); that backup is a plausible **rollback** if the current file is the broken one.
 - Next step: If user wants undo: copy backup over `pcb/subzero-main.kicad_pcb`, reload KiCad; otherwise keep current PCB and fix placement/DRC from a known-good snapshot. Re-run `kicad-cli sch erc` after any schematic revert.
 
+## 2026-05-04 12:06
+
+- Decision: **`pcb/subzero-{main,top}.kicad_pcb`** restored from **`backups/pre-regen-*-20260503-215422.kicad_pcb`**. Broken copies archived as **`backups/pre-restore-agent-20260504-120501/*.broken`** (`kicad-cli pcb drc` on MAIN parses; expect many unresolved airwires pre-layout).
+- Next step: Reload project in KiCad; **Tools → Update PCB from Schematic** only after reconciling schematic (optional); refill zones (**B**) and sanity **Zoom to Objects**.
+
