@@ -739,3 +739,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: TOP **IR cluster** (F.Cu, low **Y** ≈ UI/bezel side): **U53** TSOP38238 `(44, 4)`, **D10** SST-10 IR `(50, 4)`, flyback **D11** `(56, 4)` — matches prior intent **IR_TX_RX_TOP** / display-edge aperture; final sanity = mechanical **IR window** vs lens aim. **D10** footprint in PCB has **no `(model …)`** → 3D viewer may show **no/box** until STEP is added in `Luminus_SST10_IR_B90H` or PCB.
 - Context: User asked how to aim IR **outward** and why 3D view feels like **±90°** only.
 - Decision: **Manufacturing orientation** = PCB editor **footprint rotation** (`R` / Properties **Angle**), not free-spin in 3D; TSOP **lens forward** per Vishay fab vs pad 1; dome LED normal ≈ **out of board** until footprint/model rotation adjusted. **3D camera**: toolbar icons are **snap ±90°** around one axis; **free orbit** = check **Preferences → 3D Viewer** mouse bindings (and **Help** for this KiCad build); **SpaceMouse** if available. Per-part “twist” in viewer without changing PCB = only via **footprint 3D model offset/rotate**, not a layout tool.
+
+## 2026-04-27 23:00
+
+- Insight: FAQ — **Stand PCB** (KiCad nicht hier gemessen): **MAIN + TOP** sind **Layout/Bring-up-Arbeit** (viele Airwires, DRC-/Courtyard-Themen vor vollständigem Routing); Checkliste **`subzero-next/docs/ASSEMBLY-READINESS.md`**. **`J5`** auf MAIN Footprint **`USB_C_C6_DBG`** (Schaltplan `sheets/mcu-c6.kicad_sch`) = direkte **ESP32-C6**-USB-Leitung (**Debug / Serial / ggf. Download**), ohne über TOP-USB-Hub zu gehen.
+- Context: Nutzer kurz gefragt „how’s the pcb“ + warum USB-C auf MAIN.
