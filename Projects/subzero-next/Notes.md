@@ -718,3 +718,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: **`pcb/subzero-{main,top}.kicad_pcb`** restored from **`backups/pre-regen-*-20260503-215422.kicad_pcb`**. Broken copies archived as **`backups/pre-restore-agent-20260504-120501/*.broken`** (`kicad-cli pcb drc` on MAIN parses; expect many unresolved airwires pre-layout).
 - Next step: Reload project in KiCad; **Tools → Update PCB from Schematic** only after reconciling schematic (optional); refill zones (**B**) and sanity **Zoom to Objects**.
 
+## 2026-05-04 12:15
+
+- Insight: **`pre-regen` PCB snapshots already matched** `fix_placement_v4`/`v5` coordinates (TOP USB bottom, MAIN `J5`, TOP power cluster) — rerun printed “0 patches” because targets were identical; nothing lost.
+- Decision: Added **`scripts/fix_placement_sma_main.py`** and applied **6/6** `(at …)` patches on **`pcb/subzero-main.kicad_pcb`** (`J10,J11,J13,J3` evenly on top edge **y≈12**; **`J12` left**, **`J4` right** at **y≈12**).
+- Next step: KiCad MAIN 3D/2D check SMA openings vs enclosure; rerun script after manual edits only if refs move.
