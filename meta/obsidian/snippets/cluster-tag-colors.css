@@ -1,0 +1,28 @@
+/*
+  Tag-Farben für Cluster (Obsidian). Kopiert nach `.obsidian/snippets/` via install_obsidian_assets.sh.
+  Tags: #cluster/hardware, #cluster/software, #cluster/meta, #topic
+*/
+
+a.tag[href="#cluster%2Fhardware"],
+a.tag[href="#cluster/hardware"] {
+  background-color: rgba(21, 101, 192, 0.22);
+  color: #0d47a1;
+}
+
+a.tag[href="#cluster%2Fsoftware"],
+a.tag[href="#cluster/software"] {
+  background-color: rgba(106, 27, 154, 0.18);
+  color: #4a148c;
+}
+
+a.tag[href="#cluster%2Fmeta"],
+a.tag[href="#cluster/meta"] {
+  background-color: rgba(239, 108, 0, 0.18);
+  color: #bf360c;
+}
+
+a.tag[href="#topic"],
+a.tag[href="#topic/"] {
+  background-color: rgba(85, 139, 47, 0.2);
+  color: #33691e;
+}
