@@ -760,3 +760,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: **IR-Überlast:** Sichtbares „Glühen“ unwahrscheinlich (940 nm), aber **Tj / Kupfer / `R108`** werden bei **langem hohen Mittelstrom** heiß — **Datenblatt + Messung**. **Leiterbahn-Schmelzen** unwahrscheinlich ohne Kurzschluss. **Leistungsstaffelung in SW:** über **RMT** Puls/Pause, **Duty**, Burst-Länge/Wiederholrate; **„20 % Standard / 100 % nur Boost“** als Policy + **Zeitbudget**; feinere Spitzenstrom-Reduktion nur mit **anderem `R108`** oder zusätzlicher Hardware-Stufe.
 - Context: Nutzer Frage Dauer-EIN, Brandgefahr, gewünschte Prozent-Profile.
+
+## 2026-04-28 12:00
+
+- Decision: Repo **`subzero-next/docs/ENGINEERING-ROADMAP.md`** — phasige Master-Liste (SKU/Lite, Battery, repeatable placement, BOM/Avail, 3D, capability matrix, Hw-Security, Kosten/Zukunft, leicht FW/Marketing, externe Fachreview); Verweis eingetragen in **`docs/PERSONAL-DESIGN-RULES.md`**. PCB absichtlich **nicht** „routing-fertig“; nächster fokussierbarer Gate laut Doc: **Battery-Ziel + SKU-Matrix**.
+- Context: Nutzer skizzierte großen Produkt-/PCB-/Commercial-Wunschbaum und fragte wie weiter.
