@@ -755,3 +755,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: **IR SST-10 (`D10`)** TOP **F.Cu** **`(50, 4)` mm**; mit **U53** RX **`(44, 4)`**, **D11** **`(56, 4)`** (`gr_text` **IR_TX_RX_TOP**). Treiber laut `peripherals.kicad_sch`: **`VBAT_PROT`** → **R108 3R9** (**1206**, Beschreibung ca. **~0,35 A Mittel** bei ~4 V, Abstimmung mit Duty) → **D10** → **Q32 AO3400** Low-Side; **GPIO9 RMT** über **R91 22R**, **R109 100k** am Gate. **Thermik/Safety:** SMT-**Thermal-Pad** (`#PWR_IR_PAD`/`GND`); **Firmware:** kein Dauer-**100 %-ON** ohne Rechnung → Puls/Pause, **Luminus DS** (**If peak/DC, Tj**); **Bring-up:** Fingerspitze/Flir + Strommessung; **R108** kann bei hohem **Tastgrad** heiß werden → **2512** oder höherer Wert / niedriger Strom-Ziel nennen wenn nötig.
 - Context: Nutzer „wo ist die neue IR-LED / nichts soll glühen oder verbrennen“. (Hinweis: in `subzero-top.kicad_pcb` ist **D11** an **+3V3**/**GND** geroutet — kein Freilauf über die LED-Leitung; bei Design-Intent Freilauf Schaltplan/`Update PCB` gegenprüfen.)
+
+## 2026-04-28 11:15
+
+- Insight: **IR-Überlast:** Sichtbares „Glühen“ unwahrscheinlich (940 nm), aber **Tj / Kupfer / `R108`** werden bei **langem hohen Mittelstrom** heiß — **Datenblatt + Messung**. **Leiterbahn-Schmelzen** unwahrscheinlich ohne Kurzschluss. **Leistungsstaffelung in SW:** über **RMT** Puls/Pause, **Duty**, Burst-Länge/Wiederholrate; **„20 % Standard / 100 % nur Boost“** als Policy + **Zeitbudget**; feinere Spitzenstrom-Reduktion nur mit **anderem `R108`** oder zusätzlicher Hardware-Stufe.
+- Context: Nutzer Frage Dauer-EIN, Brandgefahr, gewünschte Prozent-Profile.
