@@ -765,3 +765,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: Repo **`subzero-next/docs/ENGINEERING-ROADMAP.md`** — phasige Master-Liste (SKU/Lite, Battery, repeatable placement, BOM/Avail, 3D, capability matrix, Hw-Security, Kosten/Zukunft, leicht FW/Marketing, externe Fachreview); Verweis eingetragen in **`docs/PERSONAL-DESIGN-RULES.md`**. PCB absichtlich **nicht** „routing-fertig“; nächster fokussierbarer Gate laut Doc: **Battery-Ziel + SKU-Matrix**.
 - Context: Nutzer skizzierte großen Produkt-/PCB-/Commercial-Wunschbaum und fragte wie weiter.
+
+## 2026-04-28 12:35
+
+- Decision: **Roadmap Abschnitt J** — späterer **Bauteil-für-Bauteil-Intent-Pass**: User will **jedes wichtige/halbwichtige Teil** nacheinander bewerten (Wunsch-Lage/UX in Alltagssprache oder „passt“); Agent fragt **seriell** ab, protokolliert in **`PLACEMENT-INTENT.md`** (wenn gestartet). **Jetzt noch nicht** ausführen — auf User-Go.
+- Context: Nutzer festgelegter Arbeitsmodus für nachgelagerte Sessions.
