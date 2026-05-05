@@ -750,3 +750,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: **`scripts/fix_placement_sma_main.py`** — vier **Top-SMAs** (**J10/J11/J13/J3**) jetzt **zentriert** um Boardmitte (**x = 40 mm**) mit **TOP_PITCH = 15 mm** (vorher implizit **14 mm**, Clustermittelpunkt bei **≈42 mm**). Achsen **x = 17,5 / 32,5 / 47,5 / 62,5** mm, **y = 12**.
 - Context: Nutzer „nicht mittig oben“, Abstand zwischen den SMAs etwas zu knapp.
 - Next step: KiCad MAIN **DRC** (Courtyard gegen **J12/J4**/RF); ggf. **TOP_PITCH** auf **15,5–16** schieben wenn Gehäuse mehr Luft will.
+
+## 2026-04-28 10:30
+
+- Insight: **IR SST-10 (`D10`)** TOP **F.Cu** **`(50, 4)` mm**; mit **U53** RX **`(44, 4)`**, **D11** **`(56, 4)`** (`gr_text` **IR_TX_RX_TOP**). Treiber laut `peripherals.kicad_sch`: **`VBAT_PROT`** → **R108 3R9** (**1206**, Beschreibung ca. **~0,35 A Mittel** bei ~4 V, Abstimmung mit Duty) → **D10** → **Q32 AO3400** Low-Side; **GPIO9 RMT** über **R91 22R**, **R109 100k** am Gate. **Thermik/Safety:** SMT-**Thermal-Pad** (`#PWR_IR_PAD`/`GND`); **Firmware:** kein Dauer-**100 %-ON** ohne Rechnung → Puls/Pause, **Luminus DS** (**If peak/DC, Tj**); **Bring-up:** Fingerspitze/Flir + Strommessung; **R108** kann bei hohem **Tastgrad** heiß werden → **2512** oder höherer Wert / niedriger Strom-Ziel nennen wenn nötig.
+- Context: Nutzer „wo ist die neue IR-LED / nichts soll glühen oder verbrennen“. (Hinweis: in `subzero-top.kicad_pcb` ist **D11** an **+3V3**/**GND** geroutet — kein Freilauf über die LED-Leitung; bei Design-Intent Freilauf Schaltplan/`Update PCB` gegenprüfen.)
