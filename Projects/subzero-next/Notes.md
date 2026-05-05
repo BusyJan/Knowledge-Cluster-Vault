@@ -744,3 +744,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: FAQ — **Stand PCB** (KiCad nicht hier gemessen): **MAIN + TOP** sind **Layout/Bring-up-Arbeit** (viele Airwires, DRC-/Courtyard-Themen vor vollständigem Routing); Checkliste **`subzero-next/docs/ASSEMBLY-READINESS.md`**. **`J5`** auf MAIN Footprint **`USB_C_C6_DBG`** (Schaltplan `sheets/mcu-c6.kicad_sch`) = direkte **ESP32-C6**-USB-Leitung (**Debug / Serial / ggf. Download**), ohne über TOP-USB-Hub zu gehen.
 - Context: Nutzer kurz gefragt „how’s the pcb“ + warum USB-C auf MAIN.
+
+## 2026-04-27 23:40
+
+- Decision: **`scripts/fix_placement_sma_main.py`** — vier **Top-SMAs** (**J10/J11/J13/J3**) jetzt **zentriert** um Boardmitte (**x = 40 mm**) mit **TOP_PITCH = 15 mm** (vorher implizit **14 mm**, Clustermittelpunkt bei **≈42 mm**). Achsen **x = 17,5 / 32,5 / 47,5 / 62,5** mm, **y = 12**.
+- Context: Nutzer „nicht mittig oben“, Abstand zwischen den SMAs etwas zu knapp.
+- Next step: KiCad MAIN **DRC** (Courtyard gegen **J12/J4**/RF); ggf. **TOP_PITCH** auf **15,5–16** schieben wenn Gehäuse mehr Luft will.
