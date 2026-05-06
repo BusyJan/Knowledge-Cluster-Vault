@@ -224,4 +224,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: esptool: This chip is ESP32 not ESP32-S3 — /dev/ttyACM0 was WROOM/UART bridge, not S3 Native USB DevKit.
 - Decision: User must flash only ESP32-S3 for esp32-s3-lab-diskhid; unplug classic ESP32 or pass nocturn diskhid --upload-port from pio device list. Scripts updated: diskhid-pipeline.sh --upload-port, NOCTURN_DISKHID_UPLOAD_PORT; BUILD.md and nocturn README note.
 - Next step: Flash with DevKit connected; optionally install 99-platformio-udev rules for clearer multi-port labeling.
+## 2026-05-06 23:24
+
+- Insight: Docs used ttyACMx as shorthand for any ACM index; copying it literally yields ENOENT.
+- Context: diskhid --upload-port
+- Decision: diskhid-pipeline.sh now validates placeholder ttyACMx/ttyUSBx and missing paths before msf steps; BUILD.md/nocturn README clarify digit substitution.
 
