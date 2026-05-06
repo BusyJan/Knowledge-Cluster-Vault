@@ -197,3 +197,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: **WROOM/WROVER + CH343** kann **kein USB-HID** zum Host; Gate per Serial ok, Typing-Payloads brauchen **ESP32-S3** (`esp32_s3_hid`) oder externen 32u4.
 - Next step: User generiert `mother_token`, `emit-header` → flash; `mother_daemon watch` dauerhaft auf Dev-Maschine; Payloads später in `run_armed_behavior()`.
 
+## 2026-05-06 23:55
+
+- Context: **`esp32-s3-lab-diskhid`** MSC+HID authorized-lab scaffolding.
+- Decision: **`tools/emit_stub_disk.py`** erweitert um **`--from-img`** → rohe FAT/FAT32-Images (nach `mkfs.vfat -F32`/`mcopy`) zu `src/disk_blob.cpp`; **`BUILD.md`** mit exakten Linux-Kommandos + **`msfconsole`** Handler One-liner.
+
