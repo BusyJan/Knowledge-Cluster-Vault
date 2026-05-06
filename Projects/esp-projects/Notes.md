@@ -206,3 +206,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: **Codename `DiskHID`** — Nocturn-Integration **`nocturn diskhid`** → `scripts/diskhid-pipeline.sh` (msfvenom, FAT32+`mcopy`, `emit_stub_disk.py`, optional `pio --flash`); Default-Pfad Sibling **`esp32-s3-lab-diskhid/`**, Override **`NOCTURN_DISKHID_PRJ`**.
 
+
+## 2026-05-07 01:05
+
+- Decision: **`esp32-s3-lab-diskhid`** erhält **`NOCTURN_SAFE_V1`** CDC-Handshake (wie **`esp32-mother-safe`**): nach Enumeration ~**9 s** Fenster → Treffer = **HID aus**, MSC nutzbar; **`nocturn mother watch`** auf Trust-Host; ohne Token (Windows-Victim) = **ARMED**. Pipeline erfordert **`include/mother_token.h`** (gitignored).
