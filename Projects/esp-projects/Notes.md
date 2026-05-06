@@ -190,3 +190,10 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Repo **`wroom32u-playground/`** aktuell **nur** `wifi_scan` (Rolling-RSSI über Top-BSSIDs); ESP-NOW-Stub liegt unter **`later/espnow_tx.cpp`** bis Wi-Fi Phase abgeschlossen.
 - Next step: Antenne Ein/Aus Vergleich auf gleichen BSSIDs (~10–20 dB Diff); danach separates BT-Classic-Skript.
 
+## 2026-05-06 22:05
+
+- Context: ESP32 soll auf **trusted laptop nicht angreifen**; Nocturn-Workflow parallel zu Leonardo bleiben.
+- Decision: **Shared-secret serial handshake** `NOCTURN_SAFE_V1 <64-hex>` (115200 UART/CDC) vor jedem HID/Payload — Laptop-Tool `nocturn/mother_daemon.py watch` sendet Bursts bei neuer Bridge-Enumeration; Firmware in **`esp32-mother-safe/`** (`esp32_wroom_bridge` + `esp32_s3_hid`).
+- Insight: **WROOM/WROVER + CH343** kann **kein USB-HID** zum Host; Gate per Serial ok, Typing-Payloads brauchen **ESP32-S3** (`esp32_s3_hid`) oder externen 32u4.
+- Next step: User generiert `mother_token`, `emit-header` → flash; `mother_daemon watch` dauerhaft auf Dev-Maschine; Payloads später in `run_armed_behavior()`.
+
