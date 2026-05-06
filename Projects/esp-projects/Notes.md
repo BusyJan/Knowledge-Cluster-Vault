@@ -239,4 +239,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: DiskHID uploads failed from wrong autodetect (/dev/ttyS1) or classic ESP32 on ttyACM0 masquerading as the S3 target.
 - Context: esp32-s3-lab-diskhid
 - Decision: Added tools/verify_esp32s3_serial.py scan|check (esptool chip_id). diskhid-pipeline --flash runs probe before msfvenom; optional NOCTURN_DISKHID_SKIP_CHIP_CHECK. platformio.ini upload_port=/dev/ttyACM* to ignore ttyS*. Docs updated.
+## 2026-05-06 23:41
+
+- Context: DiskHID hardware
+- Insight: Active lab UART is ESP32-WROVER/32U + CH343; esptool reports classic ESP32, not ESP32-S3 — expected for DiskHID preflight rejects.
+- Decision: BUILD.md now names ESP32-WROVER and 32U explicitly as incompatible targets for DiskHID.
 
