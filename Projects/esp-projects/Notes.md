@@ -202,3 +202,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: **`esp32-s3-lab-diskhid`** MSC+HID authorized-lab scaffolding.
 - Decision: **`tools/emit_stub_disk.py`** erweitert um **`--from-img`** → rohe FAT/FAT32-Images (nach `mkfs.vfat -F32`/`mcopy`) zu `src/disk_blob.cpp`; **`BUILD.md`** mit exakten Linux-Kommandos + **`msfconsole`** Handler One-liner.
 
+## 2026-05-07 00:20
+
+- Decision: **Codename `DiskHID`** — Nocturn-Integration **`nocturn diskhid`** → `scripts/diskhid-pipeline.sh` (msfvenom, FAT32+`mcopy`, `emit_stub_disk.py`, optional `pio --flash`); Default-Pfad Sibling **`esp32-s3-lab-diskhid/`**, Override **`NOCTURN_DISKHID_PRJ`**.
+
