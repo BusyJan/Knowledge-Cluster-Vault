@@ -775,3 +775,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: **Roadmap §J präzisiert:** Agent liefert **nur Info-Karten** (Was/Wofür/Wo grob/Layer) — **keine Positions-Abnahme**. User antwortet **optional** mit Produktideen; Wünsche erst dann in **`PLACEMENT-INTENT.md`**. Erster „Los“-Versuch (USB-Cluster) war versehentlich noch im **Bestätigungs**-Stil.
 - Context: Nutzer-Korrektur zum Ablauf „ein Component/Gruppe pro Prompt“.
+
+## 2026-04-28 13:45
+
+- Insight: **§J erneut fokussiert:** nur **Makro-Themen** (Antennen, Battery, Ports, Sensoren, Displays, RF/MCU-Blöcke); **keine** 0603/Passives; pro Karte **„stark vs Kompromiss / Upgrade-Pfad“** + User **persönliche Preferences** danach.
+- Context: Nutzer wollte Orientierung „beste Gesamtlösung?“ statt Kleinkram.
