@@ -229,4 +229,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: Docs used ttyACMx as shorthand for any ACM index; copying it literally yields ENOENT.
 - Context: diskhid --upload-port
 - Decision: diskhid-pipeline.sh now validates placeholder ttyACMx/ttyUSBx and missing paths before msf steps; BUILD.md/nocturn README clarify digit substitution.
+## 2026-05-06 23:26
+
+- Insight: In diskhid-pipeline.sh usage() heredoc, backticks around pio device list ran command substitution and corrupted --help output.
+- Context: DiskHID
+- Decision: Replaced with plain text (see: pio device list). Agent verified: --help, ttyACMx rejection, full pipeline without flash, pio run build.
 
