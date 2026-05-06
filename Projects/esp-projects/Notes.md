@@ -219,7 +219,7 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Next step: Re-run nocturn diskhid; raise --sectors if m.exe+FAT grows (const keeps flash placement).
 ## 2026-05-06 23:19
 
-- Insight: (none)
+- Insight: PIO auto-upload picks a serial device; mixed lab benches leave a classic ESP32 on ttyACM0 so esptool negotiates ESP32 while the ELF targets ESP32-S3.
 - Context: DiskHID pipeline: pio upload after successful build.
 - Problem: esptool: This chip is ESP32 not ESP32-S3 — /dev/ttyACM0 was WROOM/UART bridge, not S3 Native USB DevKit.
 - Decision: User must flash only ESP32-S3 for esp32-s3-lab-diskhid; unplug classic ESP32 or pass nocturn diskhid --upload-port from pio device list. Scripts updated: diskhid-pipeline.sh --upload-port, NOCTURN_DISKHID_UPLOAD_PORT; BUILD.md and nocturn README note.
