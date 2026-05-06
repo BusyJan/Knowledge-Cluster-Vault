@@ -244,4 +244,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Context: DiskHID hardware
 - Insight: Active lab UART is ESP32-WROVER/32U + CH343; esptool reports classic ESP32, not ESP32-S3 — expected for DiskHID preflight rejects.
 - Decision: BUILD.md now names ESP32-WROVER and 32U explicitly as incompatible targets for DiskHID.
+## 2026-05-06 23:47
+
+- Insight: CH343 UART cannot back USB MSC to host; BLE transport is the honest classic-ESP32 lab substitute.
+- Context: User S3 broken; WROVER 32U
+- Decision: DiskHID adds esp32-wrover-ble-diskhid env + src/main_wrover_ble_diskhid.cpp; BLE HID + curl m.exe via HTTP; nocturn diskhid --classic-wrover [--http-artifact-port]; verify_esp32s3_serial.py --expect esp32-classic; BUILD/README/platformio.ini. USB MSC gadget remains S3-only.
 
