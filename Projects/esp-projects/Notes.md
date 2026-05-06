@@ -217,4 +217,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: disk_blob.o overflowed dram0_0_seg by ~1.3 MiB.
 - Decision: emit_stub_disk.py now emits extern const uint8_t disk_img_bin[N]; main.cpp uses disk_img_bin + pos; diskhid-pipeline default sectors 3072 to 512 (256 KiB); BUILD.md updated.
 - Next step: Re-run nocturn diskhid; raise --sectors if m.exe+FAT grows (const keeps flash placement).
+## 2026-05-06 23:19
+
+- Insight: (none)
+- Context: DiskHID pipeline: pio upload after successful build.
+- Problem: esptool: This chip is ESP32 not ESP32-S3 — /dev/ttyACM0 was WROOM/UART bridge, not S3 Native USB DevKit.
+- Decision: User must flash only ESP32-S3 for esp32-s3-lab-diskhid; unplug classic ESP32 or pass nocturn diskhid --upload-port from pio device list. Scripts updated: diskhid-pipeline.sh --upload-port, NOCTURN_DISKHID_UPLOAD_PORT; BUILD.md and nocturn README note.
+- Next step: Flash with DevKit connected; optionally install 99-platformio-udev rules for clearer multi-port labeling.
 
