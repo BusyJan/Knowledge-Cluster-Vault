@@ -182,3 +182,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: **Vault-Struktur** gewünscht wie **Baum + farbige Cluster**, wenig Graph-Spaghetti: `cluster-registry.json` (Projekt → Cluster), `scripts/refresh_cluster_tree.py` erzeugt **CLUSTER-TREE** (Mermaid-Subgraphen + `classDef`) und schreibt **Graph-Farben** (`showTags: false`). Neue Pfade **`Topics/<cluster>/`** (atomare Themen), **`Clusters/`** (sparsame MOCs), **`Vault-Leitfaden.md`**, CSS-Snippet **`cluster-tag-colors`** (Appearance aktivieren).
 - Next step: Bei neuem Projekt-Slug Registry + Skript; losgelöste Themen als Topic-Datei statt Crosslink-Wolke; auf neuem Rechner `bash scripts/install_obsidian_assets.sh` (Snippet liegt unter `meta/obsidian/`).
 
+## 2026-05-06 21:25
+
+- Context: Neues **ESP32-WROOM-32U** (U.FL); User will **zuerst nur Wi-Fi** testen, Bluetooth/ESPNOW später.
+- Insight: `esptool` aus Debian/Kali fehlt Stub-JSON → `pipx install esptool` (v5.x) löst Stub-Flash; **`pipx install --force platformio`** nach kaputtem Pipx-State; **pio** liegt unter `~/.local/bin/pio`.
+- Insight: Bridge **CH343** (`usb-1a86_USB_Single_Serial_*`) → **`/dev/ttyACM0`**, Chip **ESP32-D0WD-V3**, Flash **4 MB** erkannt (`flash-id`).
+- Decision: Repo **`wroom32u-playground/`** aktuell **nur** `wifi_scan` (Rolling-RSSI über Top-BSSIDs); ESP-NOW-Stub liegt unter **`later/espnow_tx.cpp`** bis Wi-Fi Phase abgeschlossen.
+- Next step: Antenne Ein/Aus Vergleich auf gleichen BSSIDs (~10–20 dB Diff); danach separates BT-Classic-Skript.
+
