@@ -770,3 +770,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: **Roadmap Abschnitt J** — späterer **Bauteil-für-Bauteil-Intent-Pass**: User will **jedes wichtige/halbwichtige Teil** nacheinander bewerten (Wunsch-Lage/UX in Alltagssprache oder „passt“); Agent fragt **seriell** ab, protokolliert in **`PLACEMENT-INTENT.md`** (wenn gestartet). **Jetzt noch nicht** ausführen — auf User-Go.
 - Context: Nutzer festgelegter Arbeitsmodus für nachgelagerte Sessions.
+
+## 2026-04-28 13:05
+
+- Insight: **Roadmap §J präzisiert:** Agent liefert **nur Info-Karten** (Was/Wofür/Wo grob/Layer) — **keine Positions-Abnahme**. User antwortet **optional** mit Produktideen; Wünsche erst dann in **`PLACEMENT-INTENT.md`**. Erster „Los“-Versuch (USB-Cluster) war versehentlich noch im **Bestätigungs**-Stil.
+- Context: Nutzer-Korrektur zum Ablauf „ein Component/Gruppe pro Prompt“.
