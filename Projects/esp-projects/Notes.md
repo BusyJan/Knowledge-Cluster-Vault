@@ -210,3 +210,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 ## 2026-05-07 01:05
 
 - Decision: **`esp32-s3-lab-diskhid`** erhält **`NOCTURN_SAFE_V1`** CDC-Handshake (wie **`esp32-mother-safe`**): nach Enumeration ~**9 s** Fenster → Treffer = **HID aus**, MSC nutzbar; **`nocturn mother watch`** auf Trust-Host; ohne Token (Windows-Victim) = **ARMED**. Pipeline erfordert **`include/mother_token.h`** (gitignored).
+## 2026-05-06 23:16
+
+- Insight: ESP32 Arduino PROGMEM macro is empty; a large uint8_t disk_img_bin[] initializer goes to SRAM (.dram0.data) and fails link. extern const uint8_t places the blob in flash rodata.
+- Context: esp32-s3-lab-diskhid / nocturn diskhid: build failed after embedding ~1.5 MiB FAT image.
+- Problem: disk_blob.o overflowed dram0_0_seg by ~1.3 MiB.
+- Decision: emit_stub_disk.py now emits extern const uint8_t disk_img_bin[N]; main.cpp uses disk_img_bin + pos; diskhid-pipeline default sectors 3072 to 512 (256 KiB); BUILD.md updated.
+- Next step: Re-run nocturn diskhid; raise --sectors if m.exe+FAT grows (const keeps flash placement).
+
