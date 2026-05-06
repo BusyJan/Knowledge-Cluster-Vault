@@ -234,4 +234,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: In diskhid-pipeline.sh usage() heredoc, backticks around pio device list ran command substitution and corrupted --help output.
 - Context: DiskHID
 - Decision: Replaced with plain text (see: pio device list). Agent verified: --help, ttyACMx rejection, full pipeline without flash, pio run build.
+## 2026-05-06 23:39
+
+- Insight: DiskHID uploads failed from wrong autodetect (/dev/ttyS1) or classic ESP32 on ttyACM0 masquerading as the S3 target.
+- Context: esp32-s3-lab-diskhid
+- Decision: Added tools/verify_esp32s3_serial.py scan|check (esptool chip_id). diskhid-pipeline --flash runs probe before msfvenom; optional NOCTURN_DISKHID_SKIP_CHIP_CHECK. platformio.ini upload_port=/dev/ttyACM* to ignore ttyS*. Docs updated.
 
