@@ -256,4 +256,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: Windows Run-box/HID sequences confuse ChromeOS display rotation.
 - Decision: Document Chrome path separately; do not use macOS `open -a Terminal` on Chromebook.
 - Next step: User: pair NocturnChromeAnnoyer on authorized lab Chromebook; customize post-shell command in source if needed.
+## 2026-05-07 09:37
+
+- Insight: Nocturn armoury Leonardo flash: avrdude init/leave-prog-mode errors often = wrong device on ttyACM (CH34x ESP32 vs ATmega32u4), ModemManager/brltty, or missed Caterina window.
+- Context: armoury.py now warns on CH34x VID, retries upload.speed=19200, suggests flash-env.sh + upload-leonardo-waitport.sh, env NOCTURN_LEONARDO_FORCE_WAITPORT / NOCTURN_LEONARDO_UPLOAD_SPEED.
+- Problem: User flash failed with "initialization failed" and protocol errors on /dev/ttyACM0.
+- Decision: Keep Leonardo path separate from ESP32 PlatformIO; document recovery in CLI hints.
+- Next step: On dev box: sudo bash nocturn/scripts/flash-env.sh then bash .../upload-leonardo-waitport.sh /dev/ttyACM0; confirm USB device is Leonardo.
 
