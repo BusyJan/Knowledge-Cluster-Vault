@@ -277,4 +277,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: User reported rotation did not work.
 - Decision: Document official Reload-based rotation + arrow cycle in BUILD/README.
 - Next step: If still no effect: manual Ctrl+Shift+Reload on device keyboard; confirm not enterprise-locked.
+## 2026-05-07 10:07
+
+- Insight: Chromebook onboard Reload (3rd top-row browser key) mapped in firmware as CHROME_RELOAD_HID default KEY_F3 not F5; TwinStorm + rotation use same define; F5 via -D CHROME_RELOAD_HID=0xC6 if host expects PC-style refresh.
+- Context: main_chrome_annoyer_ble.cpp BUILD.md nocturn README
+- Problem: Reload/rotation HID mismatch
+- Decision: Central CHROME_RELOAD_HID
+- Next step: .
 
