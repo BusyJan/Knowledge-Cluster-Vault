@@ -10,6 +10,7 @@ This file is the **compression layer**: distilled from [[Notes]], not a second l
 ## Active themes
 
 - **PCB → assembly:** personal rules file in repo `subzero-next/docs/PERSONAL-DESIGN-RULES.md`; SMA grid + silk DRC + roadmap in `docs/ASSEMBLY-READINESS.md`. Placement scripts: `fix_placement_sma_main.py` (uuid-safe `at` patch), `bump_f_silk_gr_text_sizes.py`, existing v4/v5.
+- **Antennas (ship bundle):** uniform finish + correct band per port — working baseline `subzero-next/docs/ANTENNA-BOM-BASELINE.md`; UX prefs `PLACEMENT-INTENT.md`; vault **Notes** for dated decisions.
 
 ## Compressed history
 
