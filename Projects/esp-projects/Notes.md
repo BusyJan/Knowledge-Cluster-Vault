@@ -300,3 +300,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: Dedicated compile-time mode + mutually exclusive CLI flags with rotation-fix/twinstorm.
 - Next step: Tune `CHROME_PAGE_SPAM_*` defines if Chrome OS drops keystrokes.
 
+## 2026-05-07 10:17
+
+- Insight: Page spammer (**`CHROME_BLE_PAGE_SPAM_ONLY`**) now sends **Ctrl+N forever** while paired (one post-connect settle, then **`loop`** spam; disconnect or power-cycle to stop); removed fixed **`CHROME_PAGE_SPAM_COUNT`**.
+- Context: `main_chrome_annoyer_ble.cpp`, BUILD/chrome-annoyer/armoury copy.
+- Problem: Earlier build stopped after N tabs.
+- Decision: Dedicated **`loop`** path only for page-spam mode (**`tap_ctrl_new_tab` + yield**).
+- Next step: Tune **`CHROME_PAGE_SPAM_CHORD_HOLD_MS`** / **`CHROME_PAGE_SPAM_GAP_MS`** only if keys drop.
+
