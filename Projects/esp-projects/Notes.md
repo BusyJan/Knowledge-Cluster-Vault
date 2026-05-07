@@ -270,4 +270,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: Non-crosh Chrome nuisance + clearer ESP32 UX in Nocturn.
 - Decision: CHROME_BLE_TWINSTORM define + docs; armoury segmented by hardware.
 - Next step: Verify Search key maps as HID LEFT_GUI on target Chromebooks.
+## 2026-05-07 10:05
+
+- Insight: Chrome rotation-fix BLE: old Ctrl+Alt+Right alone often ineffective; firmware now fires Ctrl+Shift+F5 bursts then Ctrl+Alt+all arrows. Some org policies still disable rotation shortcuts.
+- Context: main_chrome_annoyer_ble.cpp CHROME_BLE_ROTATION_RELOAD_TAPS etc.
+- Problem: User reported rotation did not work.
+- Decision: Document official Reload-based rotation + arrow cycle in BUILD/README.
+- Next step: If still no effect: manual Ctrl+Shift+Reload on device keyboard; confirm not enterprise-locked.
 
