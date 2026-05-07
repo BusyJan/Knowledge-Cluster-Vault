@@ -795,3 +795,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: **Antennen v1:** User **LOCK** — **all black** (einheitlich, clean mit schwarzem Case); **alle kipp-/schwenkbar** (Knuckle). Korrigiert Annahme „gibt es nicht“: **schwarze kippbare** Stücke sind im **Industrie-/Mouser-/Taoglas-Pulse-Linx-Umfeld** pro Band auffindbar; Konsistenz = **eine Herstellerfamilie**, **SMA passend** zu Board (kein RP-SMA-Irrtum). Docs: **`ANTENNA-BOM-BASELINE.md`** §0.1–0.2 + Tabelle; **`PLACEMENT-INTENT`** aktualisiert.
 - Context: Nutzer „all black“, „tiltable“, Meinung + Empfehlung.
+
+## 2026-05-06 17:05
+
+- Decision: **`ANTENNA-BOM-BASELINE.md`** **§1.0 Ship-Family gefixt:** TE Connectivity (**Linx**) **CW‑HWR** articulated whips mit Suffix **`‑SMA`** (Standard-SMA Plug, nicht **`‑RPS`**). Konkret: **J10/J11** `ANT‑433‑CW‑HWR‑SMA` (**E07‑433M20S** auf Schaltplan); **J13** EU `ANT‑868‑CW‑HWR‑SMA` vs US **`ANT‑916‑CW‑HWR‑SMA`**; **J12/J3/J4** gemeinsams **`ANT‑2.4‑CW‑HWR‑SMA`** (2.4-only v1 — **J4** Hinweis: 5–6 GHz später anderer Artikel).
+- Insight: Gleiche Serie ≈ gleiche Schwarz-/Hinge-Ästhetik; **Nachweis** Barrel-Ø vs **15 mm** SMA-Raster bleibt **Sample‑Messung**.
+- Next step: Samples bestellen → **housing Ø** dokumentieren → Packout-Spalten mit Distributor-Bestellnummer füllen.

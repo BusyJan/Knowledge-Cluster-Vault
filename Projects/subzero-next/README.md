@@ -4,7 +4,7 @@ title: "subzero-next (greenfield KiCad)"
 slug: "subzero-next"
 status: active
 created: "2026-04-14 19:58:51"
-updated: 2026-05-06 15:30:00
+updated: 2026-05-06 17:05:00
 repo: ""
 tags: [project]
 ---
@@ -17,7 +17,7 @@ tags: [project]
 
 ## Key insights
 
-- **Macro BOM / ship bundle:** antenna **finish + per-SMA MPN** tracked in repo `subzero-next/docs/ANTENNA-BOM-BASELINE.md`; UX prefs `PLACEMENT-INTENT.md` — decisions summarized in [[Notes]].
+- **Macro BOM / ship bundle:** antenna **finish + MPNs** in `subzero-next/docs/ANTENNA-BOM-BASELINE.md` §1.0 (**TE Linx CW‑HWR `‑SMA`**); UX prefs `PLACEMENT-INTENT.md` — decisions in [[Notes]].
 - **Canonical KiCad project:** `ESP Projects/subzero-next/subzero-next.kicad_pro` + `sheets/*.kicad_sch`. **Not** `subzero-next-flat` (review-only). Pro workflow: repo `PRO-SCHEMATIC-WORKFLOW.md`.
 - **Finished** means: phases in [[Tasks]] / repo `SCHEMATIC-FINISH-LINE.md` are complete — not merely “ERC errors = 0” via relaxed rules.
 - First-time designs prioritize **clarity and reviewability** over zero warnings.
