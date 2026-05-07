@@ -284,4 +284,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: Reload/rotation HID mismatch
 - Decision: Central CHROME_RELOAD_HID
 - Next step: .
+## 2026-05-07 10:12
+
+- Insight: Chrome BLE sketches now default advertise Logitech M650 L B + manufacturer Logitech via CHROME_BLE_KEYBOARD_NAME / MANUFACTURER in main_chrome_annoyer_ble.cpp.
+- Context: Firmware + nocturn README/BUILD/armoury/chrome-annoyer sync.
+- Problem: .
+- Decision: .
+- Next step: Forget old paired device on Chromebook after rename.
 
