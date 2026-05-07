@@ -790,3 +790,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: Repo **`subzero-next/docs/ANTENNA-BOM-BASELINE.md`** — **einheitliche** Antennen-Optik (Entscheid **A schwarz** vs **B Ni/silber** für v1), Tabelle **J10–J4** mit **MPN/Supplier TBD**, Band-Hinweise pro Port; **`PLACEMENT-INTENT`** verlinkt; **`ENGINEERING-ROADMAP`** G verknüpft; **Vault `Summary.md`** Thema Antennen. **Workflow:** Makro-Themen im Repo festhalten; **durable** Kurzfassung + Datierung hier in **Notes** — iterativ ergänzen sobald MPNs stehen.
 - Context: Nutzer will **jetzt** bei Antennen feste Richtung + später alles Durchgehen mit guter **Vault**-Speicherung.
+
+## 2026-05-06 15:30
+
+- Decision: **Antennen v1:** User **LOCK** — **all black** (einheitlich, clean mit schwarzem Case); **alle kipp-/schwenkbar** (Knuckle). Korrigiert Annahme „gibt es nicht“: **schwarze kippbare** Stücke sind im **Industrie-/Mouser-/Taoglas-Pulse-Linx-Umfeld** pro Band auffindbar; Konsistenz = **eine Herstellerfamilie**, **SMA passend** zu Board (kein RP-SMA-Irrtum). Docs: **`ANTENNA-BOM-BASELINE.md`** §0.1–0.2 + Tabelle; **`PLACEMENT-INTENT`** aktualisiert.
+- Context: Nutzer „all black“, „tiltable“, Meinung + Empfehlung.
