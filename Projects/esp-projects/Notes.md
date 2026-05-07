@@ -263,4 +263,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Problem: User flash failed with "initialization failed" and protocol errors on /dev/ttyACM0.
 - Decision: Keep Leonardo path separate from ESP32 PlatformIO; document recovery in CLI hints.
 - Next step: On dev box: sudo bash nocturn/scripts/flash-env.sh then bash .../upload-leonardo-waitport.sh /dev/ttyACM0; confirm USB device is Leonardo.
+## 2026-05-07 12:05
+
+- Insight: BLE TwinStorm alternates Ctrl+Shift+F5 (ChromeOS Reload) and Ctrl+Search+H (~140 rounds); pair NocturnTwinStorm. CLI: nocturn chrome-annoyer --twinstorm; PIO esp32-wrover-chrome-twinstorm-ble.
+- Context: Armoury hub: [1] Leonardo USB, [2] ESP32-S3 DiskHID wizard, [3] WROVER/BLE submenu; nocturn launcher dispatches diskhid.
+- Problem: Non-crosh Chrome nuisance + clearer ESP32 UX in Nocturn.
+- Decision: CHROME_BLE_TWINSTORM define + docs; armoury segmented by hardware.
+- Next step: Verify Search key maps as HID LEFT_GUI on target Chromebooks.
 
