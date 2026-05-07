@@ -788,5 +788,5 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 ## 2026-05-06 14:00
 
-- Decision: Repo **`subzero-next/docs/ANTENNA-BOM-BASELINE.md`** — **einheitliche** Antennen-Optik (Entscheid **A schwarz** vs **B Ni/silber** für v1**), Tabelle **J10–J4** mit **MPN/Supplier TBD**, Band-Hinweise pro Port; **`PLACEMENT-INTENT`** verlinkt; **`ENGINEERING-ROADMAP`** G verknüpft; **Vault `Summary.md`** Thema Antennen. **Workflow:** Makro-Themen im Repo festhalten; **durable** Kurzfassung + Datierung hier in **Notes** — iterativ ergänzen sobald MPNs stehen.
+- Decision: Repo **`subzero-next/docs/ANTENNA-BOM-BASELINE.md`** — **einheitliche** Antennen-Optik (Entscheid **A schwarz** vs **B Ni/silber** für v1), Tabelle **J10–J4** mit **MPN/Supplier TBD**, Band-Hinweise pro Port; **`PLACEMENT-INTENT`** verlinkt; **`ENGINEERING-ROADMAP`** G verknüpft; **Vault `Summary.md`** Thema Antennen. **Workflow:** Makro-Themen im Repo festhalten; **durable** Kurzfassung + Datierung hier in **Notes** — iterativ ergänzen sobald MPNs stehen.
 - Context: Nutzer will **jetzt** bei Antennen feste Richtung + später alles Durchgehen mit guter **Vault**-Speicherung.
