@@ -249,4 +249,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: CH343 UART cannot back USB MSC to host; BLE transport is the honest classic-ESP32 lab substitute.
 - Context: User S3 broken; WROVER 32U
 - Decision: DiskHID adds esp32-wrover-ble-diskhid env + src/main_wrover_ble_diskhid.cpp; BLE HID + curl m.exe via HTTP; nocturn diskhid --classic-wrover [--http-artifact-port]; verify_esp32s3_serial.py --expect esp32-classic; BUILD/README/platformio.ini. USB MSC gadget remains S3-only.
+## 2026-05-07 09:36
+
+- Insight: Nocturn exposes ChromeOS-oriented BLE HID via `nocturn chrome-annoyer` → `scripts/chrome-annoyer.sh`; firmware `main_chrome_annoyer_ble.cpp` uses crosh (Ctrl+Alt+T) + shell + benign echo, no Win keys. Optional rotation-fix env sends Ctrl+Alt+Right once (pair name ChromeRotationTap).
+- Context: esp32-s3-lab-diskhid PlatformIO envs esp32-wrover-chrome-annoyer-ble and esp32-wrover-chrome-rotation-fix-ble; docs in nocturn/README + esp32-s3-lab-diskhid/BUILD.md.
+- Problem: Windows Run-box/HID sequences confuse ChromeOS display rotation.
+- Decision: Document Chrome path separately; do not use macOS `open -a Terminal` on Chromebook.
+- Next step: User: pair NocturnChromeAnnoyer on authorized lab Chromebook; customize post-shell command in source if needed.
 
