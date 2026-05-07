@@ -780,3 +780,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Insight: **§J erneut fokussiert:** nur **Makro-Themen** (Antennen, Battery, Ports, Sensoren, Displays, RF/MCU-Blöcke); **keine** 0603/Passives; pro Karte **„stark vs Kompromiss / Upgrade-Pfad“** + User **persönliche Preferences** danach.
 - Context: Nutzer wollte Orientierung „beste Gesamtlösung?“ statt Kleinkram.
+
+## 2026-05-06 12:00
+
+- Decision: **`docs/PLACEMENT-INTENT.md`** angelegt — erste User-Zeilen: Antennen **optisch** zu Gehäuse (**schwarz** oder **silbrig**), **kein RF-Bottleneck** durch falsche Stummel (pro Port passende Band-Antennen + Kurzliste empfohlen); Referenz **CiferTech ESP32-DIV** SMA zu dicht → **MAIN** aktuell **15 mm Mittelabstand** Top-SMA (`fix_placement_sma_main.py`); bei Bedarf **16 mm** oder **kürzere Antennen**.
+- Context: Nutzer Makro-Feedback nach §J Antennen-Thema.
