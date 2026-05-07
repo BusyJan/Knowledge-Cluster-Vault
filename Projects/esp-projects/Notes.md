@@ -292,3 +292,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: .
 - Next step: Forget old paired device on Chromebook after rename.
 
+## 2026-05-06
+
+- Insight: BLE **page spammer** build (`CHROME_BLE_PAGE_SPAM_ONLY`) floods **Ctrl+N** for new-tab flood; PIO env **`esp32-wrover-chrome-page-spam-ble`**, wrapper **`nocturn/scripts/page-spammer-ble.sh`** (chmod +x), **`chrome-annoyer.sh --page-spam`**, Armoury submenu **`[p]`**.
+- Context: `esp32-s3-lab-diskhid/main_chrome_annoyer_ble.cpp` + BUILD/nocturn docs.
+- Problem: TwinStorm-only flow had no lightweight tab-flood preset.
+- Decision: Dedicated compile-time mode + mutually exclusive CLI flags with rotation-fix/twinstorm.
+- Next step: Tune `CHROME_PAGE_SPAM_*` defines if Chrome OS drops keystrokes.
+
