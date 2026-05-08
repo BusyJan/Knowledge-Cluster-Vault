@@ -812,3 +812,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 
 - Decision: **`weiter`** — Antennenstrang zu Schaltplan **geschlossen verkabelt im Repo:** `sheets/rf-lora.kicad_sch` Freitext + **`ANTENNA-BOM-BASELINE`** §0.3 Absatz **Modul‑Alignment** (`**E22‑900M22S**`, EU868 / **ANT‑868**); §4 Zeile **LoRa** mit Modul/FW‑Hinweis. **Nächster Macro‑Block** nach Roadmap **§J:** z. B. **Battery / Case / SKU matrix** (Nutzer wählt Prompt).
 - Next step: KiCad **Öffnen nicht nötig für Logik** — bei nächstem **Schematic‑Update** Platzhaltertext sichtbar.
+
+## 2026-05-06 22:40
+
+- Insight: **`weiter` (2)** — Macro‑Thema **Battery** ausgeführt im Chat (Roadmap §J‑Stil): aktueller Stand **`power.kicad_sch`** (**TP4056**, **DW01A**, **LM66100**, **MAX17048**, **J2** JST‑PH‑Intent vs generischer FP), Script‑Referenz **`fix_pass4_tp4056.py`**; **offen**: Zell‑/mAh‑/Case‑Budget, Thermik laden+HF, **NTC**.
+- Decision: Repo **`PLACEMENT‑INTENT.md`** neue Sektion **„Battery & power path — 2026“** als **Macro‑Snapshot** + offene Nutzerprefs (noch keine Locks).
+- Next step: User nennt Präferenzen (Kapazität, Form, Schnelladen ja/nein, lite ohne Akku?) → Locks hier + ggf. Baseline‑Doc.
