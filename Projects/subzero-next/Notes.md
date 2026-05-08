@@ -807,3 +807,8 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: **Nutzer Schweiz:** **LoRa v1 Ship-Bundle LOCK** auf **868 MHz** (`J13`): **`ANT‑868‑CW‑HWR‑SMA`**; **`ANT‑916…`** nur **optionale spätere US‑SKU** (Modul+BOM passend). Repo **`ANTENNA-BOM-BASELINE`** neu **§0.3**, **§4** („answered vs open“ für Antennenthema).
 - Context: Kurzfassung Entscheide + ob Themenfeld **abgeschlossen** für BOM-Makro: **Geschlossen** für Optik/Knick/Bandwahl/SKU-Familie; **offen** bleiben: **C6 5–6 GHz** (SKU2), **Prototyp-Mechanik Ø**, **Compliance** gesondert vom Antennentext.
 - Next step: SX1262/LoRa‑**Modulvariante** in BOM schematic mit **868** abstimmen; Samples messen wie oben.
+
+## 2026-05-06 21:15
+
+- Decision: **`weiter`** — Antennenstrang zu Schaltplan **geschlossen verkabelt im Repo:** `sheets/rf-lora.kicad_sch` Freitext + **`ANTENNA-BOM-BASELINE`** §0.3 Absatz **Modul‑Alignment** (`**E22‑900M22S**`, EU868 / **ANT‑868**); §4 Zeile **LoRa** mit Modul/FW‑Hinweis. **Nächster Macro‑Block** nach Roadmap **§J:** z. B. **Battery / Case / SKU matrix** (Nutzer wählt Prompt).
+- Next step: KiCad **Öffnen nicht nötig für Logik** — bei nächstem **Schematic‑Update** Platzhaltertext sichtbar.
