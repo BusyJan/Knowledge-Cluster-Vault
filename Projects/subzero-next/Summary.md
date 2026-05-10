@@ -12,6 +12,7 @@ This file is the **compression layer**: distilled from [[Notes]], not a second l
 - **PCB → assembly:** personal rules file in repo `subzero-next/docs/PERSONAL-DESIGN-RULES.md`; SMA grid + silk DRC + roadmap in `docs/ASSEMBLY-READINESS.md`. Placement scripts: `fix_placement_sma_main.py` (uuid-safe `at` patch), `bump_f_silk_gr_text_sizes.py`, existing v4/v5.
 - **Antennas (ship bundle):** **v1:** **TE Linx CW‑HWR `‑SMA`** (**433**, **868** on **LoRa/J13** CH default **ANT‑868**, **2.4** — three frequency SKUs, six antennas); **`ANTENNA-BOM-BASELINE.md`** §§0.3–1 + **§4** checklist (`answered` vs **`C6` 5‑6 GHz**, **Mechanik Ø**, **Compliance**); prefs `PLACEMENT-INTENT.md`.
 - **Battery / power:** **USER LOCKS:** fuel gauge (**MAX17048**), quality‑first BOM, **USB‑C charge + USB2 HS data** on Type‑C (not USB3 SS without HW change), compact + max **Wh/volume**, **fast charge** ⇒ **beyond TP4056** (**PD sink + switched 1S charger**). See **`PLACEMENT-INTENT.md`** **User locks** table.
+- **SKU / derivatives macro:** **`PLACEMENT-INTENT.md`** — **SKU matrix (2026)**; FULL vs **LITE** + regional LoRa templated; **user locks pending** (lite?, USB‑A mandatory?, NFC/RFID split, DNP policy).
 
 ## Compressed history
 

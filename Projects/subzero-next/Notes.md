@@ -824,3 +824,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: **User (English):** **Fuel gauge KEEP** (**MAX17048**‑Klasse); **Qualität > Preis**; **USB‑C Laden + Daten** (aktuell USB‑**2 HS**‑Stack im Projekt; **≠ USB 3 SS** ohne andere HW); **compact** **+** maximal **Runtime/Volumen** (Pouch, Case später); **`Fast charging`** **LOCK** → Repo **`PLACEMENT‑INTENT`** **User locks**: **TP4056** explizit **unzureichend** für Nutzer‑Ziel ⇒ **engineering** nächste Rev: **PD‑Sink** **+** **1S‑Switcher‑Charger** **+ Thermik/NTC**.
 - Context: Produktprioritäten konkretisiert; Schaltplan **bleibt Zwischenstatus** bis Charge‑Subsystem getauscht.
 - Next step: **Power‑Redesign‑Ticket:** Block‑diagramm (**VBUS‑PD** ← → **charger** ← → **`VBAT`/`LM66100`**) gegen **`power.kicad_sch`**; Firmware **PDO**/Adapter‑Compliance skizzieren.
+
+## 2026-05-07 14:30
+
+- Insight: Review-Run weiter — Macro SKU matrix & derivatives (Roadmap A): PLACEMENT-INTENT.md section SKU matrix 2026 documented; user answers next for locks.
+- Context: After antenna + battery/USB locks.
+- Next step: Lite yes/no; USB-A on FULL mandatory?; NFC vs RFID split?; lite DNP policy?
