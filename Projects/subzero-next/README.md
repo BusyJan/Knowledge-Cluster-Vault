@@ -4,7 +4,7 @@ title: "subzero-next (greenfield KiCad)"
 slug: "subzero-next"
 status: active
 created: "2026-04-14 19:58:51"
-updated: 2026-05-06 22:40:00
+updated: 2026-05-07 12:00:00
 repo: ""
 tags: [project]
 ---
@@ -18,6 +18,7 @@ tags: [project]
 ## Key insights
 
 - **Macro BOM / ship bundle:** antenna **finish + MPNs + CH LoRa 868 lock** — `subzero-next/docs/ANTENNA-BOM-BASELINE.md` §§0.3–1 + §4; UX prefs `PLACEMENT-INTENT.md` — decisions in [[Notes]].
+- **USB‑C / battery:** user locks (fuel gauge MAX17048 tier, quality-first, USB2 HS data + Type‑C charging, compact max Wh, **fast charge**) vs current **TP4056** → **`PLACEMENT-INTENT.md`** **User locks**.
 - **Canonical KiCad project:** `ESP Projects/subzero-next/subzero-next.kicad_pro` + `sheets/*.kicad_sch`. **Not** `subzero-next-flat` (review-only). Pro workflow: repo `PRO-SCHEMATIC-WORKFLOW.md`.
 - **Finished** means: phases in [[Tasks]] / repo `SCHEMATIC-FINISH-LINE.md` are complete — not merely “ERC errors = 0” via relaxed rules.
 - First-time designs prioritize **clarity and reviewability** over zero warnings.

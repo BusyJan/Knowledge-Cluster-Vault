@@ -818,3 +818,9 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: **`weiter` (2)** — Macro‑Thema **Battery** ausgeführt im Chat (Roadmap §J‑Stil): aktueller Stand **`power.kicad_sch`** (**TP4056**, **DW01A**, **LM66100**, **MAX17048**, **J2** JST‑PH‑Intent vs generischer FP), Script‑Referenz **`fix_pass4_tp4056.py`**; **offen**: Zell‑/mAh‑/Case‑Budget, Thermik laden+HF, **NTC**.
 - Decision: Repo **`PLACEMENT‑INTENT.md`** neue Sektion **„Battery & power path — 2026“** als **Macro‑Snapshot** + offene Nutzerprefs (noch keine Locks).
 - Next step: User nennt Präferenzen (Kapazität, Form, Schnelladen ja/nein, lite ohne Akku?) → Locks hier + ggf. Baseline‑Doc.
+
+## 2026-05-07 12:00
+
+- Decision: **User (English):** **Fuel gauge KEEP** (**MAX17048**‑Klasse); **Qualität > Preis**; **USB‑C Laden + Daten** (aktuell USB‑**2 HS**‑Stack im Projekt; **≠ USB 3 SS** ohne andere HW); **compact** **+** maximal **Runtime/Volumen** (Pouch, Case später); **`Fast charging`** **LOCK** → Repo **`PLACEMENT‑INTENT`** **User locks**: **TP4056** explizit **unzureichend** für Nutzer‑Ziel ⇒ **engineering** nächste Rev: **PD‑Sink** **+** **1S‑Switcher‑Charger** **+ Thermik/NTC**.
+- Context: Produktprioritäten konkretisiert; Schaltplanbleibt **Zwischenstatus** bis Charge‑Subsystem getauscht.
+- Next step: **Power‑Redesign‑Ticket:** Block‑diagramm (**VBUS‑PD** ← → **charger** ← → **`VBAT`/`LM66100`**) gegen **`power.kicad_sch`**; Firmware **PDO**/Adapter‑Compliance skizzieren.
