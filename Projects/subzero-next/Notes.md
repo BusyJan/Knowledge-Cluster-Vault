@@ -822,5 +822,5 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 ## 2026-05-07 12:00
 
 - Decision: **User (English):** **Fuel gauge KEEP** (**MAX17048**‑Klasse); **Qualität > Preis**; **USB‑C Laden + Daten** (aktuell USB‑**2 HS**‑Stack im Projekt; **≠ USB 3 SS** ohne andere HW); **compact** **+** maximal **Runtime/Volumen** (Pouch, Case später); **`Fast charging`** **LOCK** → Repo **`PLACEMENT‑INTENT`** **User locks**: **TP4056** explizit **unzureichend** für Nutzer‑Ziel ⇒ **engineering** nächste Rev: **PD‑Sink** **+** **1S‑Switcher‑Charger** **+ Thermik/NTC**.
-- Context: Produktprioritäten konkretisiert; Schaltplanbleibt **Zwischenstatus** bis Charge‑Subsystem getauscht.
+- Context: Produktprioritäten konkretisiert; Schaltplan **bleibt Zwischenstatus** bis Charge‑Subsystem getauscht.
 - Next step: **Power‑Redesign‑Ticket:** Block‑diagramm (**VBUS‑PD** ← → **charger** ← → **`VBAT`/`LM66100`**) gegen **`power.kicad_sch`**; Firmware **PDO**/Adapter‑Compliance skizzieren.
