@@ -830,3 +830,10 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Insight: Review-Run weiter — Macro SKU matrix & derivatives (Roadmap A): PLACEMENT-INTENT.md section SKU matrix 2026 documented; user answers next for locks.
 - Context: After antenna + battery/USB locks.
 - Next step: Lite yes/no; USB-A on FULL mandatory?; NFC vs RFID split?; lite DNP policy?
+
+## 2026-07-15 16:20
+
+- Decision: **Orion Brain ingest (private/owner):** multi-agent harvest from `subzero-next/docs` + vault + review-run locks → hub + child notes (`SubZero — hub`, Antennas, Battery USB Power, Product Mechanics, Schematic Architecture, RF Modules, Architectural Decisions, UI Sensors Security, Compliance Legal, Review Run Status, Assembly Fab Reality, Custody Pointer, SKU Open Questions, ingest meta). Legacy `subzero` note marked **ACTIVE** (supersedes “after Orion”).
+- Insight: Brain = Class C sanitized knowledge; 4.4GB chat backup stays Class B custody — not dumped into Brain search.
+- Next step: Owner answers SKU plain questions; optional chat-archive extract pass; finish Homelab custody gates.
+
