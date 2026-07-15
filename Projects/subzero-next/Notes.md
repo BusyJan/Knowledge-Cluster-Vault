@@ -836,4 +836,11 @@ Do not rewrite history. New entries use headings `## YYYY-MM-DD HH:MM` (legacy `
 - Decision: **Orion Brain ingest (private/owner):** multi-agent harvest from `subzero-next/docs` + vault + review-run locks → hub + child notes (`SubZero — hub`, Antennas, Battery USB Power, Product Mechanics, Schematic Architecture, RF Modules, Architectural Decisions, UI Sensors Security, Compliance Legal, Review Run Status, Assembly Fab Reality, Custody Pointer, SKU Open Questions, ingest meta). Legacy `subzero` note marked **ACTIVE** (supersedes “after Orion”).
 - Insight: Brain = Class C sanitized knowledge; 4.4GB chat backup stays Class B custody — not dumped into Brain search.
 - Next step: Owner answers SKU plain questions; optional chat-archive extract pass; finish Homelab custody gates.
+## 2026-07-15 16:32
+
+- Insight: Orion Brain SubZero ingest COMPLETE (private): all required child titles present; hub child table includes COMPLETE checklist; enriched Antennas SMA coords, UI IR place/FW, Assembly scripts/DRC, Chat Extract extras, Review Run + IR detail.
+- Context: Finish upload via user-orion-brain MCP; cross-checked docs + vault; no secrets/tar.
+- Problem: None for title coverage; OPEN remain SKU answers, Homelab custody apply, PD charger redesign.
+- Decision: Upload finished marker: SubZero — Brain ingest COMPLETE 2026-07-15; Git SoT BusyJan/subzero-next @ e32caf0b416af70e597a382105b739d04fee9d63.
+- Next step: Owner answers SKU questions; Homelab custody --apply when gates met; PD+switcher schematic redesign keeping MAX17048.
 
