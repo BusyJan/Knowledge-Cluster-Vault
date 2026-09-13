@@ -47,7 +47,7 @@
 
 ## 2026-09-13 22:26
 - Insight: Owner asked whether this was written to Brain. Brain is up again. Canonical notes now match reality: SoT is `BusyJan/subzero-website` @ `49d9b23`; Sanctum clothing repo is separate; artifact PUT and shop deploy still not done.
-- Decision: Updated [[in Brain]] `SubZero — Website (storefront)`, ingest note, `SubZero — Git Remotes`, `SubZero — hub`. Archive catalogue repo URL already corrected earlier this night.
+- Decision: Updated Brain notes `SubZero — Website (storefront)`, ingest note, `SubZero — Git Remotes`, `SubZero — hub`. Archive catalogue repo URL already corrected earlier this night.
 - Next step: Artifact PUT still needs `ARCHIVE_SECRET` or SSH. Production deploy only with explicit OK.
 
 
