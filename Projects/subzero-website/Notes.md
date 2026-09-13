@@ -45,3 +45,9 @@
 - Decision: Wrote Brain notes `SubZero — Website (storefront)` + ingest fact; catalogued archive `SubZero Website` / slug `subzero-website` (secret names only). Created private SoT `https://github.com/BusyJan/subzero-website` (`1590e66`, INFO fix `49d9b23`). Did **not** push to Sanctum `production` (would replace the live clothing shop). Artifact tarball built (`/tmp/subzero-website-src-2026-09-13.tar.gz`, sha256 `3a9f249d00176e6e9ea2e25fb86a74b63bc9a4c2833a4e113278798ccffe191d`) but not uploaded — no `ARCHIVE_SECRET` on this host, no SSH key to VM 100. Brain MCP later dropped (`8790` down).
 - Next step: When Brain is back, update archive `repo` to the new GitHub URL and PUT the tarball. Ask owner before any production deploy; need `ARCHIVE_SECRET` or SSH to finish the homelab copy.
 
+## 2026-09-13 22:26
+- Insight: Owner asked whether this was written to Brain. Brain is up again. Canonical notes now match reality: SoT is `BusyJan/subzero-website` @ `49d9b23`; Sanctum clothing repo is separate; artifact PUT and shop deploy still not done.
+- Decision: Updated [[in Brain]] `SubZero — Website (storefront)`, ingest note, `SubZero — Git Remotes`, `SubZero — hub`. Archive catalogue repo URL already corrected earlier this night.
+- Next step: Artifact PUT still needs `ARCHIVE_SECRET` or SSH. Production deploy only with explicit OK.
+
+

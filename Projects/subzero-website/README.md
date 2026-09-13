@@ -4,7 +4,7 @@ title: "subzero-website (SubZero storefront)"
 slug: "subzero-website"
 status: active
 created: "2026-04-15 12:00:00"
-updated: "2026-09-13 21:40:00"
+updated: "2026-09-13 22:26:00"
 repo: "https://github.com/BusyJan/subzero-website"
 tags: [project, nextjs, shopify, unocss]
 ---
