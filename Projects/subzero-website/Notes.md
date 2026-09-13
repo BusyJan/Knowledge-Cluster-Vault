@@ -38,3 +38,10 @@
 - **Context:** User supplied a filled SubZero product brief (project-apex + subzero-website); hero/specs/ethics + `/docs` skeleton.
 - **Decision:** `lib/site.ts` defaults: `SITE_NAME` SubZero, tagline/headline per brief. `home-landing.tsx` rewritten with repo-backed spec band + grid, elevator pitch, RF/spectrum ethics (EU EIRP example, no CE/FCC claims), hero `data-product-hero` + note for future GLB. `app/docs/page.tsx` skeleton (overview, bring-up, firmware, safety). Header `Docs` → `/docs`. `.env.example` and `PRODUCT_AI_CONTEXT_PROMPT.md` blurb updated.
 - **Next step:** Wire interactive 3D when GLB exists; replace TBD footer/domain when known.
+
+## 2026-09-13 21:40
+- Insight: Local website folder had no `.git`. Hardware knowledge was already in Orion Brain; website/storefront knowledge was not. Existing `BusyJan/sanctum-shopify-web-shop` is still the Sanctum clothing storefront (Tailwind, last push 2026-08-16), not this SubZero tree.
+- Context: Owner asked to dump everything into Brain and put the website code on the server.
+- Decision: Wrote Brain notes `SubZero — Website (storefront)` + ingest fact; catalogued archive `SubZero Website` / slug `subzero-website` (secret names only). Created private SoT `https://github.com/BusyJan/subzero-website` (`1590e66`, INFO fix `49d9b23`). Did **not** push to Sanctum `production` (would replace the live clothing shop). Artifact tarball built (`/tmp/subzero-website-src-2026-09-13.tar.gz`, sha256 `3a9f249d00176e6e9ea2e25fb86a74b63bc9a4c2833a4e113278798ccffe191d`) but not uploaded — no `ARCHIVE_SECRET` on this host, no SSH key to VM 100. Brain MCP later dropped (`8790` down).
+- Next step: When Brain is back, update archive `repo` to the new GitHub URL and PUT the tarball. Ask owner before any production deploy; need `ARCHIVE_SECRET` or SSH to finish the homelab copy.
+
